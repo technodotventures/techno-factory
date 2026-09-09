@@ -48,7 +48,7 @@ Validation note: the March handbook's toolchain (LangGraph/Mastra, GSD, Acontext
 - Supervisor station → when bounded runs start drifting/serializing (Bello evidence: supervisor is the cheap win on messy specs).
 - Adversary station → R3+ / critical paths.
 - GitLab adapter → when a second provider is needed (parity contract pinned).
-- Pod/Smartware context packs + lessons → when cross-run memory starts to matter (context packs also replace GSD .planning/ state).
+- Smartware memory layer (Coffee-embedded) context packs + lessons → when cross-run memory starts to matter (context packs also replace GSD .planning/ state).
 **Expansion triggers (not phases):**
 - **Design station** (OpenDesign-style, Apache-2.0, BYOK, agent-agnostic skills + `DESIGN.md` systems): when brand fidelity or design-production cost becomes real — GTM assets (decks, prototypes, HTML video, marketing images) for the MAKE/SHIP stage; local daemon for brand extraction (screenshot/Figma → DESIGN.md) or server-side skill runtime for artifact generation. Until then, design = `DESIGN.md` per venture repo (included in context packs + Gate A on-brand check) — zero new dependencies.
 - Feedback loop (E2E walkthrough, production watchdog, rubric loop) → when the venture has users/revenue.
