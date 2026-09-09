@@ -2,7 +2,7 @@
 
 One system, two people, three stations. Every word of this plan is what we actually build before any expansion; everything after the seed is a trigger with a name, not a phase with a date.
 
-Supersedes: `docs/setup-plan.md` (earlier phase plan), SF-01…SF-10 (kept as background), the first-review draft of `docs/Techno_OS.md` §7·§8. Consensus sources: research (`docs/research-mapping.md` §1–§6), March handbook adopted-primitives list, Internal review + second review (both recorded in `docs/Techno_OS.md` §13–§14).
+Supersedes: `docs/setup-plan.md` (earlier phase plan), SF-01…SF-10 (kept as background), the first-review draft of `docs/Techno_OS.md` §7·§8. Consensus sources: research (see `docs/provenance.md`), March handbook adopted-primitives list, Internal review + second review (both recorded in `docs/Techno_OS.md` §13–§14).
 
 ---
 

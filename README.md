@@ -16,7 +16,7 @@ This repository is the **factory module of Techno OS** — Techno Ventures' one 
 | --- | --- |
 | `docs/PLAN.md` | Canonical v1 plan: invariant #0 (Coffee-first), seed, guards, security |
 | `docs/Techno_OS.md` | Self-contained review brief of the whole system (~12 sections + change log) |
-| `docs/research-mapping.md` | Research base (Uber, Spotify, factory.ai, eve/Foreman, Carson/Pocock, Bello, Multiplayer) + requirements A–G |
+| `docs/provenance.md` | Evidence map: sources, verified numbers, requirement map (full research archive is internal) |
 | `docs/setup-plan.md` | Phase 0–6 setup plan (Sandcastle executor, per-repo `.factory/` config, evidence wiring) |
 | `docs/system-delineation-and-seed.md` | Role delineation (Coffee / Techno OS / Factory), 10 boundary invariants, the seed |
 | `docs/architecture.md` · `docs/api-v0.md` | v0 tracer architecture + API surface |
