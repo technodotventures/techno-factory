@@ -7,7 +7,7 @@ This repository contains Techno Ventures' secure agentic software-factory gatewa
 ## Architecture rules
 
 - One canonical application/service layer backs HTTP API and MCP adapters.
-- Keep personal Hermes sessions, Coffee threads, and factory execution state explicitly separated.
+- Keep personal-agent sessions, Coffee threads, and factory execution state explicitly separated.
 - Shared continuity uses typed artifacts, stable task IDs, events, and approved project context—not merged raw chat histories.
 - Every mutating request is authenticated, authorised, project-scoped, idempotent, and auditable.
 - Never store secrets in the repository. Runtime secrets come from environment or an approved secret broker.

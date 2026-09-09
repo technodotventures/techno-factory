@@ -2,13 +2,13 @@
 
 One system, two people, three stations. Every word of this plan is what we actually build before any expansion; everything after the seed is a trigger with a name, not a phase with a date.
 
-Supersedes: `docs/setup-plan.md` (earlier phase plan), SF-01…SF-10 (kept as background), the first-review draft of `docs/Techno_OS.md` §7·§8. Consensus sources: research (`docs/research-mapping.md` §1–§6), March handbook adopted-primitives list, Neo review + second review (both recorded in `docs/Techno_OS.md` §13–§14).
+Supersedes: `docs/setup-plan.md` (earlier phase plan), SF-01…SF-10 (kept as background), the first-review draft of `docs/Techno_OS.md` §7·§8. Consensus sources: research (`docs/research-mapping.md` §1–§6), March handbook adopted-primitives list, Internal review + second review (both recorded in `docs/Techno_OS.md` §13–§14).
 
 ---
 
 ## 0. What we are
 
-**Techno OS** = one deployable (modular monolith; home shell = Optimus OS) + external peers: Coffee (human/team surface), Pod/Smartware (context/memory substrate), expresso (workflow language), Hermes (agent runtime), GitHub/GitLab (delivery). The factory is a bounded module of the OS — its own codebase (`techno-factory` repo), shipped as the monolith's module, with contracts strict enough that extraction later is mechanical.
+**Techno OS** = one deployable (modular monolith; home shell = the OS shell) + external peers: Coffee (human/team surface), Pod/Smartware (context/memory substrate), expresso (workflow language), Hermes (agent runtime), GitHub/GitLab (delivery). The factory is a bounded module of the OS — its own codebase (`techno-factory` repo), shipped as the monolith's module, with contracts strict enough that extraction later is mechanical.
 
 **The mission question:** *"did this actually happen?"* — evidence over claims; receipts over reports; the factory is not believed, it is checked.
 
@@ -16,7 +16,7 @@ Supersedes: `docs/setup-plan.md` (earlier phase plan), SF-01…SF-10 (kept as ba
 
 ## 1. The invariant list (short, because short survives maintenance)
 
-0. **Coffee-first.** Anything expressible through Coffee's existing primitives — Projects > Tasks > Docs > Agents; task **Statuses**; **status automations** (agent action on status entry, with Name/Purpose, Work type, Agent, Deliverable definition, **Pause for approval**, Run limits); Docks; meetings → tasks; approvals — is expressed there. New surfaces/artifacts are introduced only when Coffee cannot express it. Techno OS is the orchestration layer *underneath* Coffee (decision + factory pipeline + Pod memory + budget/policy); the visible surface is Coffee. Optimus OS is the personal founder console (voice/pocket), not the studio UX.
+0. **Coffee-first.** Anything expressible through Coffee's existing primitives — Projects > Tasks > Docs > Agents; task **Statuses**; **status automations** (agent action on status entry, with Name/Purpose, Work type, Agent, Deliverable definition, **Pause for approval**, Run limits); Docks; meetings → tasks; approvals — is expressed there. New surfaces/artifacts are introduced only when Coffee cannot express it. Techno OS is the orchestration layer *underneath* Coffee (decision + factory pipeline + Pod memory + budget/policy); the visible surface is Coffee. The personal founder console (voice/pocket) is a separate personal surface, not the studio UX.
 1. Cross-layer communication is typed artifacts only — in v1 that is **WorkItem, EvidencePack, ApprovalDecision** (fields over artifacts; nothing else exists yet).
 2. Trust is decided once at dispatch; nothing downstream re-derives it from model-readable content.
 3. Silence never approves. Unattended runs deny-not-park.
@@ -34,7 +34,7 @@ Supersedes: `docs/setup-plan.md` (earlier phase plan), SF-01…SF-10 (kept as ba
 
 **Shape:** one repo you already trust → a continuous source of low-risk work → Planner → Builder → Verifier → Gate A (a check, not a station) → a human decides → evidence-PR. WIP cap 3. Spend ceiling armed. Measured from run 1.
 
-**Work source (not a feature):** flaky-test triage, dependency/CVE bumps, or the recurring browser E2E walkthrough — in optimus-os or Pod (seed repo pending final choice; proposal: Pod — it is ours, low-risk, and already produces meeting/task-shaped data for the M&A loop; optimus-os is the fallback).
+**Work source (not a feature):** flaky-test triage, dependency/CVE bumps, or the recurring browser E2E walkthrough — in Pod or another trusted internal repo (seed repo pending final choice; proposal: Pod — it is ours, low-risk, and already produces meeting/task-shaped data for the M&A loop; another trusted internal repo is the fallback).
 
 **Build order (each step small, each verify-able):**
 
@@ -78,8 +78,8 @@ Missions/fleet parallelism · routing engine · ubiquitous-language doc · execu
 
 ## 5. Open decisions (pick to start)
 
-1. **Seed repo** — proposal: **Pod** (ours, low-risk, data-rich); fallback optimus-os.
+1. **Seed repo** — proposal: **Pod** (ours, low-risk, data-rich); fallback: another trusted internal repo.
 2. **Spend ceiling number** — proposal: a number you'd notice casually, e.g. $500–1,000/month of agent spend for the seed month.
-3. **Named operator-owner** — proposal: Stevie; backup Neo. (The failure mode is the factory becoming an unmaintained dependency neither of you owns.)
-4. **Rotate VPS provider credentials before run 1** (DeepSeek 401 fleet-wide on the VPS; Codex quota spent) — do now, blocks the first real run otherwise.
+3. **Named operator-owner** — proposal: the founder; backup: the second operator (founding team). (The failure mode is the factory becoming an unmaintained dependency neither of you owns.)
+4. **Refresh deployment provider credentials before run 1** (LLM provider keys expired; tooling quota spent) — do now, blocks the first real run otherwise.
 5. Model provider pair for seed (cheap + strong; verifier different family/vendor) — any OpenRouter pair works; proposal: cheap = DeepSeek-Flash-class, strong = Claude-Fable-5-class.

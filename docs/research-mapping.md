@@ -68,7 +68,7 @@ For us: matches our mission ("did this actually happen? / what path proves this?
 
 - **Coffee** (metcoffee.ai; our workspace) is the collaborative human/team surface. Verified surface (Aug 2026 probe): Streamable-HTTP MCP at `/api/mcp` with OAuth 2.0 dynamic client registration + PKCE (S256; loopback redirect; full scopes; apex-host resource binding exact-match; consent screen marks self-registered clients "unverified"; token endpoint `/api/v1/oauth/authorize/code`; errors are `{success:false, errors:[...]}` shaped; 429-backs off). Features per product: docks, tasks, Kanban boards, Chat Coffee AI (agent harness; create/bring agents), projects (house documents + tasks), files (storage/sharing), recordings (screen recordings shareable to agents), meetings (agent-attended, recorded, transcribed, **action items auto-created as tasks**), skills storage, notifications/approvals surfaced here.
 - **Pod (Smartware runtime)**: standalone user-owned memory companion; same object store + memory/event layer; generic HTTP + MCP surfaces. Key routes: collections/objects, `observe`, `query`, `context` (bounded peer cards + lessons + conversations + cited claims), `expertise` (evidence-backed "who knows"), `compile`, `dream` (owner-triggered maintenance), sessions (`start/checkpoint/end`), **agent action `propose/approve/reject`** (approval binding), agent registry with **portable profiles** (Hermes/Codex/Claude Code/OpenClaw/Kimi, no token exports, preview + rolled-back imports), experience loop (`pod_record_experience` → derived cited lessons), Coffee adapter (`/coffee/connect` → bound client tokens; `/coffee/sync/meetings`, `/coffee/meetings/:id/brief`, `/coffee/meetings/:id/capture` — notes/decisions/tasks/followups; **follow-ups are drafts requiring human approval before any external write**; owner-only endpoints; `GET /pod/approvals`).
-- **Our v0 (techno-factory)**: typed work envelope (org/workspace/project/thread/actor/agent/origin/correlation/idempotency), idempotent submission (201/200/409), HMAC auth with 5-min window + persisted nonces + project grants, risk tiers R0–R4, HTTP + MCP adapters over ONE application service, authority v0 = accept work + read-only audit, no execution/publish/merge/release. Boundaries: Coffee = authoritative collaborative surface; personal Hermes separate; promotion across boundaries only explicit; secrecy never in repo.
+- **Our v0 (techno-factory)**: typed work envelope (org/workspace/project/thread/actor/agent/origin/correlation/idempotency), idempotent submission (201/200/409), HMAC auth with 5-min window + persisted nonces + project grants, risk tiers R0–R4, HTTP + MCP adapters over ONE application service, authority v0 = accept work + read-only audit, no execution/publish/merge/release. Boundaries: Coffee = authoritative collaborative surface; personal agent surface separate; promotion across boundaries only explicit; secrecy never in repo.
 
 ### 1.8 Multiplayer AI Manifesto (multiplayer-ai.com, Sep 2026)
 
@@ -80,7 +80,7 @@ A "North Star" for true multiplayer AI — no vendor satisfies all five today. I
 4. **People are not routers** — never ask a human a question an agent can already answer; chasing updates and relaying = agent work; humans keep judgments. (We: approval gates are only for actions/decisions that need a founder — the factory does the chasing and reporting, per our founder-in-loop design.)
 5. **Nothing starts from scratch** — cloud sessions resume months later; every artifact (doc/plan/PR) has a resumable agent session; a new teammate is productive day 1. (We: Pod sessions + context packs + Coffee artifact links; milestone/resume as v2.)
 
-Hard considerations that become requirements: **agents don't belong on laptops** (fleet runs server-side); **firewall every agent** (scoped sharing — Dana's inbox isn't repeatable to Marcus; she must share explicitly — exactly our Pod actor/scope model); **stay provider-agnostic** (model shifts weekly; one-provider alignment = that provider's billing incentives; e.g. Uber burned its 2026 AI budget in 4 months on Claude Code — our router config, sovereign models); **governance is non-negotiable** (4 questions about any session a year later: which agent ran, who asked, what data touched, what it changed — audit black box); **own your data** (learnings, skills, evals stay ours).
+Hard considerations that become requirements: **agents don't belong on laptops** (agent runs happen server-side); **firewall every agent** (scoped sharing — Dana's inbox isn't repeatable to Marcus; she must share explicitly — exactly our Pod actor/scope model); **stay provider-agnostic** (model shifts weekly; one-provider alignment = that provider's billing incentives; e.g. Uber burned its 2026 AI budget in 4 months on Claude Code — our router config, sovereign models); **governance is non-negotiable** (4 questions about any session a year later: which agent ran, who asked, what data touched, what it changed — audit black box); **own your data** (learnings, skills, evals stay ours).
 
 ### 1.9 Factory Research — executable standard of completion + harness routing (Aug 2026)
 
@@ -179,14 +179,14 @@ The eve README tells half the story; the code and subagent instructions carry th
    └───────────▲──────────────┘
                │ shared context/provenance (multiplicayer across agents)
    ┌───────────┴──────────────────────────────────────────────────────────┐
-   │ RUNTIMES: Chat Coffee AI agents (in-app) · personal Hermes ·         │
+   │ RUNTIMES: Chat Coffee AI agents (in-app) · founder's personal agent ·         │
    │ external BYO runners (Coos/Codex etc.) — same WorkItem contract      │
    └──────────────────────────────────────────────────────────────────────┘
    Feedback loop: monitoring/incidents → dedup → Coffee tasks → pipeline;
    optional Detail (proactive bug scout) & Graphify (graph context) as A/B probes.
 ```
 
-Ownership (unchanged from architecture.md): Coffee owns UI/team model; factory owns contracts/idempotency/adapter/policy; Pod/Smartware owns memory protocol; expresso owns workflow runtime; personal Hermes separate.
+Ownership (unchanged from architecture.md): Coffee owns UI/team model; factory owns contracts/idempotency/adapter/policy; Pod/Smartware owns memory protocol; expresso owns workflow runtime; personal agent surface separate.
 
 ---
 

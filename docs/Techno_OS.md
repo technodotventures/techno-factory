@@ -22,14 +22,14 @@ Software development is domain one (tightest feedback loops — code either runs
 
 ## 2. The system — one system
 
-**Techno OS is ONE SYSTEM: a modular monolith** (matching the house convention in Optimus OS: one shell, one deployment, a typed registry of independently owned feature modules). Modules: shell + decision layer; factory execution module. Versioned contracts between modules are as strict as if they were separate services — extraction later is mechanical, not a rewrite.
+**Techno OS is ONE SYSTEM: a modular monolith** (matching the house convention: one shell, one deployment, a typed registry of independently owned feature modules). Modules: shell + decision layer; factory execution module. Versioned contracts between modules are as strict as if they were separate services — extraction later is mechanical, not a rewrite.
 
 External peers over typed contracts: **Coffee** (team/human surface — SaaS), **Pod/Smartware** (memory/context substrate — our own user-owned service), **expresso** (workflow language/runtime — peer project), **Hermes** (agent runtime + personal founder agent), **GitHub/GitLab** (delivery providers).
 
 ```text
             ┌──────────────────────────────────────────────┐
             │  TECHNO OS  (one deployable, modular monolith)│
-            │  Shell + Decision layer (Optimus OS)         │
+            │  Shell + Decision layer (OS shell)         │
             │    • Decision Orchestrator (typed decisions)  │
             │    • Studio programs: ventures, budgets,      │
             │      policies, ringfences                     │
@@ -58,7 +58,7 @@ External peers over typed contracts: **Coffee** (team/human surface — SaaS), *
 | **Coffee** (external) | Human/team surface: tasks, docks, Kanban, projects, files, recordings, meetings (agent-attended) → Decision Extracts + action items, skills; THE place founders review (evidence incl. feature recordings) and approve/reject/steer. Source of record for human work state. | Agent execution state. Pipeline truth. Memory semantics. |
 | **Pod/Smartware** (external) | Context/memory substrate: curated context packs (provenance), lessons loop, expertise (who-knows), per-agent approvals ledger, meeting sync, session governance records (which agent ran / who asked / what data touched / what changed). Firewall semantics: explicit scoped sharing. | Delivery. Workflow semantics. Task ownership. |
 | **expresso** (external, peer) | Workflow language/runtime semantics: separates what the LLM observes/decides from what the system actually executes; receipts + authority (attested, not proven; UNKNOWN is a legal state). | Memory, UI, auth. |
-| **Hermes** (external) | Agent runtime + personal founder agent; also the harness for invited agents (e.g. Stevie's Hermes agent joins Coffee runs via MCP). | The above layers' state. |
+| **Founder's personal agent** (external) | Agent runtime + the founder's own agent; also the harness for invited agents (e.g. the founder's agent joins Coffee runs via MCP). | The above layers' state. |
 | **GitHub / GitLab** (external) | Change requests: PRs/MRs, checks, CI, branch rules. | Factory decisions; approvals (workers can't approve own output — enforced). |
 
 **Where design lives:** per-venture repo `DESIGN.md` (the OpenDesign protocol — Apache-2.0, portable, agent-agnostic, token/brand rules: palette, type, spacing) — the third canonical repo doc beside `PROJECT.md` (what/why, ≤100 lines) and `AGENTS.md` (who does what). Factory references it (context packs), checks it (Gate A on-brand check for UI/brand changes), and produces into it (GTM artifacts later).
@@ -82,9 +82,9 @@ External peers over typed contracts: **Coffee** (team/human surface — SaaS), *
 
 Three layers, deliberately separated:
 
-1. **Factory skills = independent, versioned, merge-gated repositories** (e.g. `factory-skills`). A skill (spec-authoring, soc-authoring, triage-issues, ubiquitous-language, evidence-pack, recording-capture, writing-quality, on-brand-check) is instructions + references + scripts, referenced by **repo+version** (`factory/spec-authoring@v1`). Why separate: any agent — Coffee-created, BYO (Roham's agents), or Stevie's Hermes via MCP — must run the identical practice; one copy per origin = drift (Spotify's goldens exist to prevent exactly this). G1's versioned change path only works on uniquely addressable artifacts. "Correction → auto-created reusable skill" (Multiplayer principle) only works when it lands in one public library. Merge gate = skills are prompt-injection vectors (March handbook had this: "skills and plugins are safe before they can be merged" — 102 rules in CI).
+1. **Factory skills = independent, versioned, merge-gated repositories** (e.g. `factory-skills`). A skill (spec-authoring, soc-authoring, triage-issues, ubiquitous-language, evidence-pack, recording-capture, writing-quality, on-brand-check) is instructions + references + scripts, referenced by **repo+version** (`factory/spec-authoring@v1`). Why separate: any agent — Coffee-created, BYO (invited agents), or the founder's own agent via MCP — must run the identical practice; one copy per origin = drift (Spotify's goldens exist to prevent exactly this). G1's versioned change path only works on uniquely addressable artifacts. "Correction → auto-created reusable skill" (Multiplayer principle) only works when it lands in one public library. Merge gate = skills are prompt-injection vectors (March handbook had this: "skills and plugins are safe before they can be merged" — 102 rules in CI).
 2. **Agents = thin role definitions, created/edited in Coffee** (Mastra AgentController): persona/instructions + model (OpenRouter, BYOK, or default) + tools + skill references + authority (trust tier). The factory publishes **role templates** (`factory/planner@v1`, `factory/verifier@v1`, …) — runtime-agnostic markdown configs (March's PROJECT.md/AGENTS.md adapter pattern generalized, with thin per-runtime adapters generated). Any agent can adopt a template in a session.
-3. **BYO bridge = Pod's agent registry** (projects portable agent profiles to Hermes/Codex/Claude Code/OpenClaw/Kimi without token exports) + Coffee MCP (Stevie's Hermes, Roham's agents join runs with their own identity/tools but the **same WorkItem contract** and the same pinned skill versions). BYO agents ≠ BYO practices.
+3. **BYO bridge = Pod's agent registry** (projects portable agent profiles to third-party coding agents without token exports) + Coffee MCP (the founders' personal agents join runs with their own identity/tools but the **same WorkItem contract** and the same pinned skill versions). BYO agents ≠ BYO practices.
 
 **Policy is system-owned** — approval matrix, risk/trust tiers, human gates live in the Factory module's policy and are NOT skills (no user-editable override; a BYO agent can never be more privileged than the factory's own).
 
@@ -120,7 +120,7 @@ Replaced (superseded by current stack): LangGraph+Mastra orchestration → stati
 
 **Revised (second review, Sep 07 2026):** one repo you already trust, a **continuous source of low-risk work**, three stations + one check (Gate A), evidence-PR with a mechanical integrity scan, a human deciding, three runs in flight max, spend ceiling armed. Buildable in a week or two; it feeds itself.
 
-1. **One repo you already trust** (optimus-os or Pod). No qualification rubric is written: for two people, doing the 20-minute fix by hand, once, IS the qualification. Keep Green/Yellow/Red as a mental model.
+1. **One repo you already trust** (Pod or another trusted internal repo). No qualification rubric is written: for two people, doing the 20-minute fix by hand, once, IS the qualification. Keep Green/Yellow/Red as a mental model.
 2. **A continuous source of low-risk work, not a single feature**: flaky-test triage, dependency/CVE bumps, or the recurring browser E2E walkthrough. 20 runs in two weeks beats one immaculate run; the work is genuinely low-risk while the harness is unproven; and it's the only shape that feeds the ≥50 RunRecord learning gate.
 3. **Three stations plus a check** (Triage lives inside Planner until issue volume hurts classification):
    - **Planner**: ground in live checkout (**docs-first: AGENTS.md / README / CONTEXT.md / DESIGN.md / PROJECT.md before code**); **per-ticket `out_of_scope` — what this work is NOT doing; ask only what the repo/issue cannot answer**; problem_statement, approach + rejected alternative, ordered independently-verifiable steps, affected_surface with public contracts flagged, risks, test_strategy, assumptions, open_questions; **acceptance criteria written as the verbatim checklist the Verifier applies — this IS the standard of completion, no separate artifact**; **red-green: define the work by a failing test first**; design-grounding (Grill-Me style) only when a real run demands it; depth to an artifact, structured plan stays the contract.
@@ -161,17 +161,17 @@ Replaced (superseded by current stack): LangGraph+Mastra orchestration → stati
 
 ## 10. Status — what exists vs not
 
-**Exists today:** `techno-factory` scaffold (v0 tracer: work envelope, HMAC signing, SQLite, MCP+HTTP adapters, risk tiers, docs — **zero commits, uncommitted**); Pod + Smartware repos (memory substrate, approvals, agent registry, meetings adapter); optimus-os (modular monolith shell, voice push-to-talk, modules registry); research package (`docs/research-mapping.md`, `docs/setup-plan.md`, `docs/system-delineation-and-seed.md`, SF-01…SF-10 backlog); Coffee MCP OAuth client credentials (client_id+secret stored; access token pending one-time consent — **Coffee integration deferred by founder decision**).
+**Exists today:** `techno-factory` scaffold (v0 tracer: work envelope, HMAC signing, SQLite, MCP+HTTP adapters, risk tiers, docs — **zero commits, uncommitted**); Pod + Smartware repos (memory substrate, approvals, agent registry, meetings adapter); the OS shell (voice push-to-talk, modules registry); research package (`docs/research-mapping.md`, `docs/setup-plan.md`, `docs/system-delineation-and-seed.md`, SF-01…SF-10 backlog); Coffee MCP OAuth client credentials (client_id+secret stored; access token pending one-time consent — **Coffee integration deferred by founder decision**).
 
 **Not built:** any pipeline code beyond the v0 tracer; station role configs; factory skills repo; Sandcastle wiring; Gate A (incl. recording capture); GitHub/GitLab adapters beyond scope notes; qualification script; kanban cards (RF-01…RF-07 drafted in docs, not on the Venture Factory board — board write pending Coffee auth); GitLab parity work; evaluation harness; Pod wiring.
 
-**Fleet caveat (ops):** VPS-side provider credentials are stale/expired (DeepSeek 401 everywhere; Codex rate-limited) while the desktop app still works — fleet ops should rotate VPS-side keys; this will bite any agent run on the VPS outside the desktop app.
+**Fleet caveat (ops):** Deployment-side provider credentials are stale (401s; tooling quota spent) while the desktop app still works — ops should rotate provider keys before the first run; this will bite any agent run on outside the desktop app.
 
 ---
 
 ## 11. Open decisions (founders + reviewers)
 
-1. ~~Pilot venture repo + risk-tier appetite~~ — **resolved: own repo (optimus-os or Pod) for the seed; venture repo for Phase 5 pilot.**
+1. ~~Pilot venture repo + risk-tier appetite~~ — **resolved: own repo (Pod or another trusted internal repo) for the seed; venture repo for Phase 5 pilot.**
 2. Agent platform mix (which harness(es); Sandcastle defaults to Claude Code; cloud vs local split per job type).
 3. Model providers to route between (cheap + strong; validator family ≠ implementer family).
 4. ~~GitLab instance/version/tier to pin~~ — **deferred: GitLab is a trigger, not v1 work (GitHub is the house provider).**
@@ -179,8 +179,8 @@ Replaced (superseded by current stack): LangGraph+Mastra orchestration → stati
 6. ~~Station-chain right-sizing~~ — **resolved (second review): Planner → Builder → Verifier + Gate A check; Triage inside Planner; Supervisor/Adversary conditional/unbuilt.**
 7. ~~Gate A recording strictness~~ — **resolved: automatic capture from E2E harness; fail only on required-but-unproducible.**
 8. ~~Seed repo choice~~ — **resolved: own repo first.**
-9. **Named operator-owner for the factory itself** (who fixes it at 11pm mid-run; with two people the failure mode is the factory becoming an unmaintained dependency neither of you owns). Proposed default: Stevie; backup: Neo.
-10. **Rotate stale VPS provider credentials before run 1** (DeepSeek 401 fleet-wide; Codex rate-limited) — fleet ops prereq, blocks nothing else.
+9. **Named operator-owner for the factory itself** (who fixes it at 11pm mid-run; with two people the failure mode is the factory becoming an unmaintained dependency neither of you owns). Proposed default: the founder; backup: the second operator.
+10. **Refresh stale deployment provider credentials before run 1** (401s; tooling quota spent) — ops prereq, blocks nothing else.
 11. **Hard spend ceiling number** (one number; default proposal: e.g. monthly $ cap such that two founders monitor it casually).
 
 ---
@@ -189,7 +189,7 @@ Replaced (superseded by current stack): LangGraph+Mastra orchestration → stati
 
 External verdict: *"strong research and a weak plan… you have two people."* Adjudication, item by item:
 
-**Adopted outright:** cut 7 of 10 envelopes (WorkItem, EvidencePack, ApprovalDecision remain; the rest become fields when a consumer exists) · collapse R0–R4 × T1–T5 to one binary ("touches production/credentials/protected branches/money? human decides; third tier only when a real run names one") · no qualification rubric (manual 20-min fix, once, is the qualification) · GitLab + cost engineering out of v1 (triggers; passive cost measurement; single model-per-station config only) · Grill Me / ubiquitous language / Adversary conditional or deferred · **WIP cap = 3 concurrent runs, system constraint** · **monthly spend ceiling with automatic halt** (kill switch armed from run 1) · **Gate A mechanical diff-integrity scan (blocking)** — long-line heuristic + `atob(` / `eval("global.` / `global.[a-z]='<digits>-` signatures, plus worker-token broker (no npm publish token, no repo-scoped GH CLI token) · named operator-owner for the factory · rotate stale VPS keys before run 1 · chain = Planner → Builder → Verifier, Gate A = check not station, Triage absorbed.
+**Adopted outright:** cut 7 of 10 envelopes (WorkItem, EvidencePack, ApprovalDecision remain; the rest become fields when a consumer exists) · collapse R0–R4 × T1–T5 to one binary ("touches production/credentials/protected branches/money? human decides; third tier only when a real run names one") · no qualification rubric (manual 20-min fix, once, is the qualification) · GitLab + cost engineering out of v1 (triggers; passive cost measurement; single model-per-station config only) · Grill Me / ubiquitous language / Adversary conditional or deferred · **WIP cap = 3 concurrent runs, system constraint** · **monthly spend ceiling with automatic halt** (kill switch armed from run 1) · **Gate A mechanical diff-integrity scan (blocking)** — long-line heuristic + `atob(` / `eval("global.` / `global.[a-z]='<digits>-` signatures, plus worker-token broker (no npm publish token, no repo-scoped GH CLI token) · named operator-owner for the factory · rotate stale provider keys before run 1 · chain = Planner → Builder → Verifier, Gate A = check not station, Triage absorbed.
 
 **Held with modification:**
 - **SOC** — cut as an artifact, kept as a mechanism: the evidence (Factory 36%→90%) buys the *checklist-authored-before-implementation and applied verbatim by the verifier*, which is now literally the Planner contract. Different noun, same substance.
@@ -199,11 +199,11 @@ External verdict: *"strong research and a weak plan… you have two people."* Ad
 
 ---
 
-## 14. Neo review (Sep 07 2026) — verdict & adopted changes
+## 14. Internal review (Sep 2026) — verdict & adopted changes
 
-Neo's review ran against this document (profile `neo`, Head of Technology persona). Verdict: *"The doc is genuinely good, arguably over-built for a v1."* Its five answers, and what we adopt:
+The internal review ran against this document (independent reviewer, Head of Technology persona). Verdict: *"The doc is genuinely good, arguably over-built for a v1."* Its five answers, and what we adopt:
 
-**Defining question (Neo):** the load-bearing claim is *not* the station chain — it's whether a multi-station loop produces a correct, mergeable, evidence-backed change a single capable agent wouldn't, at an affordable cost. Three facts must hold: (1) the verifier (independent model family, real diff + real test output) actually catches what the builder got wrong; (2) the evidence record is tamper-evident and the human gate unconditional — an unattended run can never become a shipped lie; (3) the whole thing is cheaper in intervention + founder judgment than a good engineer. Fastest honest way: run the seed AND a single-strong-agent baseline on the same bounded feature, model held constant, decide on rescue/intervention/cost/latency/founder-review-time.
+**Defining question (reviewer):** the load-bearing claim is *not* the station chain — it's whether a multi-station loop produces a correct, mergeable, evidence-backed change a single capable agent wouldn't, at an affordable cost. Three facts must hold: (1) the verifier (independent model family, real diff + real test output) actually catches what the builder got wrong; (2) the evidence record is tamper-evident and the human gate unconditional — an unattended run can never become a shipped lie; (3) the whole thing is cheaper in intervention + founder judgment than a good engineer. Fastest honest way: run the seed AND a single-strong-agent baseline on the same bounded feature, model held constant, decide on rescue/intervention/cost/latency/founder-review-time.
 
 **Adopted changes (deltas to this document):**
 1. **Baseline arm becomes part of the seed** (new, replaces "one bounded feature" tacit test): chain vs one capable agent, model held constant, same repo — the seed's real deliverable is whether the chain beats one good agent. Do not ship the architecture on a live venture repo before that's settled.
@@ -214,9 +214,9 @@ Neo's review ran against this document (profile `neo`, Head of Technology person
 6. **Sandbox egress restriction** (not just non-root + no prod creds): dependency-fetch prompt injection is a real surface; network policies must enforce "external input is untrusted" in the sandbox; verifier and builder both sandboxed, network pin + allowlist where needed.
 7. **Cut from v1**: routing engine / 6-term cost equation (Phase 3; keep a single model-per-station config file); ubiquitous-language doc (defer; one more artifact to maintain); Pod context-pack + lessons integration (defer — seed runs on plain repo files + DESIGN.md); single delivery provider in v1.
 8. **Added**: red-green TDD as the acceptance-authoring step (define the bounded feature by a failing test first — verifier gets an objective check, not model opinion); per-run abort path + max-token/max-cost circuit breaker (no runaway unattended runs; founder has mid-run stop).
-9. **Seed repo choice**: pilot on **our own repo** (optimus-os or Pod) — controlled, understood, no users at risk — and keep the real-venture repo for the Phase 5 pilot.
+9. **Seed repo choice**: pilot on **our own repo** (Pod or another trusted internal repo) — controlled, understood, no users at risk — and keep the real-venture repo for the Phase 5 pilot.
 
-**Neo dissent we keep as-is (recorded, not adopted):** "pick our own repo" — adopted. Everything else on the list above adopted. The one place Neo was softer than this doc's evidence (Bello +9% on messy specs for runtime-only supervision) is handled by making Supervisor conditional rather than removed — consistent with both.
+**Reviewer dissent kept as-is (recorded, not adopted):** "pick our own repo" — adopted. Everything else on the list above adopted. The one place the reviewer was softer than this doc's evidence (Bello +9% on messy specs for runtime-only supervision) is handled by making Supervisor conditional rather than removed — consistent with both.
 
 ---
 

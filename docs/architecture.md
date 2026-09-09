@@ -2,14 +2,14 @@
 
 ## Decision
 
-`techno-factory` is the factory's bounded context and codebase — a separate private repository from Coffee, Smartware, expresso, and the personal Control Room — **deployed as a module of the Techno OS monolith** (one deployable, one shell = Optimus OS), NOT as its own service in v1. Module boundaries are enforced as if separate (typed artifacts only, no cross-module internals), so the module can be extracted to its own deployable later if a trigger materializes (enterprise isolation/audit requirement, scale, or a non-founder consumer).
+`techno-factory` is the factory's bounded context and codebase — a separate private repository from Coffee, Smartware, expresso, and personal agent surfaces — **deployed as a module of the Techno OS monolith** (one deployable, one shell), NOT as its own service in v1. Module boundaries are enforced as if separate (typed artifacts only, no cross-module internals), so the module can be extracted to its own deployable later if a trigger materializes (enterprise isolation/audit requirement, scale, or a non-founder consumer).
 
 ```text
-Personal Hermes ──────┐
+Personal agent ──────┐
                       ▼
    TECHNO OS (one system, modular monolith)
    ┌──────────────────────────────────────┐
-   │ Shell + decision layer (Optimus OS)  │
+   │ Shell + decision layer (OS shell)  │
    │   Decision Orchestrator · programs   │
    │                                      │
    │ Factory module (this repo's code)    │ ◄────── Coffee SaaS (surface)
@@ -39,16 +39,16 @@ It does not own:
 - Coffee's product UI or general workspace model;
 - Smartware's protocol implementation;
 - expresso's language/runtime implementation;
-- Stevie's private Hermes state;
+- the founders' private agent state;
 - the eventual public Protocol Evolution Loop specification.
 
 ## Control surfaces and state
 
-Coffee is the authoritative collaborative surface for Techno team activity. Personal Hermes is Stevie's private founder surface. They may address the same factory service, but they do not merge raw conversations or memory.
+Coffee is the authoritative collaborative surface for Techno team activity. The founders' personal agent runtime is their private surface. They may address the same factory service, but they do not merge raw conversations or memory.
 
 A work request carries stable organisation, workspace, project, thread, actor, agent, correlation, and idempotency identifiers. Shared continuity comes from work IDs, artifacts, events, decisions, and explicitly approved project context.
 
-Private personal-Hermes context crosses into Coffee/factory state only through an explicit promotion action.
+Personal-agent context crosses into Coffee/factory state only through an explicit promotion action.
 
 ## Adapter decision
 
@@ -56,7 +56,7 @@ The typed application service and API are canonical. MCP is an agent-facing adap
 
 - Coffee application traffic: API plus streaming/events.
 - Invited Coffee agent teammates: MCP tools bound to a Coffee-issued service identity and project grant.
-- Personal Hermes: remote API or MCP tools with an independent client identity and narrower publication controls.
+- Founder's personal agent: remote API or MCP tools with an independent client identity and narrower publication controls.
 
 ## Authority v0
 

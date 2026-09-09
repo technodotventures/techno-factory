@@ -20,7 +20,6 @@ This repository is the **factory module of Techno OS** — Techno Ventures' one 
 | `docs/setup-plan.md` | Phase 0–6 setup plan (Sandcastle executor, per-repo `.factory/` config, evidence wiring) |
 | `docs/system-delineation-and-seed.md` | Role delineation (Coffee / Techno OS / Factory), 10 boundary invariants, the seed |
 | `docs/architecture.md` · `docs/api-v0.md` | v0 tracer architecture + API surface |
-| `docs/summary-for-review.md` | Earlier review summary (superseded by `Techno_OS.md` where they conflict) |
 
 ## Design invariants (summary)
 
