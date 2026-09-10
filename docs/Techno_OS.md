@@ -13,6 +13,7 @@ Techno OS is the operating system of an AI-native venture studio. **One system**
 - **The mission question everything is measured against:** *"did this actually happen?"* — evidence over claims, receipts over reports. Every deliverable carries proof; every run leaves an auditable log.
 - **Portfolio context (external peers, not modules):** Coffee (the collaborative human/team surface), Smartware/Pod (memory substrate), expresso (workflow language/runtime), GitHub/GitLab (delivery). Future ventures plug into the same machinery.
 - **Who it serves first:** a two-person founder team running multiple ventures — attention and trust are the scarcest resources; the system is designed to conserve both.
+- **North star (the competitive edge):** ventures advanced per human-review-hour. For a two-person studio the edge is not pipeline sophistication — it is how many ventures keep moving per hour of founder attention. Every design choice is sized against that ratio.
 
 ## 2. The operating model — the Product Development Lifecycle (PDLC)
 
@@ -84,6 +85,8 @@ Coffee is both the studio's surface and a product in its own right; these are th
 
 **Security musts inside the proposal:** agent-produced HTML never executes in the app origin (sandboxed, no network/cookies/tokens); secrets are redacted server-side anywhere a summary or log is rendered; decisions and verdicts are immutable and attributed.
 
+**Contingency (unhedged dependency):** if fewer than two of the six asks land on our timeline, the studio proceeds regardless: reviews run through the existing PR flow with the evidence package attached, and approvals arrive as a one-page digest. **No stage of the studio loop may hard-depend on an unshipped platform feature** — the queue, live previews, and the memory layer stay internal-only until Coffee ships them.
+
 ## 6. The Product Analyst (the Measure role)
 
 A standing agent — the answer to "are people actually using what we ship?" **Monitors:** usage analytics (most-used / unused features), activation funnels and drop-off points, stuck points, support load — plus the analytics events every release declares in its release record. **Produces:** a weekly insight report (cited) + **candidate work items into Discovery** (typed candidates; humans triage) + the data for the 30-day Retro. **Boundaries:** raises signal, never decides or builds; distinct from the engineering watchdog (uptime/errors vs product behavior). **Scope note:** adoption is the starting point — as ventures mature the remit extends to revenue, churn, and unit-economics signals; the Analyst also owns product-health alert thresholds and flags features for **kill/pivot** at Retro when adoption thresholds are missed. **Activation trigger:** when a venture has live users and releases declare analytics events.
@@ -101,6 +104,8 @@ A standing agent — the answer to "are people actually using what we ship?" **M
 - **People decide** production, credentials, protected branches, and money. Agents can request; they can never approve.
 - **Approvals are binding records** (who, what, when, note) — a decision that isn't recorded didn't happen.
 - **Credentials discipline:** no secrets in repos or docs; least-scope tokens; production credentials vaulted and retrieved deliberately; CI/agents get scoped, short-lived access only.
+- **Named threat (a real incident, not a hypothetical):** a malicious package masquerading as one of our own — a tarball resembling our own expresso package, sitting in a home directory. Controls that exist because of it: package-name/registry allowlists and provenance/attestation checks before **any** agent-initiated install; lockfile pinning with integrity hashes in CI; publish paths require 2FA/hardware-key and short-lived credentials; nothing agent-published reaches a registry without an out-of-band step.
+- **Incidents have a home:** a reviewed incident record is a first-class artifact (task · evidence package · approval · **incident record**); every accepted incident contributes a **policy-version bump** — guards learn signatures, not vibes.
 - **External inputs are untrusted:** issues, tickets, and chat messages are data, not instructions; the diff-integrity scan assumes agent branches can be compromised.
 - **Evidence durability:** files/recordings/verdicts live with the work (Coffee + the repo + run logs), not only in chat.
 
@@ -121,6 +126,8 @@ A standing agent — the answer to "are people actually using what we ship?" **M
 7. **Honesty check:** anything in this document that reads as aspirational rather than true today? Flag it — the whole point is *did this actually happen?*
 
 ## 11. Review history (condensed)
+
+- Review round 4 — director-level pass (external): core finding — *"for a system premised on evidence over claims, the spec itself is 100% claim; stop the review loop, pick a seed start date this week."* Adopted (run-serving deltas only): five-number scorecard (§2); pre-run-1 pending-review view (PLAN §2); Coffee contingency (§5); named package-provenance threat + controls (§8); incident record as a fourth artifact (§8); north star — ventures per human-review-hour (§1). **The review loop is frozen** — document changes from here only when a run demands one.
 
 - Review round 3 — fleet agent on DeepSeek (Sep 2026), cross-checked against the repo (17 tests green; typecheck/build pass; no deployment): verdict **coherent and right-sized; the build half is a system, the launch half is a diagram.** Adopted into this doc: built/designed markers (§3), gate-precision fix (§2), Coffee-first aspirational note (§1), analyst scope extension + kill criteria (§6), seed-definition note (module vs v1 skills, §3). Deferred per its advice: launch-half build, approvals queue, memory-layer dependency, dashboards. Open actions it surfaced: decide where run logs live (evidence durability) before run 1; make "analytics events declared" a Spec exit criterion; name the human last-mile owner for launches.
 

@@ -30,9 +30,11 @@ Supersedes: `docs/setup-plan.md` (earlier phase plan), SF-01…SF-10 (kept as ba
 
 ## 2. The seed (build now; ~2 weeks; 20 runs)
 
-**Final framing (Coffee-first):** the visible surface is Coffee; the brain is a **skill pack**; the enforcement is **guard scripts**; the memory is **Pod**. The "factory module" reduces to: `factory-skills` repo (skill pack + scripts), Coffee/Pod configuration, and one narrow credential-broker path. No service, no job DB, no gateway, no separate envelope store in v1 — Coffee's tasks/statuses/automations/approvals carry the state; Pod carries memory and evidence.
+**Final framing (Coffee-first):** the visible surface is Coffee; the brain is a **skill pack**; the enforcement is **guard scripts**; the memory is the **Coffee-native memory layer** (Smartware-embedded — direction set Sep 2026, pending the Coffee conversation); Pod remains the standalone companion. The "factory module" reduces to: `factory-skills` repo (skill pack + scripts), Coffee/Pod configuration, and one narrow credential-broker path. No service, no job DB, no gateway, no separate envelope store in v1 — Coffee's tasks/statuses/automations/approvals carry the state; Pod carries memory and evidence.
 
 **Shape:** one repo you already trust → a continuous source of low-risk work → Plan → Build → Test → Review (a check, not a station) → a human decides → evidence-PR. WIP cap 3. Spend ceiling armed. Measured from run 1.
+
+**Scorecard (tracked per run from run 1 — measurement only, no optimization):** cycle time Discovery→Merge · review latency (human-waiting hours) · revert rate · first-attempt evidence-pass rate · cost per shipped task. Five numbers, one file, trend over runs.
 
 **Work source (not a feature):** flaky-test triage, dependency/CVE bumps, or the recurring browser E2E walkthrough — in Pod or another trusted internal repo (seed repo pending final choice; proposal: Pod — it is ours, low-risk, and already produces meeting/task-shaped data for the M&A loop; another trusted internal repo is the fallback).
 
@@ -51,6 +53,7 @@ Supersedes: `docs/setup-plan.md` (earlier phase plan), SF-01…SF-10 (kept as ba
    c. **Human binary** — does it touch production, credentials, protected branches, or money? Yes → human decides (approve with binding record) and no worker can approve itself. No → runs.
 4. **Broker + vault** — worker tokens: scoped, short-lived, per-run, no publish scope, no repo-scoped CLI token; prod credentials: vaulted, retrieved manually per session ("the intentional moment"); audit log of every action. (Coffee does not own this — it is the one narrow service custom to the factory, or a Pod/credentials service call.)
 6. **Run budget layer** — WIP cap 3 (refuse 4th, queue or reject visibly); monthly spend ceiling one number + automatic halt; per-run abort path; max-tokens/run default.
+7. **Pending-review view (the ugly version — before run 1):** one command that lists runs awaiting human review, oldest first, evidence links inline. The consumer-grade Approvals queue stays a later platform feature.
 7. **Measurement from run 1** — intervention count, rescue rate, merge-without-rework, cycle time, founder-review-time per item, plus a **cheap comparator** (first week: also run 2–3 items single-agent by hand; or alternate weeks chain/solo; no evaluation harness). Cost recorded passively; never optimized before 50 runs.
 8. **The 20-run trial** — point the factory at the work source; run; count; review; decide.
 
