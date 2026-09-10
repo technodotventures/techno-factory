@@ -1,6 +1,6 @@
 # Techno OS — Factory Module
 
-This repository is the **factory module of Techno OS** — Techno Ventures' one system: Coffee is the collaborative surface, Pod/Smartware is the shared state substrate, and this module is the founder-controlled software factory that runs on top of both (Planner → Builder → Verifier, evidence-first, human at the gate).
+This repository is the **factory module of Techno OS** — Techno Ventures' one system: Coffee is the collaborative surface, Pod/Smartware is the shared state substrate, and this module is the founder-controlled software factory that runs on top of both (Plan → Build → Test, evidence-first, human at the gate).
 
 **One system, not a separate deployable.** The factory is an internal module: skill packs + guard scripts + Coffee/Pod configuration. The bundled `src/`/`test/` TypeScript scaffold is the v0 tracer (work-intake + audit events), not a standalone service.
 
@@ -14,6 +14,7 @@ This repository is the **factory module of Techno OS** — Techno Ventures' one 
 
 | File | What it is |
 | --- | --- |
+| `docs/pdlc.md` | **The Product Development Lifecycle (PDLC)** — canonical flow (Development + Launch), roles incl. Product Analyst, gates, vocabulary standard |
 | `docs/PLAN.md` | Canonical v1 plan: invariant #0 (Coffee-first), seed, guards, security |
 | `docs/Techno_OS.md` | Self-contained review brief of the whole system (~12 sections + change log) |
 | `docs/provenance.md` | Evidence map: sources, verified numbers, requirement map (full research archive is internal) |
