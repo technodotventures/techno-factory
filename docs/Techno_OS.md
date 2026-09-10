@@ -42,11 +42,11 @@ Discovery → Spec → Build → Test → Review → Merge          (development
 | **Measure** | continuous product-health monitoring (Product Analyst, §6) | Product Analyst (agent) |
 | Retro | 30-day post-launch retrospective: did it work? what changes the process? | founders + Analyst |
 
-**Two human gates total** (Review; Launch Review) — both binary, both evidence-fed, both "silence never approves" (a stale pending decision is rejection, recorded — auto-rejection is per-workspace and opt-in).
+**Two binary ship gates** (Review; Launch Review) — both evidence-fed, both "silence never approves" (a stale pending decision is rejection, recorded — auto-rejection is per-workspace and opt-in). Lighter content approvals (e.g. the messaging brief) happen in-line.
 
 ## 3. The factory (the build engine)
 
-The factory is an internal module of Techno OS — not a separate service. Its shape:
+*Designed, not yet built — see §7 for current state.* The factory is an internal module of Techno OS — not a separate service. **v1 implementation is deliberately thin: a skill pack + guard scripts + Coffee/Pod configuration; the v0 scaffold is a tracer, not a deployment target.** The "module" framing is the long-run boundary (it can become a deployable later if a trigger requires), not a v1 build item. Its shape:
 
 - **Chain:** Plan → Build → Test → (Review) → evidence-PR. Triage is absorbed into planning; Supervisor/Adversary stations are conditional, added only when a real run demands them.
 - **Evidence-first:** every run returns an **evidence package** — test output, per-criterion verdicts, screenshots/recordings for UI work, PR link, remaining risks. UI changes without a walkthrough recording auto-fail the Review. "Red-is-red": a failing check is reported as failing; explaining a failure away is itself a failure.
@@ -69,7 +69,7 @@ The factory is an internal module of Techno OS — not a separate service. Its s
 | **expresso** (external peer) | workflow language/runtime semantics: LLM observes/decides vs system acts; receipts + attested authority | memory; UI |
 | **Product Analyst** (agent, continuous) | product telemetry: usage, adoption, stuck points → insight reports + candidate work items | deciding; building |
 
-**Coffee-first invariant (invariant #0):** anything expressible through Coffee's existing primitives — Projects > Tasks (Statuses, Automate-status with Deliverable, Pause-for-approval, Run limits), Checklist, Files, Recordings, Meetings, Agents, Skills — is done in Coffee before building anything new. New components exist only where Coffee genuinely cannot express something.
+**Coffee-first invariant (invariant #0):** anything expressible through Coffee's existing primitives — Projects > Tasks (Statuses, Automate-status with Deliverable, Pause-for-approval, Run limits), Checklist, Files, Recordings, Meetings, Agents, Skills — is done in Coffee before building anything new. New components exist only where Coffee genuinely cannot express something. (A design discipline today; enforced as a hard rule once the Coffee connection lands — see §7.)
 
 ## 5. The Coffee proposal set (platform asks currently with the Coffee team)
 
@@ -86,7 +86,7 @@ Coffee is both the studio's surface and a product in its own right; these are th
 
 ## 6. The Product Analyst (the Measure role)
 
-A standing agent — the answer to "are people actually using what we ship?" **Monitors:** usage analytics (most-used / unused features), activation funnels and drop-off points, stuck points, support load — plus the analytics events every release declares in its release record. **Produces:** a weekly insight report (cited) + **candidate work items into Discovery** (typed candidates; humans triage) + the data for the 30-day Retro. **Boundaries:** raises signal, never decides or builds; distinct from the engineering watchdog (uptime/errors vs product behavior). **Activation trigger:** when a venture has live users and releases declare analytics events.
+A standing agent — the answer to "are people actually using what we ship?" **Monitors:** usage analytics (most-used / unused features), activation funnels and drop-off points, stuck points, support load — plus the analytics events every release declares in its release record. **Produces:** a weekly insight report (cited) + **candidate work items into Discovery** (typed candidates; humans triage) + the data for the 30-day Retro. **Boundaries:** raises signal, never decides or builds; distinct from the engineering watchdog (uptime/errors vs product behavior). **Scope note:** adoption is the starting point — as ventures mature the remit extends to revenue, churn, and unit-economics signals; the Analyst also owns product-health alert thresholds and flags features for **kill/pivot** at Retro when adoption thresholds are missed. **Activation trigger:** when a venture has live users and releases declare analytics events.
 
 ## 7. Current state (what exists today)
 
@@ -121,6 +121,8 @@ A standing agent — the answer to "are people actually using what we ship?" **M
 7. **Honesty check:** anything in this document that reads as aspirational rather than true today? Flag it — the whole point is *did this actually happen?*
 
 ## 11. Review history (condensed)
+
+- Review round 3 — fleet agent on DeepSeek (Sep 2026), cross-checked against the repo (17 tests green; typecheck/build pass; no deployment): verdict **coherent and right-sized; the build half is a system, the launch half is a diagram.** Adopted into this doc: built/designed markers (§3), gate-precision fix (§2), Coffee-first aspirational note (§1), analyst scope extension + kill criteria (§6), seed-definition note (module vs v1 skills, §3). Deferred per its advice: launch-half build, approvals queue, memory-layer dependency, dashboards. Open actions it surfaced: decide where run logs live (evidence durability) before run 1; make "analytics events declared" a Spec exit criterion; name the human last-mile owner for launches.
 
 - Internal review round 1 (Sep 2026): cut 7 of 10 typed artifacts to 3 (task, evidence package, approval); collapsed risk/trust matrices to one binary approval question + internals; removed the repo-qualification rubric and evaluation baseline; added WIP cap 3, spend ceiling with hard halt, diff-integrity scan in Review, red-green acceptance authoring, per-run abort.
 - Internal review round 2: second-opinion pass on the plan (cuts accepted; SOC dissolved into the Planner contract as verbatim acceptance criteria; conditional Supervisor retained).

@@ -19,7 +19,7 @@ Discovery → Spec → Build → Test → Review → Merge          (development
 | Step | What happens | Role | Exit criteria |
 |---|---|---|---|
 | **Discovery** | Problem/opportunity intake — from founders, customers, or the Product Analyst's candidates; validated enough to spec | founders / anyone | worth speccing |
-| **Spec** | Requirements + **acceptance criteria**; a failing test first | Planner (agent) | acceptance-criteria checklist exists |
+| **Spec** | Requirements + **acceptance criteria**; a failing test first | Planner (agent) | acceptance-criteria checklist exists; analytics events declared (for user-visible features) |
 | **Build** | Implementation on a branch, one task at a time | Builder (agent) | code complete; repo checks run |
 | **Test** | Automated + manual verification; **evidence captured** (test output, recordings, screenshots) | Tester (agent) | evidence exists; failures reported as failures |
 | **Review** | The human decision — **Approve to merge** (mechanical diff scan + evidence on the card; *silence never approves*) | a person | approved, or sent back with notes |
@@ -35,7 +35,7 @@ Discovery → Spec → Build → Test → Review → Merge          (development
 | **Launch Review** | **Fact check → brand check → legal check (conditional)** → the **Go/No-Go** decision | reviewers (people) | signed off, or sent back |
 | **Go Live** | Ordered rollout: demo → docs → support smoke test → flag ramp → in-app → email → social → analytics armed | release | live |
 | **Measure** | **Continuous product-health monitoring** — see Product Analyst below | Product Analyst (agent) | running |
-| **Retro** | **Post-launch retrospective** (first formal checkpoint at 30 days): did it work? what changes the process? | founders + Analyst | document + template patches |
+| **Retro** | **Post-launch retrospective** (first formal checkpoint at 30 days): did it work? what changes the process? — including the **kill/pivot call** when adoption thresholds are missed | founders + Analyst | document + template patches |
 
 ## The Product Analyst (the Measure role)
 
