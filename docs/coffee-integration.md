@@ -13,6 +13,13 @@
 - **Known gotchas (documented in the `coffee-mcp-api` skill):** Cloudflare bans bare UAs (browser UA required); MCP requires `Accept: application/json, text/event-stream`; large results paginate; **API-sent messages attribute to the consenting user** (no bot identity yet).
 - **Blocked pending scope exposure:** tasks, projects, files/attachments, automations/agent-workflow, approvals.
 
+## 1b. Strategic posture — native-first, external-capable (founder-confirmed, Sep 2026)
+
+- **Techno OS is driven primarily by native Coffee agents** — agents created and running inside Coffee on its agent runtime. Rationale: dogfooding — the studio's daily operation exercises and expands Coffee's agent features; native agents keep all activity in the surface where humans review it. The 74-op `x-mcp` platform surface (task create/status/checklist/comments/agent-runs, documents, meetings, intake, projects) is their toolbox — confirm exact availability with the Coffee team (in-app vs external reading, §6).
+- **External agents are the periphery, by invitation** — e.g. the founders' personal agents (Hermes and others) joining runs via MCP with their own identity and tools, sharing the same task/work contracts. BYO agents ≠ BYO practices.
+- **External MCP/API must still become fully capable** — the integration we are building is not a stopgap. Native agents drive the studio day-to-day; external agents and integrations get equal-or-better capability over time. The scope ask (§6) therefore stands and grows.
+- **The dogfood loop is a design goal:** when a native agent hits a wall (missing op, bad ergonomics), that finding feeds the Coffee feature backlog directly — the studio generating platform improvements through its own operation.
+
 ## 2. The two environments
 
 | | **Pilot (now)** | **Production (venture VPS)** |

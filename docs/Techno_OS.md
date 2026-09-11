@@ -64,7 +64,7 @@ Discovery → Spec → Build → Test → Review → Merge          (development
 |---|---|---|
 | **Techno OS shell + decision layer** | goals & ideas intake, decision orchestration (typed decisions, escalation thresholds), studio programs (which ventures run, budgets, ringfences) | pipeline internals; Coffee's card state |
 | **Factory module** (this repo) | execution: intake, chain, evidence, policy, delivery adapters (GitHub/GitLab) | human decisions; UI; memory semantics |
-| **Coffee** (external) | the collaborative surface: tasks, Kanban (statuses as workflow), checklist, files, recordings, meetings (transcribed → decision extracts → action items), skills, agents (Chat Coffee AI harness; BYO agents) — **the source of record for human work state** | execution state; pipeline truth |
+| **Coffee** (external) | the collaborative surface: tasks, Kanban (statuses as workflow), checklist, files, recordings, meetings (transcribed → decision extracts → action items), skills, agents (Chat Coffee AI harness; **native Coffee agents = the primary drivers of studio work**; BYO/external agents join as invited periphery with their own identity) — **the source of record for human work state** | execution state; pipeline truth |
 | **Smartware runtime** (embedded in Coffee — proposed) | memory substrate: context packs, lessons, expertise, run records, approvals ledger — Coffee-native, hybrid semantic+structural search | delivery; workflow |
 | **Pod** (standalone companion app) | personal memory companion + agent-registry/BYO bridge | the critical path (not a required hop) |
 | **expresso** (external peer) | workflow language/runtime semantics: LLM observes/decides vs system acts; receipts + attested authority | memory; UI |
