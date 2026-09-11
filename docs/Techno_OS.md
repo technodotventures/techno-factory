@@ -29,7 +29,7 @@ Discovery → Spec → Build → Test → Review → Merge          (development
 
 | Step | Summary | Role |
 |---|---|---|
-| Discovery | problem/opportunity intake; validated enough to spec | founders / Product Analyst candidates |
+| Discovery | problem/opportunity intake; validated enough to spec — for new engagements: a live **Discovery Interview** (native Coffee agent, recorded, brief out) | founders · Discovery Interviewer · Product Analyst candidates |
 | Spec | requirements + **acceptance criteria**; failing test first | Planner (agent) |
 | Build | implementation on a branch, one task at a time | Builder (agent) |
 | Test | verification; **evidence captured** (tests, recordings, screenshots) | Tester (agent) |

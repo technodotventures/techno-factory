@@ -16,9 +16,11 @@ Discovery → Spec → Build → Test → Review → Merge          (development
 
 ## Development half (SDLC)
 
+> **Discovery in practice (native):** for client/venture work, Discovery runs as a *Discovery Interview* — a Coffee meeting room with a native agent ("Head of Client Relations" role) that interviews the founders or client live: one focused question at a time, recording + transcription on, unknowns labeled, MoSCoW priorities captured. Output: a **Client Discovery Brief** → the Spec input (`docs/templates/discovery-interviewer-agent.md` holds the reference prompt). The grill before the build — native, recorded, citable.
+
 | Step | What happens | Role | Exit criteria |
 |---|---|---|---|
-| **Discovery** | Problem/opportunity intake — from founders, customers, or the Product Analyst's candidates; validated enough to spec | founders / anyone | worth speccing |
+| **Discovery** | Problem/opportunity intake — from founders, customers, or the Product Analyst's candidates; for new engagements the instrument is a **live Discovery Interview** (native Coffee agent in a meeting room: one question at a time, recorded + transcribed, brief out); validated enough to spec | founders · Discovery Interviewer (native agent) | worth speccing; brief produced |
 | **Spec** | Requirements + **acceptance criteria**; a failing test first | Planner (agent) | acceptance-criteria checklist exists; analytics events declared (for user-visible features) |
 | **Build** | Implementation on a branch, one task at a time | Builder (agent) | code complete; repo checks run |
 | **Test** | Automated + manual verification; **evidence captured** (test output, recordings, screenshots) | Tester (agent) | evidence exists; failures reported as failures |
