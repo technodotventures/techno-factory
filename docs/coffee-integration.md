@@ -33,6 +33,7 @@
 | **Tasks** (create, statuses, checklist, automations) | ⛔ 401 | Factory intake (Discovery→task), statuses as pipeline stages, approval decisions on cards, evidence checklists | **Expose task scopes to OAuth** (or document workspace API keys) |
 | **Files / attachments** | ⛔ 401 | Auto-publish evidence (recordings, test output) to the card | File/attachment scopes |
 | **Automations / agent execution** | ⛔ 401 | Status-automation wiring; pause-for-approval surfaces; run limits | Agent-workflow + agent-execution scopes |
+| **MCP-capable surface (platform)** | 74 ops marked `x-mcp` in the public spec — incl. 18 task ops (create/status/checklist/comments/agent-runs) | Disambiguate: in-app agents only, or externals too? Either way this is the target surface | Grant task/workspace scopes to OAuth clients (or confirm in-app-agent route) |
 | **Meetings / recaps** | ⛔ | Recaps → structured decisions → tasks | Later; depends on task scopes |
 | **Events / webhooks** | Polling only (chat cursors) | Push events for messages + task changes (or agreed poll cadence) | Webhook support or accepted poll limits |
 | **Agent identity** | ⛔ messages appear as the consenting human | A named agent identity ("Techno OS") so factory posts are attributable and don't impersonate a person | Agent identities for integrations |
@@ -67,7 +68,7 @@
 
 ## 6. Open questions for the Coffee team
 
-1. **Scope roadmap:** when do task/file/automation scopes open to OAuth — or will workspace API keys be the documented path? (This is the single enabling change.)
+1. **Scope roadmap:** when do task/file/automation scopes open to OAuth — or will workspace API keys be the documented path? (This is the single enabling change.) **New (Sep 11):** the public spec marks **74 operations `x-mcp`** including a full task surface — is that surface for in-app agents only, or can external OAuth clients be granted it? And can a **file/attachment upload** op be added (currently absent from the x-mcp set)?
 2. **Agent identities:** can integrations post as a named agent?
 3. **Events:** webhooks (chat + tasks) or documented poll limits?
 4. **Sandbox:** a rehearsal workspace for integration development?
