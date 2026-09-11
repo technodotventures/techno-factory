@@ -82,6 +82,10 @@
 4. **Sandbox:** a rehearsal workspace for integration development?
 5. **Rate-limit documentation** beyond the client's rpm setting.
 
+## 6b. The dev ask — one-paragraph version (for the Coffee team)
+
+Roham — here's the Coffee API/MCP dev work that would fully open things up for Techno OS. We've connected an external OAuth client ("hermes") to the Techno workspace — Chat integrations are live (rooms, messages), which works well. To let our agents drive actual work, the key updates: (1) open the scope catalogue beyond `messenger:read`/`messenger:write` — the spec already marks ~74 operations as MCP-capable (the full task surface: create/read tasks, statuses, checklists, comments, tags, types, sprints — plus projects, documents, meetings, intake), but those scopes aren't grantable to external clients today, so agents can chat but can't touch a task; (2) add a file/attachment upload operation to the MCP set — it's the missing piece for evidence (recordings, screenshots, test output landing on task cards); (3) give integrations an agent identity so posts and actions are attributed to the agent, not to the consenting person; (4) push events (or documented poll limits) for messages and task activity so integrations can react in real time; (5) expose the approval surface (pause-for-approval decisions + the task agent-runs thread) so human-in-the-loop gates are automatable end to end. Even just (1) and (2) unblocks the bulk of it — and you'll get aggressive dogfooding in return: Techno OS will run on these surfaces daily, and any gap we hit comes straight back as a concrete, evidenced feature ask.
+
 ## 7. Next actions
 
 1. **Check for workspace API keys** in Coffee settings (5 minutes; the REST surface has the routes).
