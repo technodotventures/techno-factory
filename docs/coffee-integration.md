@@ -41,7 +41,7 @@
 | **Tasks** (create, statuses, checklist, automations) | ⛔ 401 | Factory intake (Discovery→task), statuses as pipeline stages, approval decisions on cards, evidence checklists | **Expose task scopes to OAuth** (or document workspace API keys) |
 | **Files / attachments** | ⛔ 401 | Auto-publish evidence (recordings, test output) to the card | File/attachment scopes |
 | **Automations / agent execution** | ⛔ 401 | Status-automation wiring; pause-for-approval surfaces; run limits | Agent-workflow + agent-execution scopes |
-| **MCP-capable surface (platform)** | 74 ops marked `x-mcp` in the public spec — incl. 18 task ops (create/status/checklist/comments/agent-runs) | Disambiguate: in-app agents only, or externals too? Either way this is the target surface | Grant task/workspace scopes to OAuth clients (or confirm in-app-agent route) |
+| **MCP-capable surface (platform)** | **CONFIRMED live for in-app agents (Sep 11):** a native Coffee agent added a checklist item to a real task from a chat instruction — task-capable, today. 74 ops marked `x-mcp` in the public spec (task create/status/checklist/comments/agent-runs etc.) | Enumerate the exact in-app tool catalogue; file upload; then map factory stations onto native agents | Grant task/workspace scopes to external clients too (the periphery + external integrations commitment) |
 | **Meetings / recaps** | ⛔ | Recaps → structured decisions → tasks | Later; depends on task scopes |
 | **Events / webhooks** | Polling only (chat cursors) | Push events for messages + task changes (or agreed poll cadence) | Webhook support or accepted poll limits |
 | **Agent identity** | ⛔ messages appear as the consenting human | A named agent identity ("Techno OS") so factory posts are attributable and don't impersonate a person | Agent identities for integrations |
@@ -76,7 +76,7 @@
 
 ## 6. Open questions for the Coffee team
 
-1. **Scope roadmap:** when do task/file/automation scopes open to OAuth — or will workspace API keys be the documented path? (This is the single enabling change.) **New (Sep 11):** the public spec marks **74 operations `x-mcp`** including a full task surface — is that surface for in-app agents only, or can external OAuth clients be granted it? And can a **file/attachment upload** op be added (currently absent from the x-mcp set)?
+1. **Scope roadmap:** **partially resolved (Sep 11): in-app agents are task-capable** (checklist-add proven live on a real task). Remaining asks: (a) document the exact in-app agent tool catalogue (which of the 74 ops are callable and by whom); (b) add a **file/attachment upload** op (needed for evidence on cards); (c) grant task/workspace scopes to **external** OAuth clients (the periphery + external-integration commitment).
 2. **Agent identities:** can integrations post as a named agent?
 3. **Events:** webhooks (chat + tasks) or documented poll limits?
 4. **Sandbox:** a rehearsal workspace for integration development?
