@@ -70,7 +70,7 @@ Standing agent — the answer to "are people actually using what we ship?"
 
 | Area | State | Next |
 |---|---|---|
-| Build half | Coffee end-to-end connected (129 tools); native agent task-capable (Planner pattern ready); external worker loop designed | Seed: 20 runs on a recurring low-risk source; add **IN REVIEW** status; first real Factory Planner card |
+| Build half | Coffee end-to-end connected (129 tools); native agent task-capable; board mapped **TO DO → IN PROGRESS → IN REVIEW → COMPLETE**; first real card on the board | Create the Factory Planner agent (prompt ready); seed: 20 runs on a recurring low-risk source |
 | Launch half | Designed; first increment = release record + evidence assembly (Prepare) | Build when a real launch needs it |
 | Measure | Designed; Analyst pilot activates with first live users | — |
 | Known gaps | named agent identity (Coffee side) · `task.activity` webhook unverified · approval-band UI is a Coffee proposal (interim: status + evidence comment) | tracked in `coffee-integration.md` |

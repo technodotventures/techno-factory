@@ -84,10 +84,9 @@ Token broker (scoped, short-lived, per-run — no publish/merge tokens in worker
 **Live today:** full Coffee connection (129 tools, proven round-trips); native agents task-capable; Discovery Interview pattern ready; `coffee-notify` posting run updates to the "Techno OS" channel; docs canonical (this file + `pdlc.md` + `coffee-integration.md` + `provenance.md` + `templates/`).
 
 **Next increments (in order):**
-1. Add **IN REVIEW** to the Techno OS project board; map PDLC stages to statuses.
-2. Create the **Factory Planner** native agent (template ready) + first real card → Spec runs natively.
-3. **Seed: 20 runs** on a recurring low-risk work source (flaky-test triage, dependency/CVE bumps, or a recurring E2E walkthrough) through the external worker loop — Plan → Build → Test → evidence-PR → human Review. WIP 3, spend ceiling armed, scorecard from run 1.
-4. Add **task.activity** webhook re-test once the notify pipeline depends on it.
+1. Create the **Factory Planner** native agent in Coffee (prompt ready: `templates/planner-agent.md`) → point it at the first card → Spec runs natively.
+2. **Seed: 20 runs** on a recurring low-risk work source (flaky-test triage, dependency/CVE bumps, or a recurring E2E walkthrough) through the external worker loop — Plan → Build → Test → evidence-PR → human Review. WIP 3, spend ceiling armed, scorecard from run 1.
+3. Add **task.activity** webhook re-test once the notify pipeline depends on it. Refresh-on-demand token client in progress (30-min expiry).
 
 ## 8. Open decisions (pick to start)
 
