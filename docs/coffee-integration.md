@@ -39,13 +39,13 @@
 |---|---|---|
 | **Chat** (rooms/messages) | ✅ read/write | Notifications + digests live (`coffee-notify`) |
 | **Tasks** | ✅ full, external | create (`PostTask`) · update (`PatchTaskByTaskHash`) · statuses · checklists · comments · sprints · tags · types · custom fields · activity · agent runs |
-| **Files / attachments** | ✅ | `PostFileUploadBase64` (`name` + `content_base64`; optional `folder_hash`; ≤ ~9.7 MB b64) |
+| **Files / attachments** | ✅ upload, embed | `PostFileUploadBase64` (`name` + `content_base64`; ≤ ~9.7 MB) returns a **block** (`private_file_hash` + `full_path`) embeddable via task-comment `blocks` **or** `PostDocumentDocumentBlockAppend {client_id, time, blocks}` — verified: screenshot + log uploaded and the image appended to the round-trip card's document. Finding: private-file download via OAuth → 401 (session-only route; the app renders files internally) |
 | **Approvals** | ✅ | scope `coffeeConnect.approval.all` · `PostAiWorkApproval` · `PostAiAgentsTaskRunsApprove` / `Deny` / `Reply` / `Stop` / `RetryDelivery` · `PostAgentExecutionRunsApprovalsDecision` |
 | **Agent workflow / repo** | ✅ | branches, pull requests, repository files (tree/get/put/delete) — native dev-workflow surface |
 | **Projects / documents / intake** | ✅ | `PostWorkspaceProject`, document blocks, intake forms |
 | **Meetings / recaps** | ✅ | meeting list/detail, transcription, agendas, docs, votes, feedback |
-| **Events / webhooks** | ✅ | `PostWebhookSubscriptions {url, events}` + ping — push events replace polling |
-| **Agent identity** | 🟡 partial | activity trail: `via_app: "hermes"` ✅; chat posts still show as the consenting user → named identity remains the open ask |
+| **Events / webhooks** | ✅ proven | `PostWebhookSubscriptions {url, events}` — events: `message.created`, `task.activity`; returns a **signing secret** (`whsec_…`). Delivery verified live: HTTP POST + headers `coffee-signature: t=…,v1=…` (HMAC), `coffee-event`, `coffee-delivery`; subscription tracks `last_status_code`/`last_success_at`/failures. Observed: `message.created` delivered (200) within seconds; `task.activity` **not observed in the test window** (2 min, incl. comments/checklist toggles) — retest if load-bearing. Hygiene: factory webhooks carry **real workspace content** (a live DM was captured during testing) — use dedicated channels/workspaces for tests and delete receives after |
+| **Agent identity** | 🟡 partial | `via_app: {name: "hermes"}` on activity, chat messages **and** comments ✅; comments carry `posted_by_agent`; message schema has an **`agent` field (null today)** — the wiring hook for a named identity. Display still shows the consenting user → named identity remains the open ask |
 
 ## 4. Stage 1 — Pilot (now, personal environment)
 
@@ -89,6 +89,7 @@ Roham — here's the Coffee API/MCP dev work that would fully open things up for
 
 1. **Add IN REVIEW status** to the Techno OS project (2 min in the UI) so PDLC stages map cleanly: TO DO → IN PROGRESS → IN REVIEW → COMPLETE.
 2. **Create the Factory Planner agent** in Coffee (template ready: `docs/templates/planner-agent.md`) + the first real card in the Techno OS project.
-3. **Subscribe a webhook** for task-activity events → notification pipeline (test with `PostWebhookSubscriptionsPing` first).
-4. **Wire the first evidence upload** (file → card) to prove the evidence path end-to-end.
-5. **Keep the pilot clean** — production stays a fresh mint on the venture VPS.
+3. ~~Subscribe a webhook~~ ✅ done (proven; receiver cleaned). Follow-up: re-verify `task.activity` deliveries if the notify pipeline depends on them.
+4. ~~First evidence upload~~ ✅ done (screenshot + log → card document + comment).
+5. **Create the Factory Planner agent + first real card** in the Techno OS project (template ready).
+6. **Keep the pilot clean** — production stays a fresh mint on the venture VPS; webhook receivers are per-test and wiped.
