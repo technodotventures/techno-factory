@@ -1,10 +1,6 @@
 # The Product Development Lifecycle (PDLC)
 
-**This is the canonical flow.** Every doc, skill, and surface (Techno OS, the factory, the launch process, Coffee cards) uses these names.
-
-**Naming principle:** standard industry vocabulary — SDLC for the build half, the standard launch process for the GTM half. We do not invent terms; if the industry has a word for it, we use that word.
-
-## The flow
+**Canonical flow.** Every doc, skill, and surface (Techno OS, the factory, launch, Coffee cards) uses these names. Vocabulary is standard industry language — SDLC for the build half, the standard launch arc for GTM. We do not invent terms.
 
 ```
 Discovery → Spec → Build → Test → Review → Merge          (development half — SDLC)
@@ -14,70 +10,67 @@ Discovery → Spec → Build → Test → Review → Merge          (development
               └───────────────────────── insights ─────────────────────────────────────┘
 ```
 
+**How it runs:** Coffee carries the state; the factory carries the execution. A card's **status** is the pipeline stage · checklist items are the **acceptance criteria** and later the **verdicts** · comments are the **run log** · files are the **evidence** · approvals are the **gates**.
+
 ## Development half (SDLC)
 
-> **Discovery in practice (native):** for client/venture work, Discovery runs as a *Discovery Interview* — a Coffee meeting room with a native agent ("Head of Client Relations" role) that interviews the founders or client live: one focused question at a time, recording + transcription on, unknowns labeled, MoSCoW priorities captured. Output: a **Client Discovery Brief** → the Spec input (`docs/templates/discovery-interviewer-agent.md` holds the reference prompt). The grill before the build — native, recorded, citable.
-
-| Step | What happens | Role | Exit criteria |
+| Step | What happens | Runs on | Exit criteria |
 |---|---|---|---|
-| **Discovery** | Problem/opportunity intake — from founders, customers, or the Product Analyst's candidates; for new engagements the instrument is a **live Discovery Interview** (native Coffee agent in a meeting room: one question at a time, recorded + transcribed, brief out); validated enough to spec | founders · Discovery Interviewer (native agent) | worth speccing; brief produced |
-| **Spec** | Requirements + **acceptance criteria**; a failing test first | Planner (agent) | acceptance-criteria checklist exists; analytics events declared (for user-visible features) |
-| **Build** | Implementation on a branch, one task at a time | Builder (agent) | code complete; repo checks run |
-| **Test** | Automated + manual verification; **evidence captured** (test output, recordings, screenshots) | Tester (agent) | evidence exists; failures reported as failures |
-| **Review** | The human decision — **Approve to merge** (mechanical diff scan + evidence on the card; *silence never approves*) | a person | approved, or sent back with notes |
-| **Merge** | Merged behind a feature flag | system | increment complete |
+| **Discovery** | Problem/opportunity intake — founders, customers, or Analyst candidates. For new engagements: a **Discovery Interview** — native Coffee agent in a meeting room, one question at a time, recorded + transcribed, brief out. | Native Coffee agent ("Client Relations") + founders | worth speccing; brief produced |
+| **Spec** | Requirements → **acceptance criteria as checklist items on the card**, plan comment, **first proof step** (red before green), `out_of_scope` list. | Native Coffee agent ("Factory Planner") on the card | criteria checklist exists; analytics events declared (user-visible features) |
+| **Build** | Implementation on a branch, one task at a time; deviations recorded, never silent. | External worker (sandboxed; branch `factory/<type>-<slug>`); card updated via API | code complete; repo checks run |
+| **Test** | Blind verification (Tester never sees Builder reasoning); re-runs the checks; failures reported as failures. | External worker (blind Tester) + evidence uploaded to card | evidence on card; verdicts pass/fail per criterion |
+| **Review** | **The human decision — Approve to merge.** Mechanical diff scan + evidence on the card; *silence never approves*. | **A person, in Coffee** (card in IN REVIEW) | approved, or sent back with notes |
+| **Merge** | Merged behind a feature flag; run log closed. | Worker/human merges; card → COMPLETE | increment complete |
 
-## Launch half (standard launch process)
+**Discovery in practice (native, live today):** the Discovery Interview agent interviews the founders or a client live — recording + transcription on, unknowns labeled, MoSCoW priorities captured — and produces the brief that feeds Spec. Reference prompt: `docs/templates/discovery-interviewer-agent.md`.
 
-| Step | What happens | Role | Exit criteria |
+## Launch half (standard launch arc)
+
+| Step | What happens | Runs on | Exit criteria |
 |---|---|---|---|
-| **Prepare** | Assemble the **release record** from the merged build: release notes, behavior summary, screenshots, recording, demo URL | release prep (agent) | release record complete (`release-manifest.json`) |
-| **Message** | **Messaging brief**: who it's for, the tension it resolves, ≤3 proof points, explicit non-claims | founders + creative | brief approved |
-| **Create** | Produce the **launch assets**: help docs, video, social, email, in-app, support training | producers (agents) | assets drafted |
-| **Launch Review** | **Fact check → brand check → legal check (conditional)** → the **Go/No-Go** decision | reviewers (people) | signed off, or sent back |
-| **Go Live** | Ordered rollout: demo → docs → support smoke test → flag ramp → in-app → email → social → analytics armed | release | live |
-| **Measure** | **Continuous product-health monitoring** — see Product Analyst below | Product Analyst (agent) | running |
-| **Retro** | **Post-launch retrospective** (first formal checkpoint at 30 days): did it work? what changes the process? — including the **kill/pivot call** when adoption thresholds are missed | founders + Analyst | document + template patches |
+| **Prepare** | **Release record** assembled from the merged build: release notes, behavior summary, screenshots, recording, demo URL. | release-prep agent | release record complete |
+| **Message** | **Messaging brief**: audience, the tension it resolves, ≤3 proof points, explicit non-claims. | founders + creative | brief approved |
+| **Create** | **Launch assets**: help docs, video, social, email, in-app, support training. | producer agents | assets drafted |
+| **Launch Review** | **Fact check → brand check → legal check (conditional) → Go/No-Go.** | reviewers (people) | signed off, or sent back |
+| **Go Live** | Ordered rollout: demo → docs → support smoke test → flag ramp → in-app → email → social → analytics armed. | release (checklist on the card) | live |
+| **Measure** | Continuous product-health monitoring (Product Analyst). | Product Analyst agent | running |
+| **Retro** | 30-day retrospective: did it work? What changes the process? **Kill/pivot call** when adoption thresholds are missed. | founders + Analyst | document + process patches |
 
-## The Product Analyst (the Measure role)
+## The Product Analyst (Measure)
 
-A standing agent role in Techno OS — the answer to "are people actually using what we ship?"
+Standing agent — the answer to "are people actually using what we ship?"
 
-**It monitors:** usage analytics (most-used / unused features), activation funnels and drop-off points, where users get stuck (rage-clicks, repeated failures, dead ends), support-load signals (tickets per feature), and the analytics events **each release declares in its release record** — so the Analyst always knows what to watch for every feature.
+- **Monitors:** usage analytics (most-used/unused), activation funnels, stuck points, support load — plus the analytics events each release declares.
+- **Produces:** weekly cited insight report · **candidate work items → Discovery** (humans triage) · Retro inputs.
+- **Boundaries:** raises signal, never decides or builds. Distinct from the engineering watchdog (uptime/errors).
 
-**It produces:**
-- a **weekly insight report** (adoption, dead features, stuck points, support load — plain language, cited to the data);
-- **candidate work items** — improvement/feature proposals that enter **Discovery** (typed as candidates; humans triage);
-- inputs for the 30-day **Retro** (adoption thresholds were set at Launch Review; the Analyst checks them).
-
-**Boundaries:** the Analyst doesn't decide and doesn't build — it raises signal. It is distinct from the **engineering watchdog** (uptime, errors, performance — engineering concerns); the Analyst owns *product* health (usage, adoption, behavior).
-
-**Why it's explicit:** it closes the loop. Without it, the PDLC is a line; with it, Measure → Discovery makes it a cycle — every launch teaches the factory what to build next.
+**Why it's explicit:** it closes the loop. Without it the PDLC is a line; with it, Measure → Discovery makes it a cycle — every launch teaches the factory what to build next.
 
 ## Roles at a glance
 
-- **Agents (factory):** Planner · Builder · Tester
-- **Agents (launch):** release-prep, producers — plus the **Product Analyst** (continuous)
-- **People:** the Review decision (pre-merge) · the Launch Review / Go-No-Go · (both: *silence never approves*)
+- **Agents (build):** Planner · Builder · Tester (blind) — plus Triage inside planning.
+- **Agents (launch):** release-prep · producers — plus the **Product Analyst** (continuous).
+- **People:** the **Review** decision · the **Launch Review / Go-No-Go** · steering, spend, credentials (both gates: *silence never approves*).
 
 ## Vocabulary (canonical — use these, retire the rest)
 
 | Retired | Canonical |
 |---|---|
-| Gate A (build) | **Review** ("Approve to merge") |
-| Gates A–E (launch) | **Launch Review** — fact check · brand check · legal check · **Go/No-Go** |
+| Gate A / Gates A–E | **Review** / **Launch Review** (fact · brand · legal · Go/No-Go) |
 | Verifier / Checker | **Tester** |
 | SOC / "done-when list" | **Acceptance criteria** |
 | WorkItem | **Task** |
 | EvidencePack | **Evidence package** |
 | RunRecord | **Run log** |
-| launch-manifest.json | **Release record** (`release-manifest.json`) |
 | Launch Dossier | **Messaging brief** |
 | EXTRACT / STORY / MAKE / PROVE / SHIP / LEARN | **Prepare / Message / Create / Launch Review / Go Live / Measure (+Retro)** |
-| "sign-off" (action) | **Approve** (sign-off is fine as the noun) |
 
 ## Current status & next increments
 
-1. **Build half** — factory v1 seed: coffee connect → 20 runs on the recurring work source (in progress).
-2. **Launch half** — first increment when a real launch needs it: **release record emission + evidence package assembly** (the Prepare step).
-3. **Measure** — Product Analyst pilot activates when a venture has live users and releases declare analytics events.
+| Area | State | Next |
+|---|---|---|
+| Build half | Coffee end-to-end connected (129 tools); native agent task-capable (Planner pattern ready); external worker loop designed | Seed: 20 runs on a recurring low-risk source; add **IN REVIEW** status; first real Factory Planner card |
+| Launch half | Designed; first increment = release record + evidence assembly (Prepare) | Build when a real launch needs it |
+| Measure | Designed; Analyst pilot activates with first live users | — |
+| Known gaps | named agent identity (Coffee side) · `task.activity` webhook unverified · approval-band UI is a Coffee proposal (interim: status + evidence comment) | tracked in `coffee-integration.md` |

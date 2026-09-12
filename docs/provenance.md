@@ -1,6 +1,6 @@
 # Provenance — where the requirements come from
 
-This file is the evidence map behind the requirements and decisions in `PLAN.md`, `Techno_OS.md`, and `system-delineation-and-seed.md`. The full research narratives (extracted pages, verbatim numbers, per-source notes) live in the internal research archive, not in this repository. *Numbers below were verified against primary sources at the time of research.*
+This file is the evidence map behind the requirements and decisions in `techno-os.md` and `pdlc.md`. The full research narratives (extracted pages, verbatim numbers, per-source notes) live in the internal research archive, not in this repository. *Numbers below were verified against primary sources at the time of research.*
 
 ## Method
 Primary sources only (blogs, repos, talks, published code). Everything marked **verified** was read at source; claims from aggregators/tweets were chased back to primaries or dropped. Anything not reviewed is labelled as such in the internal archive.

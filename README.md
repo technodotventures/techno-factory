@@ -1,35 +1,27 @@
 # Techno OS — Factory Module
 
-This repository is the **factory module of Techno OS** — Techno Ventures' one system: Coffee is the collaborative surface, Pod/Smartware is the shared state substrate, and this module is the founder-controlled software factory that runs on top of both (Plan → Build → Test, evidence-first, human at the gate).
+This repository is the **factory module of Techno OS** — Techno Ventures' one system. Coffee is the collaborative surface, Smartware/Pod is the memory substrate, and this module is the founder-controlled execution engine: **idea → product, evidence-first, founders at the gates.**
 
-**One system, not a separate deployable.** The factory is an internal module: skill packs + guard scripts + Coffee/Pod configuration. The bundled `src/`/`test/` TypeScript scaffold is the v0 tracer (work-intake + audit events), not a standalone service.
-
-## Repository boundary
-
-- `docs/` — the canonical documents (see below).
-- `src/`, `test/`, `tsconfig*.json` — v0 tracer scaffold (accepts project-scoped work requests, persists work + audit events; HTTP and MCP adapters).
-- `.env.example` — placeholder configuration only. **Never commit real credentials.**
+**One system, not a separate deployable.** v1 = skill packs + guard scripts + Coffee configuration; the `src/`/`test/` TypeScript scaffold is the v0 tracer (reference only, not the v1 path).
 
 ## Docs (read order)
 
 | File | What it is |
-| --- | --- |
-| `docs/pdlc.md` | **The Product Development Lifecycle (PDLC)** — canonical flow (Development + Launch), roles incl. Product Analyst, gates, vocabulary standard |
-| `docs/PLAN.md` | Canonical v1 plan: invariant #0 (Coffee-first), seed, guards, security |
-| `docs/Techno_OS.md` | Self-contained review brief of the whole system (~12 sections + change log) |
-| `docs/provenance.md` | Evidence map: sources, verified numbers, requirement map (full research archive is internal) |
-| `docs/setup-plan.md` | Phase 0–6 setup plan (Sandcastle executor, per-repo `.factory/` config, evidence wiring) |
-| `docs/system-delineation-and-seed.md` | Role delineation (Coffee / Techno OS / Factory), 10 boundary invariants, the seed |
-| `docs/architecture.md` · `docs/api-v0.md` | v0 tracer architecture + API surface |
+|---|---|
+| `docs/techno-os.md` | **Canonical system doc** — what Techno OS is, principles, system map, how it runs on Coffee, guards, metrics, current state, decisions |
+| `docs/pdlc.md` | The Product Development Lifecycle — every stage, what runs it, exit criteria, vocabulary |
+| `docs/coffee-integration.md` | Coffee integration: verified surface (129 MCP tools), connection state, recipes, open gaps |
+| `docs/provenance.md` | Evidence map — research sources behind the design |
+| `docs/templates/` | Agent role prompts: `discovery-interviewer-agent.md`, `planner-agent.md` |
 
-## Design invariants (summary)
+## Invariants (summary)
 
-1. **Coffee-first** — anything expressible through Coffee's existing primitives (Projects > Tasks > Docs > Agents; task Statuses, Automate-status with Deliverable, Pause-for-approval, Run limits) is done in Coffee before building anything new.
-2. **Evidence, not claims** — the mission question is *did this actually happen?*; every deliverable carries proof (test output, recordings, scans, links).
-3. **People make the judgment calls** — a human decides anything touching production, credentials, protected branches, or money; approvals happen in Coffee; silence never approves.
-4. **The factory is bounded** — WIP cap (3), spend ceiling with hard halt, no worker approves its own output, mechanical diff-integrity scan at the gate, no self-approval; intelligence is `.md`, enforcement is machine code.
-5. **Extend, don't multiply** — new capabilities are skills + tools with eval gates; new object types only where Coffee genuinely can't express it.
+1. **Coffee-first** — anything expressible through Coffee's primitives is done in Coffee; new surface only where it genuinely cannot.
+2. **Evidence, not claims** — the mission question is *did this actually happen?*
+3. **Founders decide** — Review, Launch Review, production/credentials/money; silence never approves.
+4. **Bounded** — WIP cap 3, spend ceiling with halt, no self-approval, mechanical diff scan at Review.
+5. **Extend, don't multiply** — new capabilities on named triggers, not phases.
 
 ## Status
 
-- Phase 0 (baseline commit) — docs + v0 tracer scaffold; zero production deployment. Next: seed a source of recurring low-risk work; the loop comes before the Coffee bridge, evidence before surfaces.
+Sep 12 2026 — Coffee fully connected (129 tools, round-trips proven: tasks, checklists, files, webhooks, approvals). Next: seed the 20-run loop on a recurring low-risk work source; first native factory station (Planner) on the board. See `docs/techno-os.md` §7.
