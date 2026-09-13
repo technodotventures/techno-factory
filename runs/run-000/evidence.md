@@ -2,8 +2,8 @@
 
 - **Work item:** POD-AUDIT-003 (/pod/watch actor binding) · **Repo:** `technodotventures/pod`
 - **Branch:** `factory/fix-watch-actor-binding` · **Commit:** `01b919f` · **Base:** `e4630df`
-- **PR:** branch pushed (`origin/factory/fix-watch-actor-binding`); draft-PR creation = **one founder click** via the prefilled compare link (GitHub token lacks Pull-requests:write — noted for ops).
-- **Status:** tests green on fix branch — awaiting the human Review (*Approve to merge*).
+- **PR:** **#3 — merged `9c24f86`** (squash; Sep 13 09:53 UTC). Branch `factory/fix-watch-actor-binding` — fix + tests verified present in `main`.
+- **Status:** ✅ **MERGED — run complete.** Reviewed and merged by the founder.
 
 ## Changed files
 
