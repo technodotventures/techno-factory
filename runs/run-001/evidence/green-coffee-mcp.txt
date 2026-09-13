@@ -1,0 +1,14 @@
+test_401_triggers_one_refresh_and_one_retry (test_coffee_mcp.McpCallTests.test_401_triggers_one_refresh_and_one_retry) ... ok
+test_401_twice_returns_error_without_retry_loop (test_coffee_mcp.McpCallTests.test_401_twice_returns_error_without_retry_loop) ... ok
+test_non_401_error_is_not_retried (test_coffee_mcp.McpCallTests.test_non_401_error_is_not_retried) ... ok
+test_successful_call_single_attempt (test_coffee_mcp.McpCallTests.test_successful_call_single_attempt) ... ok
+test_expiring_token_is_refreshed_and_persisted_0600 (test_coffee_mcp.TokenRefreshTests.test_expiring_token_is_refreshed_and_persisted_0600) ... ok
+test_fresh_token_is_used_without_refresh (test_coffee_mcp.TokenRefreshTests.test_fresh_token_is_used_without_refresh) ... ok
+test_missing_token_store_raises_clean_auth_error (test_coffee_mcp.TokenRefreshTests.test_missing_token_store_raises_clean_auth_error) ... ok
+test_refresh_failure_raises_clean_error_without_secrets (test_coffee_mcp.TokenRefreshTests.test_refresh_failure_raises_clean_error_without_secrets) ... ok
+test_refresh_keeps_old_refresh_token_if_not_rotated (test_coffee_mcp.TokenRefreshTests.test_refresh_keeps_old_refresh_token_if_not_rotated) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.007s
+
+OK

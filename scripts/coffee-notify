@@ -4,94 +4,44 @@
 Usage:
   coffee-notify "message text" [--needs-decision]
 
-Reads the pilot token store, refreshes when needed (or on 401), posts via the
-Coffee MCP messenger surface. Env overrides: COFFEE_CHANNEL_HASH,
-COFFEE_WORKSPACE, COFFEE_TOKEN_STORE.
+All token handling (load / proactive refresh / 401 retry) lives in
+scripts/coffee_mcp.py — this script is just the message composition.
+Env overrides: COFFEE_CHANNEL_HASH, COFFEE_WORKSPACE, COFFEE_TOKEN_STORE.
 """
-import json, os, sys, time, urllib.request, urllib.parse, urllib.error
+import json
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from coffee_mcp import CoffeeAuthError, CoffeeMcpError, mcp_call  # noqa: E402
 
 CHANNEL = os.environ.get("COFFEE_CHANNEL_HASH", "IDE8VmNVVyXuGjREGmttMSn6ytcUTfg")
 WORKSPACE = os.environ.get("COFFEE_WORKSPACE", "techno")
-STORE = os.environ.get("COFFEE_TOKEN_STORE", "/opt/data/mcp-tokens/meetcoffee.client.json")
-CLIENT_JSON = "/opt/data/coffee_oauth_factory.json"
-MCP_URL = "https://meetcoffee.ai/api/mcp"
-TOKEN_URL = "https://meetcoffee.ai/api/v1/oauth/authorize/code"
-UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
-      "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
 
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
 flags = [a for a in sys.argv[1:] if a.startswith("--")]
 if not args:
-    print("usage: coffee-notify \"message\" [--needs-decision]"); sys.exit(2)
+    print('usage: coffee-notify "message" [--needs-decision]')
+    sys.exit(2)
 body = ("🔴 NEEDS DECISION — " if "--needs-decision" in flags else "") + args[0]
 
-def load_store():
-    return json.load(open(STORE))
+try:
+    result = mcp_call("PostMessengerRoomsMessages", {
+        "workspace": WORKSPACE,
+        "chat_room_hash": CHANNEL,
+        "requestBody": {"body": body},
+    })
+except (CoffeeAuthError, CoffeeMcpError) as error:
+    print(f"FAILED: {error}")
+    sys.exit(1)
 
-def save_store(d):
-    json.dump(d, open(STORE, "w"), indent=2)
-    os.chmod(STORE, 0o600)
-
-def refresh(d):
-    c = json.load(open(CLIENT_JSON))
-    form = urllib.parse.urlencode({
-        "grant_type": "refresh_token", "refresh_token": d["refresh_token"],
-        "client_id": c["client_id"], "client_secret": c["client_secret"],
-    }).encode()
-    req = urllib.request.Request(TOKEN_URL, data=form, headers={
-        "User-Agent": UA, "Accept": "application/json",
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Origin": "https://meetcoffee.ai", "Referer": "https://meetcoffee.ai/"})
-    r = urllib.request.urlopen(req, timeout=30)
-    p = json.loads(r.read().decode())
-    if "access_token" not in p:
-        raise RuntimeError(f"refresh failed: {json.dumps(p)[:200]}")
-    d.update({"access_token": p["access_token"],
-              "refresh_token": p.get("refresh_token", d.get("refresh_token")),
-              "expires_in": p.get("expires_in", d.get("expires_in")),
-              "obtained_at": time.time()})
-    save_store(d)
-    return d
-
-def post(d):
-    payload = {"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {
-        "name": "PostMessengerRoomsMessages",
-        "arguments": {"workspace": WORKSPACE, "chat_room_hash": CHANNEL,
-                      "requestBody": {"body": body}}}}
-    req = urllib.request.Request(MCP_URL, data=json.dumps(payload).encode(), headers={
-        "User-Agent": UA, "Authorization": "Bearer " + d["access_token"],
-        "Accept": "application/json, text/event-stream",
-        "Content-Type": "application/json"})
-    try:
-        r = urllib.request.urlopen(req, timeout=40)
-        return r.status, r.read().decode()
-    except urllib.error.HTTPError as e:
-        return e.code, e.read().decode()
-
-d = load_store()
-now = time.time()
-exp = d.get("obtained_at", 0) + max(60, (d.get("expires_in") or 3600) - 90)
-if now >= exp:
-    d = refresh(d)
-
-status, txt = post(d)
-if status == 401:
-    d = refresh(d)
-    status, txt = post(d)
+if isinstance(result, dict) and result.get("error"):
+    print(f"FAILED: {json.dumps(result['error'])[:300]}")
+    sys.exit(1)
 
 try:
-    p = json.loads(txt)
-    ok = p.get("result") and not p.get("error")
-    if ok:
-        msg = (p["result"].get("content") or [{}])[0].get("text", "")
-        try:
-            mh = json.loads(msg)["data"]["message"]["chat_message_hash"]
-            print(f"posted to {CHANNEL} · message {mh}")
-        except Exception:
-            print("posted (unparseable confirmation)")
-    else:
-        print(f"FAILED http={status}: {json.dumps(p)[:300]}")
-        sys.exit(1)
+    text = (result.get("result", {}).get("content") or [{}])[0].get("text", "")
+    message_hash = json.loads(text)["data"]["message"]["chat_message_hash"]
+    print(f"posted to {CHANNEL} · message {message_hash}")
 except Exception:
-    print(f"FAILED http={status}: {txt[:300]}")
-    sys.exit(1)
+    print("posted (unparseable confirmation)")
