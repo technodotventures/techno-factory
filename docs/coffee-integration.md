@@ -85,6 +85,10 @@ Roham — here's the Coffee API/MCP dev work that would fully open things up for
 **Reported:** custom agent checklist-add ✓ but task-create / status-change ✗ with *workspace validation errors* (likely unresolved `project_hash` / `task_status_hash` in tooling; repro in prior revision).
 **Resolution (Sep 12):** custom agent created a task in Optimus OS successfully ("Tennis app UI design" → TO DO) + the external client round-trip fully verified. Finding closed; the loop (real use → precise repro → platform fix) worked end-to-end.
 
+## 6d. Dogfood finding #2 (Sep 12) — task created into the wrong status
+
+**Observed:** task `M1s37GjeuV3PkJv3HpiUkjus` ("Coffee MCP helper") created 10:03:39Z via the external API requesting **TO DO**, read back in **COMPLETE** — with no `task_status_changed` event in its activity feed. Creation-time statuses are not event-logged, so the leading hypothesis is a **born-COMPLETE transient during the ~10:03Z window** (the day the API work was in flight). **Controls:** create ×4 canaries → all honored TO DO; status moves via API work and log `task_status_changed` (actor + via_app). **Resolution:** card moved back to TO DO (restore logged correctly). **Ask for the Coffee team (non-blocking):** server-side status history for that task around 10:03:39Z.
+
 ## 7. Next actions
 
 1. **Add IN REVIEW status** to the Techno OS project (2 min in the UI) so PDLC stages map cleanly: TO DO → IN PROGRESS → IN REVIEW → COMPLETE.

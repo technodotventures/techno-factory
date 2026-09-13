@@ -1,0 +1,6 @@
+Fix branch — full suite (npm test, node v26.5.1)
+tests 287 / pass 287 / fail 0 (baseline main: 285; +2 new watch-auth tests)
+
+✔ watch subscriptions bind the actor to the caller identity (POD-AUDIT-003) (60621ms)
+✔ open mode keeps unauthenticated local watch working (no api token, no PIN) (60356ms)
+✔ (all 285 pre-existing tests)
