@@ -15,7 +15,7 @@ This repository is the **factory module of Techno OS** — Techno Ventures' one 
 | `docs/coffee-integration.md` | Coffee integration: verified surface (129 MCP tools), connection state, recipes, open gaps |
 | `docs/portability.md` | Self-hosting + adapter contract — run the factory anywhere, fork it with your own tools |
 | `docs/templates/` | Agent role prompts: `discovery-interviewer-agent.md`, `planner-agent.md` |
-| `docs/visuals/` | Technical diagrams of the factory — Swiss-mono SVG + PNG set (5 boards) |
+| `docs/visuals/` | Technical diagrams of the factory — Swiss-mono SVG + PNG set (6 boards) |
 
 ## Invariants (summary)
 

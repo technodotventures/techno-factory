@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1310" viewBox="0 0 1440 1310" font-family="ui-monospace, 'JetBrains Mono', 'IBM Plex Mono', Menlo, Consolas, monospace">
+<defs><pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="0.5" cy="0.5" r="0.95" fill="#d9d9d9"/></pattern><clipPath id="framec"><rect x="48" y="48" width="1344" height="1214" rx="12"/></clipPath></defs>
+<rect width="1440" height="1310" fill="#ffffff"/>
+<g clip-path="url(#framec)"><rect x="48" y="48" width="1344" height="1214" fill="url(#dots)"/></g>
+<rect x="48" y="48" width="1344" height="1214" rx="12" fill="none" stroke="#d9d9d9" stroke-width="1.0"/>
+<text x="88" y="92" font-size="15" font-weight="700" fill="#111111" letter-spacing="1.2">06 / TARGET ARCHITECTURE — THE FINISHED FACTORY</text>
+<rect x="1249.86" y="73" width="102.14" height="28" fill="none" stroke="#111111" stroke-width="1.0"/>
+<text x="1300.93" y="91.32" font-size="12" font-weight="700" fill="#111111" text-anchor="middle" letter-spacing="0.6">TECHNO OS</text>
+<rect x="88" y="118" width="1264" height="34" fill="none" stroke="#111111" stroke-width="1.0"/>
+<rect x="106" y="130" width="9" height="9" fill="#1E874B"/><text x="124" y="140" font-size="12" fill="#6b7280">core — any fork keeps this</text>
+<rect x="392" y="130" width="9" height="9" fill="none" stroke="#999999"/><text x="410" y="140" font-size="12" fill="#6b7280">adapter — choose your implementation</text>
+<circle cx="748" cy="134.5" r="4.5" fill="none" stroke="#999999"/><text x="762" y="140" font-size="12" fill="#6b7280">trigger — add when it fires</text>
+<text x="1332" y="140" font-size="12" fill="#111111" text-anchor="end">fork = core + your adapters</text>
+<rect x="88" y="166" width="656" height="272" fill="none" stroke="#999999" stroke-width="1.0" stroke-dasharray="6 5"/>
+<text x="108" y="196" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.6">CONTROL PLANE — THE BOARD</text>
+<text x="108" y="216" font-size="12" font-weight="400" fill="#6b7280" letter-spacing="0.2">state · evidence · decisions (reference: Coffee)</text>
+<rect x="108" y="229" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="238" font-size="13" font-weight="400" fill="#111111">Task stages</text>
+<text x="230" y="238" font-size="12" font-weight="400" fill="#6b7280">the PDLC as statuses; IN REVIEW = the gate</text>
+<rect x="108" y="252" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="261" font-size="13" font-weight="400" fill="#111111">Acceptance checklists</text>
+<text x="316" y="261" font-size="12" font-weight="400" fill="#6b7280">authored before the build — the verifier's contract</text>
+<rect x="108" y="275" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="284" font-size="13" font-weight="400" fill="#111111">Comments = run log</text>
+<text x="290" y="284" font-size="12" font-weight="400" fill="#6b7280">receipts land on the card as they happen</text>
+<rect x="108" y="298" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="307" font-size="13" font-weight="400" fill="#111111">Files &amp; recordings</text>
+<text x="290" y="307" font-size="12" font-weight="400" fill="#6b7280">evidence — byte-exact, human-reviewable</text>
+<rect x="108" y="321" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="330" font-size="13" font-weight="400" fill="#111111">Approvals rail</text>
+<text x="256" y="330" font-size="12" font-weight="400" fill="#6b7280">raised in-app · decided by humans · receipted</text>
+<rect x="108" y="344" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="353" font-size="13" font-weight="400" fill="#111111">Notifications</text>
+<text x="247" y="353" font-size="12" font-weight="400" fill="#6b7280">one channel agents can post to</text>
+<rect x="108" y="367" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="376" font-size="13" font-weight="400" fill="#111111">Agents — native + BYO</text>
+<text x="316" y="376" font-size="12" font-weight="400" fill="#6b7280">same task contract over MCP / API</text>
+<rect x="108" y="390" width="8" height="8" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="124" y="399" font-size="13" font-weight="400" fill="#111111">Meetings &amp; recordings</text>
+<text x="316" y="399" font-size="12" font-weight="400" fill="#6b7280">agent-attended, transcribed → tasks</text>
+<rect x="108" y="413" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="422" font-size="13" font-weight="400" fill="#111111">Skills</text>
+<text x="187" y="422" font-size="12" font-weight="400" fill="#6b7280">process lives with the workspace</text>
+<rect x="768" y="166" width="584" height="272" fill="none" stroke="#999999" stroke-width="1.0" stroke-dasharray="6 5"/>
+<text x="788" y="196" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.6">DELIVERY — THE CODE PLANE</text>
+<text x="788" y="216" font-size="12" font-weight="400" fill="#6b7280" letter-spacing="0.2">where code truth lives</text>
+<rect x="788" y="229" width="8" height="8" fill="#1E874B"/>
+<text x="804" y="238" font-size="13" font-weight="400" fill="#111111">factory/* branches</text>
+<text x="970" y="238" font-size="12" font-weight="400" fill="#6b7280">every run = a branch + a PR</text>
+<rect x="788" y="252" width="8" height="8" fill="#1E874B"/>
+<text x="804" y="261" font-size="13" font-weight="400" fill="#111111">CI checks</text>
+<text x="893" y="261" font-size="12" font-weight="400" fill="#6b7280">unit · e2e · a11y — read back to the card</text>
+<rect x="788" y="275" width="8" height="8" fill="#1E874B"/>
+<text x="804" y="284" font-size="13" font-weight="400" fill="#111111">Review = merge gate</text>
+<text x="978" y="284" font-size="12" font-weight="400" fill="#6b7280">human approval · exact-HEAD-sha match</text>
+<rect x="788" y="298" width="8" height="8" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="804" y="307" font-size="13" font-weight="400" fill="#111111">The provider</text>
+<text x="919" y="307" font-size="12" font-weight="400" fill="#6b7280">GitHub │ GitLab — the adapter is thin</text>
+<circle cx="792" cy="325" r="4.2" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="804" y="330" font-size="13" font-weight="400" fill="#111111">Releases</text>
+<text x="884" y="330" font-size="12" font-weight="400" fill="#6b7280">release record per feature → launch lane</text>
+<rect x="88" y="462" width="656" height="248" fill="none" stroke="#999999" stroke-width="1.0" stroke-dasharray="6 5"/>
+<text x="108" y="492" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.6">EXECUTION — THE WORKER FLEET</text>
+<text x="108" y="512" font-size="12" font-weight="400" fill="#6b7280" letter-spacing="0.2">sandboxed · budgeted · receipted</text>
+<rect x="108" y="525" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="534" font-size="13" font-weight="400" fill="#111111">Operator profile</text>
+<text x="273" y="534" font-size="12" font-weight="400" fill="#6b7280">the operator playbook IS the repo</text>
+<rect x="108" y="548" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="557" font-size="13" font-weight="400" fill="#111111">Chain — Plan → Build → Test</text>
+<text x="367" y="557" font-size="12" font-weight="400" fill="#6b7280">blind, different-vendor verifier</text>
+<circle cx="112" cy="575" r="4.2" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="124" y="580" font-size="13" font-weight="400" fill="#111111">Supervisor · Adversary</text>
+<text x="324" y="580" font-size="12" font-weight="400" fill="#6b7280">conditional — a real failure's evidence</text>
+<rect x="108" y="594" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="603" font-size="13" font-weight="400" fill="#111111">Evidence capture</text>
+<text x="273" y="603" font-size="12" font-weight="400" fill="#6b7280">red → green · screenshots · recordings</text>
+<rect x="108" y="617" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="626" font-size="13" font-weight="400" fill="#111111">Guards</text>
+<text x="187" y="626" font-size="12" font-weight="400" fill="#6b7280">WIP ≤ 3 · spend ceiling · token broker · diff scan</text>
+<rect x="108" y="640" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="649" font-size="13" font-weight="400" fill="#111111">Merge worker</text>
+<text x="239" y="649" font-size="12" font-weight="400" fill="#6b7280">deterministic · rail-checked · human-gated</text>
+<rect x="108" y="663" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="672" font-size="13" font-weight="400" fill="#111111">Sandbox</text>
+<text x="196" y="672" font-size="12" font-weight="400" fill="#6b7280">non-root · egress allowlist · vaulted creds</text>
+<rect x="108" y="686" width="8" height="8" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="124" y="695" font-size="13" font-weight="400" fill="#111111">Host</text>
+<text x="170" y="695" font-size="12" font-weight="400" fill="#6b7280">any venture-owned machine · never a personal box</text>
+<rect x="768" y="462" width="584" height="248" fill="none" stroke="#999999" stroke-width="1.0" stroke-dasharray="6 5"/>
+<text x="788" y="492" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.6">OPERATORS — THE HUMANS</text>
+<text x="788" y="512" font-size="12" font-weight="400" fill="#6b7280" letter-spacing="0.2">sit at the gates, nowhere else</text>
+<rect x="788" y="525" width="8" height="8" fill="#1E874B"/>
+<text x="804" y="534" font-size="13" font-weight="400" fill="#111111">The gates</text>
+<text x="893" y="534" font-size="12" font-weight="400" fill="#6b7280">Review · Launch Review (Go / No-Go)</text>
+<rect x="788" y="548" width="8" height="8" fill="#1E874B"/>
+<text x="804" y="557" font-size="13" font-weight="400" fill="#111111">Steering</text>
+<text x="884" y="557" font-size="12" font-weight="400" fill="#6b7280">comments · decisions · priorities</text>
+<rect x="788" y="571" width="8" height="8" fill="#1E874B"/>
+<text x="804" y="580" font-size="13" font-weight="400" fill="#111111">Human-posted approvals</text>
+<text x="1004" y="580" font-size="12" font-weight="400" fill="#6b7280">the rail ignores agent prose</text>
+<rect x="788" y="594" width="8" height="8" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="804" y="603" font-size="13" font-weight="400" fill="#111111">Extra seats</text>
+<text x="910" y="603" font-size="12" font-weight="400" fill="#6b7280">personal agents · dev envs — nothing depends on them</text>
+<rect x="788" y="617" width="8" height="8" fill="#1E874B"/>
+<text x="804" y="626" font-size="13" font-weight="400" fill="#111111">Owner</text>
+<text x="859" y="626" font-size="12" font-weight="400" fill="#6b7280">a named operator-owner — never unowned</text>
+<rect x="88" y="734" width="656" height="224" fill="none" stroke="#999999" stroke-width="1.0" stroke-dasharray="6 5"/>
+<text x="108" y="764" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.6">DESIGN LANE</text>
+<text x="108" y="784" font-size="12" font-weight="400" fill="#6b7280" letter-spacing="0.2">design lives with the system — not in a tool silo</text>
+<rect x="108" y="797" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="806" font-size="13" font-weight="400" fill="#111111">Design discipline</text>
+<text x="281" y="806" font-size="12" font-weight="400" fill="#6b7280">in-repo skill + agentic-UX standard</text>
+<rect x="108" y="820" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="829" font-size="13" font-weight="400" fill="#111111">Design lint</text>
+<text x="230" y="829" font-size="12" font-weight="400" fill="#6b7280">mechanical checks agents self-correct against</text>
+<rect x="108" y="843" width="8" height="8" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="124" y="852" font-size="13" font-weight="400" fill="#111111">Penpot (self-hosted)</text>
+<text x="307" y="852" font-size="12" font-weight="400" fill="#6b7280">open source; MCP lets agents read &amp; author</text>
+<circle cx="112" cy="870" r="4.2" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="124" y="875" font-size="13" font-weight="400" fill="#111111">Design snapshot</text>
+<text x="264" y="875" font-size="12" font-weight="400" fill="#6b7280">one-file handoff for forks &amp; external tools</text>
+<rect x="768" y="734" width="584" height="224" fill="none" stroke="#999999" stroke-width="1.0" stroke-dasharray="6 5"/>
+<text x="788" y="764" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.6">INTELLIGENCE — MEASURE &amp; MEMORY</text>
+<text x="788" y="784" font-size="12" font-weight="400" fill="#6b7280" letter-spacing="0.2">the loop closes itself — added on trigger</text>
+<circle cx="792" cy="801" r="4.2" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="804" y="806" font-size="13" font-weight="400" fill="#111111">Product analytics</text>
+<text x="961" y="806" font-size="12" font-weight="400" fill="#6b7280">PostHog-first · agent-readable</text>
+<circle cx="792" cy="824" r="4.2" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="804" y="829" font-size="13" font-weight="400" fill="#111111">Bug mining</text>
+<text x="902" y="829" font-size="12" font-weight="400" fill="#6b7280">post-merge defect sweep</text>
+<circle cx="792" cy="847" r="4.2" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="804" y="852" font-size="13" font-weight="400" fill="#111111">Context graph</text>
+<text x="927" y="852" font-size="12" font-weight="400" fill="#6b7280">codebase graph — token economics</text>
+<circle cx="792" cy="870" r="4.2" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="804" y="875" font-size="13" font-weight="400" fill="#111111">Memory substrate</text>
+<text x="953" y="875" font-size="12" font-weight="400" fill="#6b7280">cross-run context packs</text>
+<circle cx="792" cy="893" r="4.2" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="804" y="898" font-size="13" font-weight="400" fill="#111111">Feedback automations</text>
+<text x="987" y="898" font-size="12" font-weight="400" fill="#6b7280">E2E walkthrough · watchdog · rubric loop</text>
+<rect x="788" y="912" width="8" height="8" fill="#1E874B"/>
+<text x="804" y="921" font-size="13" font-weight="400" fill="#111111">Retro</text>
+<text x="859" y="921" font-size="12" font-weight="400" fill="#6b7280">30-day PASS / LEARN — feeds Discovery</text>
+<rect x="88" y="982" width="1264" height="80" fill="none" stroke="#111111" stroke-width="1.0"/>
+<text x="108" y="1010" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.9">THE LOOP</text>
+<text x="108" y="1034" font-size="13" fill="#111111">ENGINEERING — Discovery → Spec → Build → Test → Review (gate) → Merge</text>
+<text x="108" y="1054" font-size="13" fill="#111111">LAUNCH — Prepare → Message → Create → Launch Review (gate) → Go Live → Measure → Retro ↺ Discovery</text>
+<rect x="88" y="1086" width="1264" height="150" fill="none" stroke="#111111" stroke-width="1.0"/>
+<text x="108" y="1114" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.9">FORK CONTRACT</text>
+<text x="330" y="1114" font-size="12" fill="#6b7280">what any environment must provide — copy the core, choose the adapters</text>
+<text x="108" y="1150" font-size="12" font-weight="700" fill="#111111" letter-spacing="0.5">BOARD</text>
+<text x="108" y="1170" font-size="12" fill="#6b7280">tasks · stages · checklists</text>
+<text x="108" y="1190" font-size="12" fill="#6b7280">comments · files · approvals</text>
+<text x="108" y="1210" font-size="12" fill="#6b7280">agent assignment</text>
+<text x="364" y="1150" font-size="12" font-weight="700" fill="#111111" letter-spacing="0.5">DELIVERY</text>
+<text x="364" y="1170" font-size="12" fill="#6b7280">branches · pull requests</text>
+<text x="364" y="1190" font-size="12" fill="#6b7280">checks · merge gate</text>
+<text x="620" y="1150" font-size="12" font-weight="700" fill="#111111" letter-spacing="0.5">AGENTS</text>
+<text x="620" y="1170" font-size="12" fill="#6b7280">durable runs on tasks</text>
+<text x="620" y="1190" font-size="12" fill="#6b7280">write-back to the card</text>
+<text x="620" y="1210" font-size="12" fill="#6b7280">action on a repo</text>
+<text x="876" y="1150" font-size="12" font-weight="700" fill="#111111" letter-spacing="0.5">NOTIFICATIONS</text>
+<text x="876" y="1170" font-size="12" fill="#6b7280">one channel</text>
+<text x="876" y="1190" font-size="12" fill="#6b7280">agents can post to</text>
+<text x="1132" y="1150" font-size="12" font-weight="700" fill="#111111" letter-spacing="0.5">MEMORY (optional)</text>
+<text x="1132" y="1170" font-size="12" fill="#6b7280">repo files + run logs</text>
+<text x="1132" y="1190" font-size="12" fill="#6b7280">are the fallback</text>
+<text x="108" y="1228" font-size="12" fill="#6b7280">start minimal: one repo · one board · one worker · WIP ≤ 3 — expand on triggers, not phases.</text>
+<text x="720" y="1252" font-size="15" fill="#111111" text-anchor="middle" letter-spacing="0.3">Coffee carries the state; the factory carries the execution.</text>
+</svg>
