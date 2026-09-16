@@ -1,0 +1,19 @@
+test_coffee_mcp (unittest.loader._FailedTest.test_coffee_mcp) ... ERROR
+
+======================================================================
+ERROR: test_coffee_mcp (unittest.loader._FailedTest.test_coffee_mcp)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_coffee_mcp
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "<workspaces>/techno-factory/scripts/test_coffee_mcp.py", line 17, in <module>
+    import coffee_mcp  # noqa: E402
+    ^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'coffee_mcp'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

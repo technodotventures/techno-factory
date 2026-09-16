@@ -1,0 +1,15 @@
+[WebServer] (node:43237) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+[WebServer] (Use `node --trace-deprecation ...` to show where the warning was created)
+
+
+Running 8 tests using 1 worker
+
+[1/8] [setup] › e2e/onboarding.setup.ts:8:1 › first-run onboarding — wizard renders; "Set up later" lands in the cockpit
+[2/8] [cockpit] › e2e/cockpit.spec.ts:16:3 › activity surface renders
+[3/8] [cockpit] › e2e/cockpit.spec.ts:16:3 › memories surface renders
+[4/8] [cockpit] › e2e/cockpit.spec.ts:16:3 › docs surface renders
+[5/8] [cockpit] › e2e/cockpit.spec.ts:16:3 › skills surface renders
+[6/8] [cockpit] › e2e/cockpit.spec.ts:16:3 › connections surface renders
+[7/8] [cockpit] › e2e/cockpit.spec.ts:29:1 › journal surface renders
+[8/8] [cockpit] › e2e/cockpit.spec.ts:38:1 › Ask Pod panel opens, closes, and accepts input (no send)
+  8 passed (4.3m)

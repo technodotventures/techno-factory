@@ -1,0 +1,30 @@
+✖ watch subscriptions bind the actor to the caller identity (POD-AUDIT-003) (61100.61572ms)
+✔ open mode keeps unauthenticated local watch working (no api token, no PIN) (60428.243113ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 122509.12424
+
+✖ failing tests:
+
+test at dist/test/watch-auth.test.js:71:1
+✖ watch subscriptions bind the actor to the caller identity (POD-AUDIT-003) (61100.61572ms)
+  AssertionError [ERR_ASSERTION]: anonymous owner impersonation must be 401, got 101 
+  
+  101 !== 401
+  
+      at TestContext.<anonymous> (file://<workspaces>/worktrees/pod-run000/dist/test/watch-auth.test.js:86:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

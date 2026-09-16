@@ -1,0 +1,11 @@
+✔ agent bearer tokens are stored as sha256 hashes and still authenticate (POD-AUDIT-002) (61434.914184ms)
+✔ connection reveal rotates instead of re-reading a stored token (POD-AUDIT-002) (676.711478ms)
+✔ legacy plaintext agent tokens are hashed on open and keep working (POD-AUDIT-002 migration) (401.578417ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 65215.117526

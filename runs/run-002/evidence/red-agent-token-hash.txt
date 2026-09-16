@@ -1,0 +1,68 @@
+✖ agent bearer tokens are stored as sha256 hashes and still authenticate (POD-AUDIT-002) (758.241929ms)
+✖ connection reveal rotates instead of re-reading a stored token (POD-AUDIT-002) (538.168095ms)
+✖ legacy plaintext agent tokens are hashed on open and keep working (POD-AUDIT-002 migration) (505.106553ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4487.21843
+
+✖ failing tests:
+
+test at dist/test/agent-token-hash.test.js:73:1
+✖ agent bearer tokens are stored as sha256 hashes and still authenticate (POD-AUDIT-002) (758.241929ms)
+  AssertionError [ERR_ASSERTION]: raw bearer must not be stored
+      at TestContext.<anonymous> (file://<workspaces>/worktrees/pod-run002/dist/test/agent-token-hash.test.js:84:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'cpod_agent_kvGUDJgVHxGCevSAivko84QgaX2fdc-5',
+    expected: 'cpod_agent_kvGUDJgVHxGCevSAivko84QgaX2fdc-5',
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/agent-token-hash.test.js:123:1
+✖ connection reveal rotates instead of re-reading a stored token (POD-AUDIT-002) (538.168095ms)
+  AssertionError [ERR_ASSERTION]: stored bearer is never re-readable
+  + actual - expected
+  
+  + 'cpod_agent_ydEOSUHgf6VBhpWudaLkfOj63l472kn3'
+  - null
+  
+      at TestContext.<anonymous> (file://<workspaces>/worktrees/pod-run002/dist/test/agent-token-hash.test.js:141:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'cpod_agent_ydEOSUHgf6VBhpWudaLkfOj63l472kn3',
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/agent-token-hash.test.js:163:1
+✖ legacy plaintext agent tokens are hashed on open and keep working (POD-AUDIT-002 migration) (505.106553ms)
+  AssertionError [ERR_ASSERTION]: legacy plaintext is replaced by its hash
+  + actual - expected
+  
+  + 'cpod_agent_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+  - '5a1d030a80c1993a9b8871d163cf86c1b941c9d18ab59f7f8d12a17da04d3200'
+  
+      at TestContext.<anonymous> (file://<workspaces>/worktrees/pod-run002/dist/test/agent-token-hash.test.js:181:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'cpod_agent_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+    expected: '5a1d030a80c1993a9b8871d163cf86c1b941c9d18ab59f7f8d12a17da04d3200',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

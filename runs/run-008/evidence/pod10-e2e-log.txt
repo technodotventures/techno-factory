@@ -1,0 +1,203 @@
+e2e	E2E suite (journeys, a11y, visual)	﻿2026-09-15T09:32:52.2815812Z ##[group]Run npx playwright test
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:32:52.2816158Z ^[[36;1mnpx playwright test^[[0m
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:32:52.2855977Z shell: /usr/bin/bash -e {0}
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:32:52.2856425Z ##[endgroup]
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:32:55.9458862Z [WebServer] (node:5597) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:32:55.9460330Z [WebServer] (Use `node --trace-deprecation ...` to show where the warning was created)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:32:56.7771430Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:32:56.7795184Z Running 17 tests using 1 worker
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:32:56.7824502Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:32:59.1330653Z   ✓   1 [setup] › e2e/onboarding.setup.ts:8:1 › first-run onboarding — wizard renders; "Set up later" lands in the cockpit (1.5s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:33:01.1053061Z   ✓   2 [cockpit] › e2e/cockpit.spec.ts:17:3 › activity surface renders (1.5s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:33:02.4054845Z   ✓   3 [cockpit] › e2e/cockpit.spec.ts:17:3 › memories surface renders (1.3s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:33:03.6909515Z   ✓   4 [cockpit] › e2e/cockpit.spec.ts:17:3 › docs surface renders (1.3s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:33:20.2402995Z   ✘   5 [cockpit] › e2e/cockpit.spec.ts:17:3 › journal surface renders (16.4s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:33:38.0457823Z   ✘   6 [cockpit] › e2e/cockpit.spec.ts:17:3 › journal surface renders (retry #1) (17.1s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:33:40.0066166Z   ✓   7 [cockpit] › e2e/cockpit.spec.ts:17:3 › skills surface renders (1.5s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:33:41.4422529Z   ✓   8 [cockpit] › e2e/cockpit.spec.ts:17:3 › connections surface renders (1.4s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:33:58.5065896Z   ✘   9 [cockpit] › e2e/cockpit.spec.ts:26:1 › Ask Pod panel opens, closes, and accepts input (no send) (16.7s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:16.1621279Z   ✘  10 [cockpit] › e2e/cockpit.spec.ts:26:1 › Ask Pod panel opens, closes, and accepts input (no send) (retry #1) (16.8s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:19.1412806Z   ✓  11 [a11y] › e2e/a11y.spec.ts:12:3 › activity — no critical a11y violations (2.4s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:21.3066661Z   ✓  12 [a11y] › e2e/a11y.spec.ts:12:3 › memories — no critical a11y violations (2.2s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:23.4521169Z   ✓  13 [a11y] › e2e/a11y.spec.ts:12:3 › docs — no critical a11y violations (2.1s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:26.1800505Z   ✓  14 [a11y] › e2e/a11y.spec.ts:12:3 › journal — no critical a11y violations (2.7s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:28.2304784Z   ✓  15 [a11y] › e2e/a11y.spec.ts:12:3 › skills — no critical a11y violations (2.0s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:30.5496576Z   ✓  16 [a11y] › e2e/a11y.spec.ts:12:3 › connections — no critical a11y violations (2.3s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:33.1720914Z   ✓  17 [visual] › e2e/visual.spec.ts:15:3 › visual — activity (2.1s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:34.9064807Z   ✓  18 [visual] › e2e/visual.spec.ts:15:3 › visual — docs (1.7s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.8592920Z   ✓  19 [visual] › e2e/visual.spec.ts:15:3 › visual — connections (1.9s)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9445967Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9449813Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9462682Z   1) [cockpit] › e2e/cockpit.spec.ts:17:3 › journal surface renders ────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9463398Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9463683Z     Error: expect(locator).toBeVisible() failed
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9464103Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9464657Z     Locator: getByText(/one thing you noticed today/).first()
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9465226Z     Expected: visible
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9465592Z     Timeout: 15000ms
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9466000Z     Error: element(s) not found
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9466279Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9466424Z     Call log:
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9467164Z       - Expect "toBeVisible" getByText(/one thing you noticed today/).first() with timeout 15000ms
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9468053Z       - waiting for getByText(/one thing you noticed today/).first()
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9468538Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9468549Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9468745Z       20 |     await nav.click();
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9469284Z       21 |     await expect(nav).toHaveClass(/active/);
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9470049Z     > 22 |     await expect(page.getByText(surface.text).first()).toBeVisible();
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9470755Z          |                                                        ^
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9471822Z       23 |   });
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9472107Z       24 | }
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9472374Z       25 |
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9472846Z         at /home/runner/work/pod/pod/e2e/cockpit.spec.ts:22:56
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9473257Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9474009Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9482541Z     test-results/cockpit-journal-surface-renders-cockpit/test-failed-1.png
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9483776Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9484487Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9485195Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9486164Z     test-results/cockpit-journal-surface-renders-cockpit/video.webm
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9487253Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9487718Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9488284Z     Error Context: test-results/cockpit-journal-surface-renders-cockpit/error-context.md
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9488879Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9489575Z     attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9490504Z     test-results/cockpit-journal-surface-renders-cockpit/trace.zip
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9491489Z     Usage:
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9491673Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9492252Z         npx playwright show-trace test-results/cockpit-journal-surface-renders-cockpit/trace.zip
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9492888Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9493514Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9493970Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9494861Z     Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9495334Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9495586Z     Error: expect(locator).toBeVisible() failed
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9495923Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9496263Z     Locator: getByText(/one thing you noticed today/).first()
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9496804Z     Expected: visible
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9497139Z     Timeout: 15000ms
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9497495Z     Error: element(s) not found
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9497742Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9497872Z     Call log:
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9498562Z       - Expect "toBeVisible" getByText(/one thing you noticed today/).first() with timeout 15000ms
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9499521Z       - waiting for getByText(/one thing you noticed today/).first()
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9499958Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9499966Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9500153Z       20 |     await nav.click();
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9500673Z       21 |     await expect(nav).toHaveClass(/active/);
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9501362Z     > 22 |     await expect(page.getByText(surface.text).first()).toBeVisible();
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9502024Z          |                                                        ^
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9502461Z       23 |   });
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9503113Z       24 | }
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9503399Z       25 |
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9503859Z         at /home/runner/work/pod/pod/e2e/cockpit.spec.ts:22:56
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9504449Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9505164Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9506218Z     test-results/cockpit-journal-surface-renders-cockpit-retry1/test-failed-1.png
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9507402Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9507867Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9508518Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9509456Z     test-results/cockpit-journal-surface-renders-cockpit-retry1/video.webm
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9510602Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9511075Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9511633Z     Error Context: test-results/cockpit-journal-surface-renders-cockpit-retry1/error-context.md
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9512281Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9512953Z     attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9513889Z     test-results/cockpit-journal-surface-renders-cockpit-retry1/trace.zip
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9514675Z     Usage:
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9515115Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9515706Z         npx playwright show-trace test-results/cockpit-journal-surface-renders-cockpit-retry1/trace.zip
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9516347Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9516916Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9517375Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9518097Z   2) [cockpit] › e2e/cockpit.spec.ts:26:1 › Ask Pod panel opens, closes, and accepts input (no send) 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9518678Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9518952Z     Error: expect(locator).toHaveClass(expected) failed
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9519316Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9519540Z     Locator: locator('.app-body-wrap')
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9520019Z     Expected pattern: /ai-chat-open/
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9520496Z     Received string:  "app-body-wrap"
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9520906Z     Timeout: 15000ms
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9521107Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9521236Z     Call log:
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9521786Z       - Expect "toHaveClass" locator('.app-body-wrap') with timeout 15000ms
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9522485Z       - waiting for locator('.app-body-wrap')
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9523228Z         34 × locator resolved to <div class="app-body-wrap">…</div>
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9523837Z            - unexpected value "app-body-wrap"
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9524295Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9524304Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9524613Z       47 |   await expect(shell).not.toHaveClass(/ai-chat-open/);
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9525179Z       48 |   await toggle.click();
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9525709Z     > 49 |   await expect(shell).toHaveClass(/ai-chat-open/);
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9526237Z          |                       ^
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9526797Z       50 |
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9527149Z       51 |   // Closes and re-opens
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9527589Z       52 |   await toggle.click();
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9528152Z         at /home/runner/work/pod/pod/e2e/cockpit.spec.ts:49:23
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9528535Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9529233Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9530463Z     test-results/cockpit-Ask-Pod-panel-open-fcdb8--and-accepts-input-no-send--cockpit/test-failed-1.png
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9531742Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9532197Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9532818Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9533943Z     test-results/cockpit-Ask-Pod-panel-open-fcdb8--and-accepts-input-no-send--cockpit/video.webm
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9535464Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9535960Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9536717Z     Error Context: test-results/cockpit-Ask-Pod-panel-open-fcdb8--and-accepts-input-no-send--cockpit/error-context.md
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9537505Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9538182Z     attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9539590Z     test-results/cockpit-Ask-Pod-panel-open-fcdb8--and-accepts-input-no-send--cockpit/trace.zip
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9540408Z     Usage:
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9540579Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9541392Z         npx playwright show-trace test-results/cockpit-Ask-Pod-panel-open-fcdb8--and-accepts-input-no-send--cockpit/trace.zip
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9542239Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9542866Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9543326Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9543921Z     Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9544637Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9544912Z     Error: expect(locator).toHaveClass(expected) failed
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9545267Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9545468Z     Locator: locator('.app-body-wrap')
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9545939Z     Expected pattern: /ai-chat-open/
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9546435Z     Received string:  "app-body-wrap"
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9546836Z     Timeout: 15000ms
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9547032Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9547162Z     Call log:
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9547692Z       - Expect "toHaveClass" locator('.app-body-wrap') with timeout 15000ms
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9548354Z       - waiting for locator('.app-body-wrap')
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9549076Z         34 × locator resolved to <div class="app-body-wrap">…</div>
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9549668Z            - unexpected value "app-body-wrap"
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9549960Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9549971Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9550262Z       47 |   await expect(shell).not.toHaveClass(/ai-chat-open/);
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9551053Z       48 |   await toggle.click();
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9551570Z     > 49 |   await expect(shell).toHaveClass(/ai-chat-open/);
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9552085Z          |                       ^
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9552434Z       50 |
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9552764Z       51 |   // Closes and re-opens
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9553204Z       52 |   await toggle.click();
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9553747Z         at /home/runner/work/pod/pod/e2e/cockpit.spec.ts:49:23
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9554294Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9554975Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9556289Z     test-results/cockpit-Ask-Pod-panel-open-fcdb8--and-accepts-input-no-send--cockpit-retry1/test-failed-1.png
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9557676Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9558139Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9558765Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9559983Z     test-results/cockpit-Ask-Pod-panel-open-fcdb8--and-accepts-input-no-send--cockpit-retry1/video.webm
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9561375Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9561828Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9562874Z     Error Context: test-results/cockpit-Ask-Pod-panel-open-fcdb8--and-accepts-input-no-send--cockpit-retry1/error-context.md
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9563747Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9564655Z     attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9565874Z     test-results/cockpit-Ask-Pod-panel-open-fcdb8--and-accepts-input-no-send--cockpit-retry1/trace.zip
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9566721Z     Usage:
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9566886Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9567723Z         npx playwright show-trace test-results/cockpit-Ask-Pod-panel-open-fcdb8--and-accepts-input-no-send--cockpit-retry1/trace.zip
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9568638Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9569227Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9569687Z 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9569825Z   2 failed
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9570657Z     [cockpit] › e2e/cockpit.spec.ts:17:3 › journal surface renders ─────────────────────────────────
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9571815Z     [cockpit] › e2e/cockpit.spec.ts:26:1 › Ask Pod panel opens, closes, and accepts input (no send) 
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:36.9572487Z   15 passed (1.7m)
+e2e	E2E suite (journeys, a11y, visual)	2026-09-15T09:34:37.0476040Z ##[error]Process completed with exit code 1.

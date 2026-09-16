@@ -1,0 +1,10 @@
+✔ watch subscriptions bind the actor to the caller identity (POD-AUDIT-003) (60753.421996ms)
+✔ open mode keeps unauthenticated local watch working (no api token, no PIN) (60440.810512ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121926.900437

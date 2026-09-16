@@ -1,0 +1,27 @@
+== guard-scan ==
+repo: <workspaces>/worktrees/pod-run004 | base: origin/main | head: 3aef35d
+
+ .github/workflows/e2e.yml                                    |  61 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ .gitignore                                                   |   3 +++
+ README.md                                                    |   4 ++++
+ docs/testing.md                                              |  38 ++++++++++++++++++++++++++++++++++++++
+ e2e/a11y.spec.ts                                             |  33 +++++++++++++++++++++++++++++++++
+ e2e/cockpit.spec.ts                                          |  62 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ e2e/onboarding.setup.ts                                      |  23 +++++++++++++++++++++++
+ e2e/visual.spec.ts                                           |  24 ++++++++++++++++++++++++
+ e2e/visual.spec.ts-snapshots/activity-empty-visual-linux.png | Bin 0 -> 252072 bytes
+ e2e/visual.spec.ts-snapshots/connections-visual-linux.png    | Bin 0 -> 75748 bytes
+ e2e/visual.spec.ts-snapshots/docs-empty-visual-linux.png     | Bin 0 -> 42408 bytes
+ package-lock.json                                            |  71 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ package.json                                                 |   4 ++++
+ playwright.config.ts                                         |  56 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ui/src/main.tsx                                              |  18 +++++++++---------
+ vite.config.ts                                               |   4 +++-
+ 16 files changed, 391 insertions(+), 10 deletions(-)
+
+changed files: 16
+⚠️  package-lock.json changed — lockfile churn requires justification in the PR
+⚠️  binary file(s) in diff: e2e/visual.spec.ts-snapshots/activity-empty-visual-linux.png e2e/visual.spec.ts-snapshots/connections-visual-linux.png e2e/visual.spec.ts-snapshots/docs-empty-visual-linux.png
+⚠️  UI-impacting change — design check required (attach brand-fidelity verdict via the repo-resident product-design skill before Review; builder may not self-approve)
+
+findings: 3 (each must be fixed or justified in the PR)

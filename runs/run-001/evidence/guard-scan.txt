@@ -1,0 +1,16 @@
+== guard-scan ==
+repo: <workspaces>/techno-factory | base: origin/main | head: 3681bed
+
+ runs/run-001/evidence.md                     |  31 +++++++++++++++++++++++
+ runs/run-001/evidence/coffee-notify-live.txt |   1 +
+ runs/run-001/evidence/green-coffee-mcp.txt   |  14 +++++++++++
+ runs/run-001/evidence/red-coffee-mcp.txt     |  19 ++++++++++++++
+ runs/run-001/plan.md                         |  29 ++++++++++++++++++++++
+ scripts/coffee-notify                        | 104 ++++++++++++++++++++---------------------------------------------------------
+ scripts/coffee_mcp.py                        | 199 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ scripts/test_coffee_mcp.py                   | 195 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 8 files changed, 515 insertions(+), 77 deletions(-)
+
+changed files: 8
+
+clean — no findings

@@ -1,0 +1,24 @@
+[WebServer] (node:681184) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+[WebServer] (Use `node --trace-deprecation ...` to show where the warning was created)
+
+Running 17 tests using 1 worker
+
+  ✓   1 [setup] › e2e/onboarding.setup.ts:8:1 › first-run onboarding — wizard renders; "Set up later" lands in the cockpit (4.2s)
+  ✓   2 [cockpit] › e2e/cockpit.spec.ts:17:3 › activity surface renders (2.1s)
+  ✓   3 [cockpit] › e2e/cockpit.spec.ts:17:3 › memories surface renders (2.7s)
+  ✓   4 [cockpit] › e2e/cockpit.spec.ts:17:3 › docs surface renders (2.1s)
+  ✓   5 [cockpit] › e2e/cockpit.spec.ts:17:3 › journal surface renders (2.4s)
+  ✓   6 [cockpit] › e2e/cockpit.spec.ts:17:3 › skills surface renders (2.4s)
+  ✓   7 [cockpit] › e2e/cockpit.spec.ts:17:3 › connections surface renders (2.2s)
+  ✓   8 [cockpit] › e2e/cockpit.spec.ts:26:1 › Ask Pod panel opens, closes, and accepts input (no send) (3.9s)
+  ✓   9 [a11y] › e2e/a11y.spec.ts:12:3 › activity — no critical a11y violations (4.3s)
+  ✓  10 [a11y] › e2e/a11y.spec.ts:12:3 › memories — no critical a11y violations (3.3s)
+  ✓  11 [a11y] › e2e/a11y.spec.ts:12:3 › docs — no critical a11y violations (3.6s)
+  ✓  12 [a11y] › e2e/a11y.spec.ts:12:3 › journal — no critical a11y violations (4.6s)
+  ✓  13 [a11y] › e2e/a11y.spec.ts:12:3 › skills — no critical a11y violations (3.0s)
+  ✓  14 [a11y] › e2e/a11y.spec.ts:12:3 › connections — no critical a11y violations (3.5s)
+  ✓  15 [visual] › e2e/visual.spec.ts:15:3 › visual — activity (2.9s)
+  ✓  16 [visual] › e2e/visual.spec.ts:15:3 › visual — docs (2.4s)
+  ✓  17 [visual] › e2e/visual.spec.ts:15:3 › visual — connections (3.0s)
+
+  17 passed (1.0m)

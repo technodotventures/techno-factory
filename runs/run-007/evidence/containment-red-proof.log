@@ -1,0 +1,48 @@
+[WebServer] (node:28819) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+[WebServer] (Use `node --trace-deprecation ...` to show where the warning was created)
+
+
+Running 2 tests using 1 worker
+
+[1/2] [setup] › e2e/onboarding.setup.ts:8:1 › first-run onboarding — wizard renders; "Set up later" lands in the cockpit
+[2/2] [capabilities] › e2e/capabilities.spec.ts:27:1 › capability card chips stay within the tile
+  1) [capabilities] › e2e/capabilities.spec.ts:27:1 › capability card chips stay within the tile ───
+
+    Error: chip 3 overflows the tile's right edge
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 493
+    Received:    495.8125
+
+      74 |     const chipBox = await chips.nth(i).boundingBox();
+      75 |     if (!chipBox || !tileBox) continue;
+    > 76 |     expect(chipBox.x + chipBox.width, `chip ${i} overflows the tile's right edge`).toBeLessThanOrEqual(tileBox.x + tileBox.width + 1);
+         |                                                                                    ^
+      77 |     expect(chipBox.y + chipBox.height, `chip ${i} overflows the tile's bottom edge`).toBeLessThanOrEqual(tileBox.y + tileBox.height + 1);
+      78 |     expect(chipBox.x, `chip ${i} spills left of the tile`).toBeGreaterThanOrEqual(tileBox.x - 1);
+      79 |   }
+        at /opt/data/dev-workspaces/worktrees/pod-run007/e2e/capabilities.spec.ts:76:84
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/capabilities-capability-card-chips-stay-within-the-tile-capabilities/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/capabilities-capability-card-chips-stay-within-the-tile-capabilities/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/capabilities-capability-card-chips-stay-within-the-tile-capabilities/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/capabilities-capability-card-chips-stay-within-the-tile-capabilities/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/capabilities-capability-card-chips-stay-within-the-tile-capabilities/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  1 failed
+    [capabilities] › e2e/capabilities.spec.ts:27:1 › capability card chips stay within the tile ────
+  1 passed (18.3s)

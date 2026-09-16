@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+"""coffee-notify — post a factory update to the "Techno OS" Coffee channel.
+
+Usage:
+  coffee-notify "message text" [--needs-decision]
+
+All token handling (load / proactive refresh / 401 retry) lives in
+scripts/coffee_mcp.py — this script is just the message composition.
+Env overrides: COFFEE_CHANNEL_HASH, COFFEE_WORKSPACE, COFFEE_TOKEN_STORE.
+"""
+import json
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from coffee_mcp import CoffeeAuthError, CoffeeMcpError, mcp_call  # noqa: E402
+
+CHANNEL = os.environ.get("COFFEE_CHANNEL_HASH", "your-channel-hash")
+WORKSPACE = os.environ.get("COFFEE_WORKSPACE", "techno")
+
+args = [a for a in sys.argv[1:] if not a.startswith("--")]
+flags = [a for a in sys.argv[1:] if a.startswith("--")]
+if not args:
+    print('usage: coffee-notify "message" [--needs-decision]')
+    sys.exit(2)
+body = ("🔴 NEEDS DECISION — " if "--needs-decision" in flags else "") + args[0]
+
+try:
+    result = mcp_call("PostMessengerRoomsMessages", {
+        "workspace": WORKSPACE,
+        "chat_room_hash": CHANNEL,
+        "requestBody": {"body": body},
+    })
+except (CoffeeAuthError, CoffeeMcpError) as error:
+    print(f"FAILED: {error}")
+    sys.exit(1)
+
+if isinstance(result, dict) and result.get("error"):
+    print(f"FAILED: {json.dumps(result['error'])[:300]}")
+    sys.exit(1)
+
+try:
+    text = (result.get("result", {}).get("content") or [{}])[0].get("text", "")
+    message_hash = json.loads(text)["data"]["message"]["chat_message_hash"]
+    print(f"posted to {CHANNEL} · message {message_hash}")
+except Exception:
+    print("posted (unparseable confirmation)")

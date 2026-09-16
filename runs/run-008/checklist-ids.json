@@ -1,0 +1,42 @@
+[
+ {
+  "n": 1,
+  "title": "Lint installed: oxlint@1.83.0 + @shadcn/lint@0.1.0 pinned in package.json; scoped config committed (settings.shadcn.note -> DESIGN.md)",
+  "task_checklist_id": 297
+ },
+ {
+  "n": 2,
+  "title": "Red-first proof captured: `npm run lint` FAILS on the current Button arbitrary values (h-[34px], px-[18px], rounded-[10px], size-[26px]) before any fix",
+  "task_checklist_id": 301
+ },
+ {
+  "n": 3,
+  "title": "`npm run lint` green after fixes - Button values on-scale; any allowlist entries narrowly scoped to intentional exceptions",
+  "task_checklist_id": 305
+ },
+ {
+  "n": 4,
+  "title": "Dead classes resolved: ai-chat-open, endorsement-modal-overlay, dropdown animate-* (no plugin behind them) - fixed, removed, or registered",
+  "task_checklist_id": 309
+ },
+ {
+  "n": 5,
+  "title": "Undeclared theme colors handled in select.tsx / badge.tsx (bg-accent, accent-foreground)",
+  "task_checklist_id": 313
+ },
+ {
+  "n": 6,
+  "title": "AGENTS.md + repo test docs instruct: run `npm run lint` and fix all errors before Review",
+  "task_checklist_id": 317
+ },
+ {
+  "n": 7,
+  "title": "CI beta gate runs the lint (green on the PR)",
+  "task_checklist_id": 321
+ },
+ {
+  "n": 8,
+  "title": "Evidence on card: before/after lint output + Button spot visual check",
+  "task_checklist_id": 325
+ }
+]

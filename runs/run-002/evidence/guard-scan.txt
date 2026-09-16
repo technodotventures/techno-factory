@@ -1,0 +1,12 @@
+== guard-scan ==
+repo: <workspaces>/worktrees/pod-run002 | base: origin/main | head: 631c1fe
+
+ src/pod/db.ts                     |  63 +++++++++++++++++++++++++++++++++----------
+ src/routes/agents-registry.ts     |  26 +++++++++++++-----
+ src/test/agent-token-hash.test.ts | 231 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ src/test/harness-adapters.test.ts |   4 ++-
+ 4 files changed, 302 insertions(+), 22 deletions(-)
+
+changed files: 4
+
+clean — no findings

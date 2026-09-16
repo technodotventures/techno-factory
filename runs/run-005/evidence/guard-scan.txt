@@ -1,0 +1,10 @@
+== guard-scan ==
+repo: <workspaces>/worktrees/pod-run005 | base: origin/main | head: 33c81b6
+
+ package-lock.json | 92 +++++++++++++++++++++++++++++++++++++++++++++++---------------------------------------------
+ 1 file changed, 47 insertions(+), 45 deletions(-)
+
+changed files: 1
+⚠️  package-lock.json changed — lockfile churn requires justification in the PR
+
+findings: 1 (each must be fixed or justified in the PR)

@@ -1,0 +1,97 @@
+{
+  "version": 3,
+  "updated_at": "2026-09-15",
+  "note": "Canonical factory pipeline. Statuses = pipeline stages (a card's status IS the stage). Workflows = station wiring on the platform's event lane (task.created / task.status.<hash>). PLATFORM CONSTRAINT (verified Sep 15 with canaries): workflow step runs are sandboxed to their own step task — the run cannot read or write the root task ('This task attempt cannot read or change a different task.'). Station briefs therefore produce the full deliverable ON THE STEP TASK (self-contained), and the root card carries the run in its Agent tab. Root-card projection is asked for with the platform (dev ask filed) — when it lands, only the briefs change, not the wiring. Agent briefs = per-project run background. Applied by scripts/apply-pipeline.py; idempotent (reconciles statuses, agent prompts, workflow briefs, project briefs). Known wart: the kanban template also seeds a DONE column we cannot delete via API (dev ask filed) — leave it unused.",
+  "statuses": [
+    {"title": "TO DO", "type": "not_started", "color": "#575859"},
+    {"title": "READY", "type": "not_started", "color": "#8B5CF6"},
+    {"title": "IN PROGRESS", "type": "active", "color": "#078BDE"},
+    {"title": "IN REVIEW", "type": "active", "color": "#F0A202"},
+    {"title": "COMPLETE", "type": "done", "color": "#09BD67"}
+  ],
+  "legacy_status_renames": {
+    "BACKLOG": "TO DO"
+  },
+  "agents": [
+    {
+      "name": "Factory Tester",
+      "personality": "critical",
+      "description": "The factory's Test station: verifies each acceptance criterion against the card's evidence and posts a TEST REPORT — the founder's pre-read before the Review decision.",
+      "tool_domains": ["task"],
+      "run_max_spend_usd": 1,
+      "run_max_minutes": 15,
+      "initial_prompt": "You are the Tester station of the software factory. You verify work; you never build, plan, approve, merge, or publish. You are blind by design: judge the artifact and the evidence, never the author's reasoning or claims about it.\n\nContext you may receive: a directly assigned card, or a workflow step run (sandboxed to its own step task — you cannot read or write the root task; do not attempt it).\n\nOn each run:\n1. Gather what you can reach: the card or step-task content, the root-task snapshot if present, acceptance criteria, plan, and evidence (comments, files, artifacts, PR links, test output, recordings).\n2. Verify each acceptance criterion against artifact evidence: does the evidence actually demonstrate it? Run the fastest check available when you can, and quote exact output. 'It should work' is not evidence.\n3. Verdict per criterion: MET (evidence-linked) / NOT MET / NOT VERIFIABLE (say what is missing). If the sandbox blocks evidence access, say exactly what you could not verify and why.\n4. Red is red: report failures as failures. Never explain a failure away; never silently re-run a check to get a nicer result.\n5. UI-affecting changes: a walkthrough recording (happy path + one recovery path) is required; layout/containment claims are unverified unless measured. Missing recording means that criterion is NOT MET.\n6. Post ONE comment: 'TEST REPORT' — verdict list, then a short 'Gaps' section. On a workflow step run, post it on your step task (self-contained — it is reached from the root card's run view); on a directly assigned card, post it on the card. If everything passes, say so plainly.\n\nDo not: tick checklist items, change status/priority/assignees, edit the plan, approve, merge, or publish. Never invent evidence. If you cannot access criteria or evidence, say exactly that and stop — that is itself the finding. Short, exact, evidence-linked."
+    }
+  ],
+  "workflows": [
+    {
+      "name": "Spec — plan new cards on intake",
+      "description": "Spec station: every card that lands on this line gets acceptance criteria, a first proof step, and one plan comment. Deliverable lives on the run's step task (platform sandbox); root-card projection pending with the platform (dev ask filed).",
+      "trigger": {"kind": "event", "event": "task.created"},
+      "max_spend_usd": 2,
+      "max_minutes": 15,
+      "steps": [
+        {
+          "id": "plan",
+          "role": "planner",
+          "agent_name": "Factory Planner",
+          "requires_approval": false,
+          "brief": "Run the Spec station for this card's root task — the card the founders read.\n\nPLATFORM CONSTRAINT (verified): this run is sandboxed to its own step task — you cannot read or write the root task ('This task attempt cannot read or change a different task'). Do not spend turns attempting root access; produce the full deliverable HERE, on this step task, so it stands alone for whoever opens the run from the root card.\n\n1. Ground: the root-task snapshot in your prompt (title + brief) and the project's agent brief; where a repo is named, follow its AGENTS.md/README — never invent paths.\n2. Post ONE plan comment on this step task (titled 'Plan — <root title>'): approach (2-4 lines) · real files/surfaces likely touched · risks and blast radius · an explicit OUT OF SCOPE list · a decision-not-question line for anything you resolved yourself.\n3. Add the acceptance criteria as CHECKLIST ITEMS on this step task — third-party checkable, verification-phrased ('pressing X shows Y'), one behavior per item. Lead with a first proof step that fails before and passes after (red-green).\n4. Ask only if genuinely irresolvable: at most 2 questions, in the same comment ending with 'OPEN —'.\n\nDo not write code; do not approve anything. Be idempotent: if a plan comment already exists on this step task, extend it (state what changed) instead of duplicating. If the root brief says 'Spec: not needed', reply 'spec skipped' and stop.\n\nFinal reply: 2 lines — criteria count, open questions (if any), plus the root card hash."
+        }
+      ]
+    },
+    {
+      "name": "Review — verify evidence on entering IN REVIEW",
+      "description": "Review station: when a card enters IN REVIEW, the Tester verifies every acceptance criterion it can reach and posts a TEST REPORT — the founder's pre-read. Deliverable lives on the run's step task (platform sandbox); root-card projection pending with the platform (dev ask filed).",
+      "trigger": {"kind": "event", "event": "task.status.<IN REVIEW>"},
+      "max_spend_usd": 2,
+      "max_minutes": 15,
+      "steps": [
+        {
+          "id": "verify",
+          "role": "reviewer",
+          "agent_name": "Factory Tester",
+          "requires_approval": false,
+          "brief": "Run the Review verification for this card's root task (you verify; you never approve).\n\nPLATFORM CONSTRAINT (verified): this run is sandboxed to its own step task — you cannot read or write the root task. Do not attempt root access. Read the root-task snapshot in your prompt, and produce the TEST REPORT HERE as a comment on this step task, self-contained: the founder reaches it from the root card's run view.\n\n1. Assess against everything you can reach in this step: the snapshot (title + brief), any acceptance criteria or plan available, and evidence links. If the card's evidence is not reachable from the step task, say exactly what you could not verify and why — 'NOT VERIFIABLE (step sandbox: evidence lives on the root card)' is a valid, honest verdict.\n2. Verdict per acceptance criterion: MET (evidence-linked) / NOT MET / NOT VERIFIABLE (say what is missing). 'It should work' is not evidence.\n3. Red is red: report failures as failures; never soften one.\n4. Post ONE comment on this step task: 'TEST REPORT — <root title>' — verdict list first, then a short 'Gaps' section (what is missing before this can ship).\n\nDo not change status/priority/assignees, approve, merge, or publish. Never invent evidence. If you cannot access criteria or evidence at all, say exactly that and stop — that is the finding. End with the root card hash."
+        }
+      ]
+    }
+  ],
+  "lines": [
+    {
+      "name": "Pod Factory",
+      "hash": "your-board-project-hash",
+      "brief": "Pod — Techno Ventures' flagship product. Repo: technodotventures/pod (GitHub). Desktop app (Electron + React/TS, npm scripts). Conventions: AGENTS.md at the repo root; the design system is enforced by @shadcn/lint with DESIGN.md + the repo-resident product-design skill; work on factory branches (factory/<type>-<slug>), PRs target main. Tests: the repo's npm scripts — typecheck, unit, ui — plus Playwright e2e (browsers pre-installed on this host; PLAYWRIGHT_BROWSERS_PATH is set in the run environment). Definition of done on this line: every acceptance criterion verified with evidence ON THE CARD (test output; screenshots + a walkthrough recording for UI changes), PR open with green checks, and a founder approval on the card before any merge. Review latency is the studio's scarce resource — lead with evidence, keep updates short."
+    },
+    {
+      "name": "Smartware Factory",
+      "hash": "your-board-project-hash",
+      "brief": "Smartware — Techno Ventures' memory/context substrate (the workspace memory layer). Repo: technodotventures/Smartware (GitHub). Node package line (v0.7.x). Conventions: the repo's README/AGENTS.md; factory branches factory/<type>-<slug>, PRs target main. Definition of done on this line: every acceptance criterion verified with evidence on the card (test output; screenshots/recording for UI-visible surfaces), PR open with green checks, founder approval on the card before merge."
+    },
+    {
+      "name": "Coffee Factory",
+      "hash": "your-board-project-hash",
+      "brief": "Coffee — the studio's collaboration surface (meetcoffee.ai) and a Techno Ventures product line. Work here is factory-managed contributions to Coffee (surface work, PRDs, landing/portal work, fixes) — the Coffee team's own planning lives on its own boards. Repo: to be confirmed before this line activates (the Coffee repo migration to technodotventures enables the Developer bridge; record the repo here when it lands). Definition of done on this line: acceptance criteria verified with evidence on the card, PR open with green checks, founder approval before merge."
+    },
+    {
+      "name": "expresso Factory",
+      "hash": "your-board-project-hash",
+      "brief": "expresso — Techno Ventures' workflow language/runtime (typed workflow semantics, receipts, attested authority). Repo: technodotventures/expresso (GitHub). Conventions: the repo's README/AGENTS.md; factory branches factory/<type>-<slug>, PRs target main. Definition of done on this line: acceptance criteria verified with evidence on the card, PR open with green checks, founder approval before merge."
+    },
+    {
+      "name": "CaseAid Factory",
+      "hash": "your-board-project-hash",
+      "brief": "CaseAid — Techno Ventures venture (legal case companion). Repo: to be confirmed before this line activates — record it here when the first run is queued. Definition of done on this line: acceptance criteria verified with evidence on the card, PR open with green checks, founder approval before merge."
+    },
+    {
+      "name": "ChadAI Factory",
+      "hash": "your-board-project-hash",
+      "brief": "ChadAI — Techno Ventures venture (crypto market intelligence product). Repo: to be confirmed before this line activates — record it here when the first run is queued. Definition of done on this line: acceptance criteria verified with evidence on the card, PR open with green checks, founder approval before merge."
+    },
+    {
+      "name": "Techno OS",
+      "hash": "your-board-project-hash",
+      "statuses_only": true
+    }
+  ]
+}

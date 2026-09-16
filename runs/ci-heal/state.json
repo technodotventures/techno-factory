@@ -1,0 +1,32 @@
+{
+ "34849720088": {
+  "status": "stale-branch-skip",
+  "at": "2026-09-14T14:56:58Z"
+ },
+ "34848484024": {
+  "status": "superseded-skip",
+  "at": "2026-09-14T14:57:00Z"
+ },
+ "34843032300": {
+  "status": "superseded-skip",
+  "at": "2026-09-14T14:57:02Z"
+ },
+ "34833462743": {
+  "status": "stale-branch-skip",
+  "at": "2026-09-14T14:57:03Z"
+ },
+ "34858434761": {
+  "status": "stale-branch-skip",
+  "at": "2026-09-14T15:03:16Z"
+ },
+ "34858434675": {
+  "status": "stale-branch-skip",
+  "at": "2026-09-14T15:03:17Z"
+ },
+ "34952723318": {
+  "status": "briefed",
+  "brief": "34952723318-e2e.md",
+  "category": "E2E",
+  "at": "2026-09-15T09:43:43Z"
+ }
+}

@@ -1,0 +1,7 @@
+CI — PR #6 (run 005): BOTH CHECKS GREEN — beta gate green for the first time since Sep 8
+
+verify (Beta gate) — PASS 4m46s — https://github.com/technodotventures/pod/actions/runs/34850375016
+  audit (0 advisories) -> typecheck -> unit tests (290/290, watch-auth included, Node 26) -> UI build -> acceptance -> macOS desktop pack
+e2e (E2E) — PASS 4m48s — https://github.com/technodotventures/pod/actions/runs/34850374916
+
+Context: the gate had been red repo-wide since the POD-AUDIT-003 merge (Sep 13) — first on the npm advisories, then on the Node 22 watch-auth cancellations. Both cleared in this PR.

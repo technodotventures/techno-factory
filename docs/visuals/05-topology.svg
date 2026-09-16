@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" font-family="ui-monospace, 'JetBrains Mono', 'IBM Plex Mono', Menlo, Consolas, monospace">
+<defs><pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="0.5" cy="0.5" r="0.95" fill="#d9d9d9"/></pattern><clipPath id="framec"><rect x="48" y="48" width="1344" height="804" rx="12"/></clipPath></defs>
+<rect width="1440" height="900" fill="#ffffff"/>
+<g clip-path="url(#framec)"><rect x="48" y="48" width="1344" height="804" fill="url(#dots)"/></g>
+<rect x="48" y="48" width="1344" height="804" rx="12" fill="none" stroke="#d9d9d9" stroke-width="1.0"/>
+<text x="88" y="92" font-size="15" font-weight="700" fill="#111111" letter-spacing="1.2">05 / FACTORY TOPOLOGY</text>
+<rect x="1249.86" y="73" width="102.14" height="28" fill="none" stroke="#111111" stroke-width="1.0"/>
+<text x="1300.93" y="91.32" font-size="12" font-weight="700" fill="#111111" text-anchor="middle" letter-spacing="0.6">TECHNO OS</text>
+<rect x="88" y="150" width="500" height="290" fill="none" stroke="#999999" stroke-width="1.0" stroke-dasharray="6 5"/>
+<text x="108" y="180" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.6">COFFEE</text>
+<text x="108" y="200" font-size="12" font-weight="400" fill="#6b7280" letter-spacing="0.2">external platform — source of record for human work state</text>
+<rect x="108" y="213" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="222" font-size="13" font-weight="400" fill="#111111">Board &amp; cards</text>
+<text x="247" y="222" font-size="12" font-weight="400" fill="#6b7280">status = stage · comments = run log</text>
+<rect x="108" y="236" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="245" font-size="13" font-weight="400" fill="#111111">Approvals &amp; gates</text>
+<text x="281" y="245" font-size="12" font-weight="400" fill="#6b7280">Review · Launch Review</text>
+<rect x="108" y="259" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="268" font-size="13" font-weight="400" fill="#111111">Files &amp; evidence</text>
+<text x="273" y="268" font-size="12" font-weight="400" fill="#6b7280">recordings · byte-exact links</text>
+<rect x="108" y="282" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="291" font-size="13" font-weight="400" fill="#111111">Meetings</text>
+<text x="204" y="291" font-size="12" font-weight="400" fill="#6b7280">agent-attended · transcribed → tasks</text>
+<rect x="108" y="305" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="314" font-size="13" font-weight="400" fill="#111111">Native agents</text>
+<text x="247" y="314" font-size="12" font-weight="400" fill="#6b7280">Factory Planner · Chat harness</text>
+<rect x="108" y="328" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="337" font-size="13" font-weight="400" fill="#111111">Skills</text>
+<text x="187" y="337" font-size="12" font-weight="400" fill="#6b7280">stored with the workspace</text>
+<rect x="108" y="351" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="360" font-size="13" font-weight="400" fill="#111111">MCP / API — 136 tools</text>
+<text x="316" y="360" font-size="12" font-weight="400" fill="#6b7280">signed webhooks → notifications</text>
+<rect x="108" y="374" width="8" height="8" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="124" y="383" font-size="13" font-weight="400" fill="#111111">Repo lane</text>
+<text x="213" y="383" font-size="12" font-weight="400" fill="#6b7280">GitHub App broker</text>
+<rect x="108" y="397" width="8" height="8" fill="#C0392B"/>
+<text x="124" y="406" font-size="13" font-weight="400" fill="#111111">task.activity webhook</text>
+<text x="316" y="406" font-size="12" font-weight="400" fill="#6b7280">unverified — tracked</text>
+<rect x="612" y="150" width="340" height="290" fill="none" stroke="#999999" stroke-width="1.0" stroke-dasharray="6 5"/>
+<text x="632" y="180" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.6">GITHUB</text>
+<text x="632" y="200" font-size="12" font-weight="400" fill="#6b7280" letter-spacing="0.2">org technodotventures — delivery plane</text>
+<rect x="632" y="213" width="8" height="8" fill="#1E874B"/>
+<text x="648" y="222" font-size="13" font-weight="400" fill="#111111">techno-factory</text>
+<text x="780" y="222" font-size="12" font-weight="400" fill="#6b7280">docs·scripts·runs</text>
+<rect x="632" y="236" width="8" height="8" fill="#1E874B"/>
+<text x="648" y="245" font-size="13" font-weight="400" fill="#111111">pod</text>
+<text x="686" y="245" font-size="12" font-weight="400" fill="#6b7280">unit · UI · E2E · containment</text>
+<rect x="632" y="259" width="8" height="8" fill="#1E874B"/>
+<text x="648" y="268" font-size="13" font-weight="400" fill="#111111">factory/* branches</text>
+<text x="814" y="268" font-size="12" font-weight="400" fill="#6b7280">PRs · checks</text>
+<rect x="632" y="282" width="8" height="8" fill="#1E874B"/>
+<text x="648" y="291" font-size="13" font-weight="400" fill="#111111">Merge gate</text>
+<text x="746" y="291" font-size="12" font-weight="400" fill="#6b7280">approval + exact-sha</text>
+<rect x="632" y="305" width="8" height="8" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="648" y="314" font-size="13" font-weight="400" fill="#111111">GitLab</text>
+<text x="711" y="314" font-size="12" font-weight="400" fill="#6b7280">second provider · pending</text>
+<rect x="976" y="150" width="376" height="290" fill="none" stroke="#999999" stroke-width="1.0" stroke-dasharray="6 5"/>
+<text x="996" y="180" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.6">WORKERS</text>
+<text x="996" y="200" font-size="12" font-weight="400" fill="#6b7280" letter-spacing="0.2">sandboxed execution — the external plane</text>
+<rect x="996" y="213" width="8" height="8" fill="#1E874B"/>
+<text x="1012" y="222" font-size="13" font-weight="400" fill="#111111">OS shell operator</text>
+<text x="1169" y="222" font-size="12" font-weight="400" fill="#6b7280">runs 000–007</text>
+<rect x="996" y="236" width="8" height="8" fill="#1E874B"/>
+<text x="1012" y="245" font-size="13" font-weight="400" fill="#111111">Evidence capture</text>
+<text x="1161" y="245" font-size="12" font-weight="400" fill="#6b7280">red → green</text>
+<rect x="996" y="259" width="8" height="8" fill="#1E874B"/>
+<text x="1012" y="268" font-size="13" font-weight="400" fill="#111111">Merge worker</text>
+<text x="1127" y="268" font-size="12" font-weight="400" fill="#6b7280">deterministic · exact-sha</text>
+<rect x="996" y="282" width="8" height="8" fill="#1E874B"/>
+<text x="1012" y="291" font-size="13" font-weight="400" fill="#111111">ci-heal watch</text>
+<text x="1135" y="291" font-size="12" font-weight="400" fill="#6b7280">30-minute scan · dedupe</text>
+<rect x="996" y="305" width="8" height="8" fill="#1E874B"/>
+<text x="1012" y="314" font-size="13" font-weight="400" fill="#111111">Guards</text>
+<text x="1075" y="314" font-size="12" font-weight="400" fill="#6b7280">hooks &gt; scripts &gt; prompts</text>
+<rect x="996" y="328" width="8" height="8" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="1012" y="337" font-size="13" font-weight="400" fill="#111111">/agent-execution</text>
+<text x="1161" y="337" font-size="12" font-weight="400" fill="#6b7280">status + approvals</text>
+<text x="720" y="462" font-size="12" font-weight="400" fill="#6b7280" text-anchor="middle" letter-spacing="0.2">cards dispatch the work · branches carry it · checks and receipts return to the card</text>
+<rect x="88" y="484" width="560" height="206" fill="none" stroke="#999999" stroke-width="1.0" stroke-dasharray="6 5"/>
+<text x="108" y="514" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.6">PERSONAL SURFACES</text>
+<text x="108" y="534" font-size="12" font-weight="400" fill="#6b7280" letter-spacing="0.2">operator seats — demote to optional operators (portability)</text>
+<rect x="108" y="547" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="556" font-size="13" font-weight="400" fill="#111111">Personal agent fleet</text>
+<text x="307" y="556" font-size="12" font-weight="400" fill="#6b7280">reviewer pass · OAuth identity</text>
+<rect x="108" y="570" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="579" font-size="13" font-weight="400" fill="#111111">Desktop agent</text>
+<text x="247" y="579" font-size="12" font-weight="400" fill="#6b7280">the only surface with live provider keys</text>
+<rect x="108" y="593" width="8" height="8" fill="#1E874B"/>
+<text x="124" y="602" font-size="13" font-weight="400" fill="#111111">VPS (personal box)</text>
+<text x="290" y="602" font-size="12" font-weight="400" fill="#6b7280">file mirrors :8099/:8100 · staging</text>
+<rect x="108" y="616" width="8" height="8" fill="#C0392B"/>
+<text x="124" y="625" font-size="13" font-weight="400" fill="#111111">Provider keys</text>
+<text x="247" y="625" font-size="12" font-weight="400" fill="#6b7280">refresh before the seed — one live</text>
+<rect x="108" y="639" width="8" height="8" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="124" y="648" font-size="13" font-weight="400" fill="#111111">Production host</text>
+<text x="264" y="648" font-size="12" font-weight="400" fill="#6b7280">venture-owned · worker + watcher</text>
+<rect x="672" y="484" width="680" height="206" fill="none" stroke="#999999" stroke-width="1.0" stroke-dasharray="6 5"/>
+<text x="692" y="514" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.6">PEERS &amp; SUBSTRATE</text>
+<text x="692" y="534" font-size="12" font-weight="400" fill="#6b7280" letter-spacing="0.2">named peers — adopt on trigger</text>
+<rect x="692" y="547" width="8" height="8" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="708" y="556" font-size="13" font-weight="400" fill="#111111">Smartware</text>
+<text x="797" y="556" font-size="12" font-weight="400" fill="#6b7280">memory substrate → into Coffee</text>
+<rect x="692" y="570" width="8" height="8" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="708" y="579" font-size="13" font-weight="400" fill="#111111">Pod</text>
+<text x="746" y="579" font-size="12" font-weight="400" fill="#6b7280">companion · agent registry / BYO bridge</text>
+<rect x="692" y="593" width="8" height="8" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="708" y="602" font-size="13" font-weight="400" fill="#111111">expresso</text>
+<text x="788" y="602" font-size="12" font-weight="400" fill="#6b7280">workflow semantics · receipts</text>
+<rect x="692" y="616" width="8" height="8" fill="#1E874B"/>
+<text x="708" y="625" font-size="13" font-weight="400" fill="#111111">Design lint — @shadcn/lint</text>
+<text x="942" y="625" font-size="12" font-weight="400" fill="#6b7280">adopted standard · wiring queued</text>
+<rect x="692" y="639" width="8" height="8" fill="none" stroke="#999999" stroke-width="1.0"/>
+<text x="708" y="648" font-size="13" font-weight="400" fill="#111111">Pilots — Detail · Graphify</text>
+<text x="942" y="648" font-size="12" font-weight="400" fill="#6b7280">bug mining · context graph</text>
+<rect x="88" y="700" width="1264" height="88" fill="none" stroke="#111111" stroke-width="1.0"/>
+<text x="112" y="732" font-size="15" font-weight="700" fill="#111111" letter-spacing="0.9">STATE/</text>
+<rect x="112" y="750" width="9" height="9" fill="#1E874B"/><text x="130" y="759" font-size="12" font-weight="400" fill="#6b7280">live — verified with a receipt</text>
+<rect x="472" y="750" width="9" height="9" fill="none" stroke="#999999" stroke-width="1.0"/><text x="490" y="759" font-size="12" font-weight="400" fill="#6b7280">direction — named trigger, not yet built</text>
+<rect x="892" y="750" width="9" height="9" fill="#C0392B"/><text x="910" y="759" font-size="12" font-weight="400" fill="#6b7280">gap — blocked / failing, tracked</text>
+<text x="112" y="778" font-size="12" font-weight="400" fill="#6b7280">&gt; zones are homes, not phases. Humans sit only at the gates — in Coffee.</text>
+<text x="720" y="838" font-size="17" font-weight="400" fill="#111111" text-anchor="middle" letter-spacing="0.3">Coffee carries the state; the factory carries the execution.</text>
+</svg>

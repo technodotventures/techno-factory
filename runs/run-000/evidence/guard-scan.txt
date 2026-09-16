@@ -1,0 +1,12 @@
+== guard-scan ==
+repo: <workspaces>/worktrees/pod-run000 | base: origin/main | head: 01b919f
+
+ docs/FINDINGS.md                    |   2 +-
+ docs/audits/2026-08-24-pod-audit.md |   2 +-
+ src/routes/watch.ts                 | 102 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ src/test/watch-auth.test.ts         | 144 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 248 insertions(+), 2 deletions(-)
+
+changed files: 4
+
+clean — no findings

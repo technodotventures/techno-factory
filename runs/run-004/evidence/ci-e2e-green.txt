@@ -1,0 +1,11 @@
+CI — E2E workflow (green on PR #5)
+
+Run: https://github.com/technodotventures/pod/actions/runs/34833037111
+Job: e2e in 4m15s
+Steps: npm ci -> unit + integration (287 tests) -> playwright install --with-deps chromium -> E2E suite
+E2E suite: "Running 17 tests using 1 worker ... 17 passed (38.0s)"
+Artifact uploaded: playwright-report
+
+Note (pre-existing, not this diff): the repo's beta-gate "verify" job fails at `npm audit --audit-level=low`
+(5 advisories: nodemailer <=9.1.0 x2 high + imapflow/mailparser/js-yaml) — red on main since the
+POD-AUDIT-003 merge and on PR #4 as well. Candidate follow-up run: clear the audit so the gate is green repo-wide.
