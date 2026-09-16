@@ -44,3 +44,7 @@ Full local e2e after fixes: **18/18** (includes the new guard).
 - **Tag + compatibility filters omitted** — no data exists for those dimensions today; documented in the PR rather than faked with dead controls.
 - **F9 unsupported-target note** verified in code; a live repro needs a connected agent without a codex/claude harness (none existed in the instance) — flagged in the PR.
 - **CI (PR #8):** `verify` ✅ **5m13s** (beta gate — incl. the new `test:ui` step) · `e2e` ✅ **4m16s** (cockpit + a11y + visual). Runs: [34869502397](https://github.com/technodotventures/pod/actions/runs/34869502397) · [34869502340](https://github.com/technodotventures/pod/actions/runs/34869502340).
+
+---
+
+**Merged (Sep 16 2026, 14:03:10Z):** squash `0e592fe` via [pod#8](https://github.com/technodotventures/pod/pull/8), final head `de3c319` (conflict resolution vs the design-lint merge: cockpit journal spec → main's stable-chrome test; `beta:gate` combines `lint:design` + `test:ui`). Checks on the final head: `verify` ✅ · `e2e` ✅. Card → COMPLETE with 10/10 criteria ticked. Merge path: one-off per founder instruction (checks verified via the Actions API; token lacks `Checks:Read`).
