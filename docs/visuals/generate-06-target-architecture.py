@@ -129,8 +129,8 @@ zones = [
     ]),
     (768, 734, 584, 224, "INTELLIGENCE — MEASURE & MEMORY", "the loop closes itself — added on trigger", [
         ("trigger", "Product analytics", "PostHog-first · agent-readable"),
-        ("trigger", "Bug mining", "post-merge defect sweep"),
-        ("trigger", "Context graph", "codebase graph — token economics"),
+        ("trigger", "Bug mining", "Detail — post-merge defect sweep"),
+        ("trigger", "Context graph", "Graphify — codebase graph · token economics"),
         ("trigger", "Memory substrate", "cross-run context packs"),
         ("trigger", "Feedback automations", "E2E walkthrough · watchdog · rubric loop"),
         ("core", "Retro", "30-day PASS / LEARN — feeds Discovery"),

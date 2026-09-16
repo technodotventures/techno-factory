@@ -127,10 +127,10 @@
 <text x="961" y="806" font-size="12" font-weight="400" fill="#6b7280">PostHog-first · agent-readable</text>
 <circle cx="792" cy="824" r="4.2" fill="none" stroke="#999999" stroke-width="1.0"/>
 <text x="804" y="829" font-size="13" font-weight="400" fill="#111111">Bug mining</text>
-<text x="902" y="829" font-size="12" font-weight="400" fill="#6b7280">post-merge defect sweep</text>
+<text x="902" y="829" font-size="12" font-weight="400" fill="#6b7280">Detail — post-merge defect sweep</text>
 <circle cx="792" cy="847" r="4.2" fill="none" stroke="#999999" stroke-width="1.0"/>
 <text x="804" y="852" font-size="13" font-weight="400" fill="#111111">Context graph</text>
-<text x="927" y="852" font-size="12" font-weight="400" fill="#6b7280">codebase graph — token economics</text>
+<text x="927" y="852" font-size="12" font-weight="400" fill="#6b7280">Graphify — codebase graph · token economics</text>
 <circle cx="792" cy="870" r="4.2" fill="none" stroke="#999999" stroke-width="1.0"/>
 <text x="804" y="875" font-size="13" font-weight="400" fill="#111111">Memory substrate</text>
 <text x="953" y="875" font-size="12" font-weight="400" fill="#6b7280">cross-run context packs</text>
