@@ -1,0 +1,48 @@
+✖ per-source stats: capture counts, prefix aggregation, idempotent re-record, unknown zeros, reflect block (810.396445ms)
+✖ agent tokens read only the sources their active collection grants cover; owner-only telemetry stays owner-only (452.876794ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2814.74303
+
+✖ failing tests:
+
+test at dist/test/telemetry-sources.test.js:40:1
+✖ per-source stats: capture counts, prefix aggregation, idempotent re-record, unknown zeros, reflect block (810.396445ms)
+  AssertionError [ERR_ASSERTION]: {"message":"Route GET:/pod/telemetry/sources?source_id=hermes-bookmarks:alpha not found","error":"Not Found","statusCode":404}
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/telemetry-sources.test.js:70:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/telemetry-sources.test.js:198:1
+✖ agent tokens read only the sources their active collection grants cover; owner-only telemetry stays owner-only (452.876794ms)
+  AssertionError [ERR_ASSERTION]: {"message":"Route GET:/pod/telemetry/sources not found","error":"Not Found","statusCode":404}
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/telemetry-sources.test.js:244:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

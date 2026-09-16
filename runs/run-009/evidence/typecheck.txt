@@ -1,0 +1,12 @@
+
+> coffee-pod@0.1.0 typecheck
+> npm run typecheck:server && npm run typecheck:ui
+
+
+> coffee-pod@0.1.0 typecheck:server
+> tsc --noEmit
+
+
+> coffee-pod@0.1.0 typecheck:ui
+> tsc -p ui/tsconfig.json --noEmit
+
