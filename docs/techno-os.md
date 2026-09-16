@@ -112,7 +112,7 @@ Token broker (scoped, short-lived, per-run — no publish/merge tokens in worker
 | Cost engineering (routing, nudges) | ≥50 runs AND spend shows a pattern |
 | Read-routing hook (Portal-style bulk-read / context economy) | token/context cost shows in spend data — pairs with the Graphify pilot |
 | Smartware context packs in Coffee | cross-run memory demonstrably costs time |
-| Design station (OpenDesign-style) — the **standard** landed (repo-resident `product-design` skill, ADR 0007 · agentic-UX standard: `docs/design-principles.md`); the **station** (build-time design pass) waits on volume | design-production cost becomes real |
+| Design station (OpenDesign-style) — the **standard** landed (repo-resident `product-design` skill, ADR 0007 · agentic-UX standard: `docs/design-principles.md`); **tooling stands** (self-hosted Penpot + MCP — the design surface); the **station** (build-time design pass) waits on volume | design-production cost becomes real |
 | Portable design snapshot (DESIGN.md-style) — template shipped (`docs/templates/design-snapshot.md`); fork / external-prototype / theming use only | a fork lands OR an external tool needs brand context |
 | Feedback automations (E2E, watchdog, rubric loop) + **product analytics** (PostHog-first — agent-readable via MCP/HogQL; free tier 1M events + 5K replays/mo covers early usage; Clarity/OpenReplay fallbacks) | a venture has users/revenue |
 | Detail / Graphify pilots | monitoring exists / context cost demands it |

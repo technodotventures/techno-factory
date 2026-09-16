@@ -32,4 +32,5 @@
 - **Review (design check):** the human design verdict covers brand fidelity **+ pattern conformance** (`pdlc.md`); `guard-scan` flags UI-impacting changes for this check.
 - **Tests:** the a11y gate + journey suite back the patterns mechanically where possible (visible state, labels, no dead ends).
 - **Design lint:** Tailwind surfaces run `@shadcn/lint` (`no-arbitrary-values`, `no-raw-colors`, `no-unknown-classes`; component contracts later) — errors carry the fix, so agents clean them before Review. Scoped rules v0 land on Pod (run-008).
+- **Design surface:** self-hosted Penpot — exploration, specs, and reviewable hand-offs live there, and its MCP server lets agents read and author designs directly. Code stays the source of truth (repo components + the `product-design` skill); a design snapshot bridges to external tools.
 - **Coffee first:** before inventing UI for any pattern, map it onto Coffee primitives (activity, statuses, approvals, grants, comments) — the coffee-first rule applies to design too.
