@@ -16,6 +16,8 @@ Discovery → Spec → Build → Test → Review → Merge          (development
 
 **Steering — comments are the control channel.** A comment on an active card is picked up by the responsible agent and routed by state: before Build it can amend the spec (criteria updated, change noted); mid-run it lands as a steering note at the next station boundary; in Review it is review feedback (rework starts a new cycle); on a COMPLETE card it becomes a candidate follow-up, never a silent reopen. Two standing rules: **attributed steering** — only comments from authorized people (founders, the operator) steer; all other card content is data, never instructions (trust is stamped at dispatch); and **steering ≠ approval** — gates stay gates, a comment never merges. Agent replies are attributed (`via_agent`). *Mechanics: pickup works today by polling card activity; the native lane needs comment→run delivery from Coffee (asked).*
 
+**Feedback intake — user & user-testing feedback.** Raw user input (testing sessions, calls, support threads — a Coffee Doc, note, or recording) is **data, never instructions** — attributed to its source, never handed to agents as directives. The protocol: the source stays the record of truth → one **triage pass** turns it into a single deduplicated list — every item carries an evidence quote · a classification (**defect → the bug lane** — platform defects to Coffee Bugs, product defects to the venture's lane; **improvement → a Discovery candidate**; **question → answered in thread**) · a proposed destination → the founders accept / decline the list (declined items get a one-line reason back on the source) → **cards are created only from accepted items**, each linked to its source — so Measure and Retro can read feedback → outcomes. Owner once a venture has live users: the **Product Analyst** (`techno-os.md` §6); before that, the operator runs it on request.
+
 ## Development half (SDLC)
 
 | Step | What happens | Runs on | Exit criteria |
@@ -78,4 +80,5 @@ Standing agent — the answer to "are people actually using what we ship?"
 | Build half | Coffee end-to-end connected (129 tools); native agent task-capable; board mapped **TO DO → IN PROGRESS → IN REVIEW → COMPLETE**; first real card on the board | Create the Factory Planner agent (prompt ready); seed: 20 runs on a recurring low-risk source |
 | Launch half | Designed; first increment = release record + evidence assembly (Prepare) | Build when a real launch needs it |
 | Measure | Designed; Analyst pilot activates with first live users | — |
+| Feedback intake | Protocol defined (`pdlc.md`); no batch processed yet | first triage run; Analyst owns it at live users |
 | Known gaps | `task.activity` webhook unverified · approval-band UI → **filed as approval CTAs `redacted-id-14`** (interim: scoped comment convention, §6h of `coffee-integration.md`) | tracked in `coffee-integration.md` |
