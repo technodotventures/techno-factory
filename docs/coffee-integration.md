@@ -147,6 +147,14 @@ Six production lines + the platform line (Techno OS). Provisioned and kept in sy
 
 **Verified live (Sep 15 canaries):** both triggers fire (~15 s); runs complete ~30 s; caps $2 / 15 min per run. **Sandbox limit (finding):** a step run cannot read or write the root task (`This task attempt cannot read or change a different task.`) — station deliverables land on the step task (`plan — <card>` / `verify — <card>`), reachable from the root card's run view; root-card projection is filed with the platform (`redacted-id-16`). **Interim root-write lane:** assigning a station agent directly on the root card (assignment lane) writes on the card (verified Sep 12–13) — use it when the plan/criteria must sit on the card itself.
 
+## 6j. Station evidence delivery — what a blind reviewer actually reads (Sep 16, verified on run-009)
+
+A workflow-step run's only inputs are its prompt snapshot — **root title + brief (the card Description) + attachment `file_hash` refs + the step brief**. Root/step comments are not inputs; attachment hashes cannot be resolved from the step sandbox. Run-009 receipt: verdicts 1–3 = `NOT VERIFIABLE ×3` ("Citations to a file I cannot open are not evidence").
+
+**Working pattern (verified):** append the evidence digest to the card **Description** (`PostDocumentDocumentBlockAppend`, ~3.4 K-char blocks) *before* the card enters IN REVIEW → the reviewer returns evidence-linked verdicts (run-009: 2 MET + 1 NOT-MET-partial with per-gate adjudication). Attachments complement the record but do not substitute for the reviewer. Re-trigger a Review by moving the card out and back into IN REVIEW (~30 s; new step task per fire).
+
+Verdicts land on the step task (`verify — <card>`); project them to the root card for the founders. Founder merge decisions via `PostTaskDecisions` (approver must differ from the consenting user — name the other founder).
+
 ## 7. Next actions
 
 1. ~~Add IN REVIEW status~~ ✅ done — TO DO → IN PROGRESS → IN REVIEW → COMPLETE.
@@ -155,3 +163,4 @@ Six production lines + the platform line (Techno OS). Provisioned and kept in sy
 4. ~~First evidence upload~~ ✅ done (screenshot + log → card document + comment).
 5. **Keep the pilot clean** — production stays a fresh mint on the venture VPS; webhook receivers are per-test and wiped.
 6. **Factory lines (Sep 15):** six lines provisioned + station wiring live (§6i); root-card projection pending with the platform (`redacted-id-16`); dispatch lane (watcher) stays manual-first until the loop is boring.
+7. **Station evidence delivery (Sep 16):** workaround verified and documented (§6j) — evidence digest rides the card Description before IN REVIEW; fold into the run procedure. Platform asks (step-run file resolution / root read) stay open with the root-projection ask.
