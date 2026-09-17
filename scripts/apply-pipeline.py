@@ -198,6 +198,7 @@ def ensure_workflows(project_hash, status_hashes, spec, agents, execute, out):
     by_name = {w.get("name"): w for w in existing}
     for w in spec["workflows"]:
         hit = by_name.get(w["name"])
+        enabled = w.get("enabled", True)  # spec can own enablement (e.g. disabled-and-kept-for-rollback)
         steps, unresolved = build_steps(w, agents)
         if unresolved:
             out(f"  workflow SKIP: {w['name']!r} — unresolved station agent(s) {unresolved}; "
@@ -216,7 +217,7 @@ def ensure_workflows(project_hash, status_hashes, spec, agents, execute, out):
             if execute:
                 body = {"name": w["name"], "description": w["description"],
                         "trigger_kind": "event", "event_name": event,
-                        "project_hash": project_hash, "is_enabled": True,
+                        "project_hash": project_hash, "is_enabled": enabled,
                         "max_spend_usd": w["max_spend_usd"], "max_minutes": w["max_minutes"],
                         "steps": steps}
                 res = call("PostAgentWorkflow", {"requestBody": body})
@@ -237,8 +238,8 @@ def ensure_workflows(project_hash, status_hashes, spec, agents, execute, out):
                 if wn.get("agent_id") and c_agent != wn["agent_id"]:
                     drift.append(f"agent:{wn['id']}")
                     break
-        if hit.get("is_enabled") is not True:
-            drift.append("disabled")
+        if hit.get("is_enabled") != enabled:
+            drift.append("enablement")
         if hit.get("max_spend_usd") != w["max_spend_usd"]:
             drift.append("max_spend")
         if hit.get("max_minutes") != w["max_minutes"]:
@@ -252,7 +253,7 @@ def ensure_workflows(project_hash, status_hashes, spec, agents, execute, out):
                     "name": w["name"], "description": w["description"],
                     "trigger_kind": hit.get("trigger_kind") or "event",
                     "event_name": hit.get("event_name"),
-                    "project_hash": project_hash, "is_enabled": True,
+                    "project_hash": project_hash, "is_enabled": enabled,
                     "max_spend_usd": w["max_spend_usd"], "max_minutes": w["max_minutes"],
                     "steps": steps}
             res = call("PutAgentWorkflowByAgentWorkflowHash",

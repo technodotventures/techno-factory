@@ -1,0 +1,3 @@
+# runtime logs (not source)
+cron.err.log
+notify.err.log

@@ -1,7 +1,7 @@
 {
-  "version": 3,
-  "updated_at": "2026-09-15",
-  "note": "Canonical factory pipeline. Statuses = pipeline stages (a card's status IS the stage). Workflows = station wiring on the platform's event lane (task.created / task.status.<hash>). PLATFORM CONSTRAINT (verified Sep 15 with canaries): workflow step runs are sandboxed to their own step task — the run cannot read or write the root task ('This task attempt cannot read or change a different task.'). Station briefs therefore produce the full deliverable ON THE STEP TASK (self-contained), and the root card carries the run in its Agent tab. Root-card projection is asked for with the platform (dev ask filed) — when it lands, only the briefs change, not the wiring. Agent briefs = per-project run background. Applied by scripts/apply-pipeline.py; idempotent (reconciles statuses, agent prompts, workflow briefs, project briefs). Known wart: the kanban template also seeds a DONE column we cannot delete via API (dev ask filed) — leave it unused.",
+  "version": 4,
+  "updated_at": "2026-09-17",
+  "note": "Canonical factory pipeline. Statuses = pipeline stages (a card's status IS the stage). STATIONS RUN ON THE NATIVE ASSIGNMENT LANE (standardized Sep 17; canary-verified): the station worker (scripts/spec-advance.py) assigns the station agent directly to the root card \u2014 plan + acceptance criteria (Spec, Factory Planner 93) and TEST REPORT verdicts (Review, Factory Tester 113) land ON the card, with via_agent attribution. Auto-advance: when the Spec assignment completes with criteria present, the card moves TO DO \u2192 READY (+ channel notify) \u2014 READY = specced & dispatchable. The legacy workflow-step wiring (sandboxed step runs on task.created / task.status.<IN REVIEW>) is kept DISABLED below (enabled:false) for rollback/reference only \u2014 never run both lanes at once (double runs). Worker cadence: every 2 min (cron spec-advance-job.sh); on the VPS it becomes a service. Agent briefs = per-project run background. Applied by scripts/apply-pipeline.py (idempotent; spec owns workflow enablement since v4). Known wart: the kanban template also seeds a DONE column we cannot delete via API (dev ask filed) \u2014 leave it unused.",
   "statuses": [
     {"title": "TO DO", "type": "not_started", "color": "#575859"},
     {"title": "READY", "type": "not_started", "color": "#8B5CF6"},
@@ -26,7 +26,8 @@
   "workflows": [
     {
       "name": "Spec — plan new cards on intake",
-      "description": "Spec station: every card that lands on this line gets acceptance criteria, a first proof step, and one plan comment. Deliverable lives on the run's step task (platform sandbox); root-card projection pending with the platform (dev ask filed).",
+      "enabled": false,
+      "description": "DISABLED (superseded Sep 17 by the native assignment lane \u2014 see the file note; worker: scripts/spec-advance.py). Legacy: every card landing on this line ran a sandboxed step run; deliverable lived on the step task, not the root card.",
       "trigger": {"kind": "event", "event": "task.created"},
       "max_spend_usd": 2,
       "max_minutes": 15,
@@ -42,7 +43,8 @@
     },
     {
       "name": "Review — verify evidence on entering IN REVIEW",
-      "description": "Review station: when a card enters IN REVIEW, the Tester verifies every acceptance criterion it can reach and posts a TEST REPORT — the founder's pre-read. Deliverable lives on the run's step task (platform sandbox); root-card projection pending with the platform (dev ask filed).",
+      "enabled": false,
+      "description": "DISABLED (superseded Sep 17 by the native assignment lane \u2014 see the file note; worker: scripts/spec-advance.py). Legacy: IN REVIEW ran a blind sandboxed step; verdicts lived on the step task.",
       "trigger": {"kind": "event", "event": "task.status.<IN REVIEW>"},
       "max_spend_usd": 2,
       "max_minutes": 15,
