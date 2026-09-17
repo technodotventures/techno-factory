@@ -7,7 +7,11 @@ Every rail must pass or the worker holds and reports. Dry-run by default.
 Rails:
   R1  PR head branch is a factory branch (factory/*)
   R2  state OPEN; mergeable MERGEABLE + mergeStateStatus CLEAN
-  R3  all status checks SUCCESS on the *current* HEAD sha (>=1 check)
+  R3  all checks SUCCESS on the *current* HEAD sha (>=1 signal) — composed from
+      the GitHub Actions runs + legacy commit-statuses APIs because the Checks
+      API / statusCheckRollup is NOT readable by fine-grained PATs (GitHub
+      removed the "Checks" permission from the fine-grained PAT UI — docs still
+      list it; community discussion #129512). Same signal, readable permissions.
   R4  an approval comment from an authorized user, NEWER than the last commit,
       and posted by a human (no via_app / no posted_by_agent — agent-authored
       comments must never count as approval)
@@ -53,6 +57,37 @@ def gh(*args, check=True):
     return p.stdout.strip(), p.returncode
 
 
+def ci_state(repo: str, head: str):
+    """R3 source: Actions runs + legacy statuses (fine-grained PATs cannot read Checks/statusCheckRollup).
+
+    Latest run per workflow on this sha must be completed/success; legacy commit
+    statuses (if any) must aggregate to 'success'; at least one signal must exist.
+    Fail-closed: any error, partial run, or non-success conclusion = HOLD.
+    """
+    try:
+        v, _ = gh("api", f"repos/{repo}/actions/runs?head_sha={head}&per_page=100")
+        runs = (json.loads(v or "{}").get("workflow_runs") or [])
+        latest = {}
+        for r in runs:
+            key = r.get("name") or r.get("workflow_id")
+            prev = latest.get(key)
+            if prev is None or (r.get("run_number") or 0) >= (prev.get("run_number") or 0):
+                latest[key] = r
+        details = [f'{k}={r.get("status")}/{r.get("conclusion")}' for k, r in sorted(latest.items())]
+        runs_ok = len(latest) >= 1 and all(
+            r.get("status") == "completed" and r.get("conclusion") == "success" for r in latest.values()
+        )
+        s, _ = gh("api", f"repos/{repo}/commits/{head}/status")
+        st = json.loads(s or "{}")
+        statuses = st.get("statuses") or []
+        status_ok = (not statuses) or st.get("state") == "success"
+        ok = runs_ok and status_ok
+        detail = f"actions [{'; '.join(details) or 'none'}] · legacy-status={st.get('state')}({len(statuses)})"
+        return ok, detail
+    except Exception as e:  # fail closed, report why
+        return False, f"api error: {e}"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--card", required=True)
@@ -83,16 +118,15 @@ def main():
         sys.exit(2)
 
     v, _ = gh("pr", "view", str(pr_n), "--repo", REPO, "--json",
-              "state,mergeable,mergeStateStatus,headRefName,headRefOid,statusCheckRollup,commits,url")
+              "state,mergeable,mergeStateStatus,headRefName,headRefOid,commits,url")
     pr = json.loads(v)
     head = pr["headRefOid"]
 
     rail("R1 factory branch", pr["headRefName"].startswith("factory/"), pr["headRefName"])
     rail("R2 open+clean", pr["state"] == "OPEN" and pr["mergeable"] == "MERGEABLE" and pr["mergeStateStatus"] == "CLEAN",
          f'{pr["state"]}/{pr["mergeable"]}/{pr["mergeStateStatus"]}')
-    rollup = pr.get("statusCheckRollup") or []
-    all_ok = len(rollup) >= 1 and all((x.get("conclusion") == "SUCCESS") for x in rollup)
-    rail("R3 checks green", all_ok, ", ".join(f'{x.get("name")}={x.get("conclusion")}' for x in rollup))
+    r3_ok, r3_detail = ci_state(REPO, head)
+    rail("R3 checks green (actions+statuses)", r3_ok, r3_detail)
 
     try:
         last_commit = (pr.get("commits") or [])[-1].get("committedDate")
@@ -145,7 +179,7 @@ def main():
         merge_sha = (json.loads(v2).get("mergeCommit") or {}).get("oid", "")
         mcp_call("PostTaskComment", {"workspace": WS, "task_hash": a.card, "requestBody": {
             "text": (f"Merge receipt — PR #{pr_n} merged via merge-approved worker.\n"
-                     f"Head sha: {head} · merge commit: {merge_sha} · checks: {', '.join(x.get('name','') for x in rollup)} SUCCESS.\n"
+                     f"Head sha: {head} · merge commit: {merge_sha} · checks: {r3_detail}.\n"
                      f"Approval (newer than HEAD): {fresh[0][0]} — \"{fresh[0][1]}\"")}})
     print(f"\nRESULT: {'MERGED ' + merge_sha if merged else 'MERGE FAILED'} (exit {rc})")
     sys.exit(0 if merged else 1)
