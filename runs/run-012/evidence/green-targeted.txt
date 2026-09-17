@@ -1,0 +1,14 @@
+✔ no managed provider + DEEPSEEK_API_KEY → substrate falls back to deepseek (93.804126ms)
+✔ fallback honours DEEPSEEK_MODEL when set (9.357346ms)
+✔ no managed provider and no DeepSeek key → substrate stays model-free (4.880321ms)
+✔ codex is never replaced by the DeepSeek fallback (6.516367ms)
+✔ an active managed provider still wins over the DeepSeek fallback (6.503707ms)
+✔ re-running with a matching config is a no-op (idempotent early return) (5.493091ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1070.459554

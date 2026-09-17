@@ -1,0 +1,10 @@
+== guard-scan ==
+repo: /opt/data/dev-workspaces/worktrees/pod-run012 | base: origin/main | head: 87bce41
+
+ src/services/ai-provider.ts           |  14 ++++++++++++--
+ src/test/smartware-llm-config.test.ts | 128 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 140 insertions(+), 2 deletions(-)
+
+changed files: 2
+
+clean — no findings

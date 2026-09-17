@@ -1,0 +1,66 @@
+✖ no managed provider + DEEPSEEK_API_KEY → substrate falls back to deepseek (72.580533ms)
+✖ fallback honours DEEPSEEK_MODEL when set (32.259419ms)
+✔ no managed provider and no DeepSeek key → substrate stays model-free (7.40055ms)
+✔ codex is never replaced by the DeepSeek fallback (8.325434ms)
+✔ an active managed provider still wins over the DeepSeek fallback (5.630376ms)
+✔ re-running with a matching config is a no-op (idempotent early return) (7.754083ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 4
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 919.815574
+
+✖ failing tests:
+
+test at dist/test/smartware-llm-config.test.js:59:1
+✖ no managed provider + DEEPSEEK_API_KEY → substrate falls back to deepseek (72.580533ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   model: '',
+  +   provider: 'none'
+  -   model: 'deepseek-chat',
+  -   provider: 'deepseek'
+    }
+  
+      at file:///opt/data/dev-workspaces/worktrees/pod-run012/dist/test/smartware-llm-config.test.js:64:16
+      at async withEnv (file:///opt/data/dev-workspaces/worktrees/pod-run012/dist/test/smartware-llm-config.test.js:48:16)
+      at async TestContext.<anonymous> (file:///opt/data/dev-workspaces/worktrees/pod-run012/dist/test/smartware-llm-config.test.js:62:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { provider: 'none', model: '' },
+    expected: { provider: 'deepseek', model: 'deepseek-chat' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/smartware-llm-config.test.js:67:1
+✖ fallback honours DEEPSEEK_MODEL when set (32.259419ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   model: '',
+  +   provider: 'none'
+  -   model: 'deepseek-reasoner',
+  -   provider: 'deepseek'
+    }
+  
+      at file:///opt/data/dev-workspaces/worktrees/pod-run012/dist/test/smartware-llm-config.test.js:72:16
+      at async withEnv (file:///opt/data/dev-workspaces/worktrees/pod-run012/dist/test/smartware-llm-config.test.js:48:16)
+      at async TestContext.<anonymous> (file:///opt/data/dev-workspaces/worktrees/pod-run012/dist/test/smartware-llm-config.test.js:70:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { provider: 'none', model: '' },
+    expected: { provider: 'deepseek', model: 'deepseek-reasoner' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

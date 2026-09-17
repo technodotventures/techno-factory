@@ -1,0 +1,5 @@
+typecheck rc=0
+lint rc=0 (toolchain lent from the run-007 worktree: the linked node_modules lacks oxlint/@shadcn/lint; ui/src untouched by this diff; warnings only, no errors)
+ui rc=0
+build rc=0
+full-suite 307 tests / 306 pass / 1 fail — labeled flake-suspect (pod-flow claim test; standalone 11/11 on branch x2 and on clean main)

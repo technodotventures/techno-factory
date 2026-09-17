@@ -1,0 +1,19 @@
+✔ Coffee uses its app-owned data space for the memory and approval loop (718.548725ms)
+✔ Pod can require an API token outside public routes (344.411811ms)
+✔ Pod issues a per-client token during authenticated pairing (394.301102ms)
+✔ Pod stores Google Drive OAuth configuration locally (455.143863ms)
+✔ Pod Google Drive callback rejects state mismatch (CSRF defense) (399.447399ms)
+✔ Pod imports explicitly selected Google Drive files through connector grant (565.24464ms)
+✔ Integrations list reports implemented connection paths as beta-ready (427.992485ms)
+✔ /pod/query returns structured sources and steps for selected context (398.427165ms)
+✔ /pod/query answers conflict-status questions without generic retrieval noise (408.742619ms)
+✔ /pod/query returns the matching claim instead of an unrelated high-confidence sibling (677.010133ms)
+✔ Connected OpenAI keys power Ask Pod answers and reflection compile (741.801313ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6664.744639
