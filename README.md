@@ -27,7 +27,7 @@ This repository is the **factory module of Techno OS** — Techno Ventures' one 
 
 ## Status
 
-Sep 16 2026 — Coffee fully connected (148 MCP tools); factory runs 0–8 complete: first full cycle shipped (design-lint → CI → review → merge → evidence), the decisions rail verified end-to-end (notification → approve in Coffee → agent acts), CI self-heal live. Next: user-testing feedback intake; public launch. See `docs/techno-os.md` §7.
+Sep 17 2026 — Coffee fully connected (148 MCP tools); factory runs 0–10 complete (first full cycles shipped end-to-end: spec → build → review → merge → evidence, on real product work). Workers live in `scripts/`: `ci-heal.py` (CI watchdog), `merge-approved.py` (merge rail), `clip-enrich.py` (clip-intake enrichment — screen-recording feedback becomes a card-ready evidence digest). Next: user-testing feedback intake; public launch. See `docs/techno-os.md` §7.
 
 ## License
 

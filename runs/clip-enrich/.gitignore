@@ -1,0 +1,5 @@
+# runtime state (not source)
+work/
+state.json
+cron.err.log
+cron.out.log
