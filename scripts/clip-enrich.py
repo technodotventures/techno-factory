@@ -7,9 +7,13 @@ card Description, so native stations (planner / tester / build workers) can
 consume screen-recorded feedback. Mirrors the manual pipeline proven Sep 17 2026
 on card lBKlrI8OfZILQkXxhFX5E2AK (clip 6uddxzvnbvdzk884jvi7e1wx22y2db8).
 
-Pipeline: public-lane resolve -> webm download -> ffmpeg audio + keyframes ->
-faster-whisper transcript -> optional vision notes (OpenAI-compatible endpoint)
--> digest -> Description blocks + poster/keyframes attached + marker comment.
+Pipeline: native resolve (GetClipsByClipHash; public-share lane as fallback) ->
+webm via minted file link (GetFileDownloadLinkByFileHash) -> ffmpeg keyframes ->
+Coffee transcribe (PostClipsTranscribe; local faster-whisper fallback) -> optional
+vision notes (OpenAI-compatible endpoint) -> digest -> Description blocks +
+poster/keyframes attached + marker comment.
+Uses Coffee's native clip tools (shipped Sep 17 2026): GetClipsByClipHash,
+PostClipsTranscribe, GetFileDownloadLinkByFileHash.
 
 Usage:
   python3 scripts/clip-enrich.py --project <hash> [--project <hash> ...] [--limit N] [--execute]
@@ -24,6 +28,7 @@ Env (optional unless noted):
   CLIP_ENRICH_WORKDIR        scratch dir (default <repo>/runs/clip-enrich)
   CLIP_ENRICH_WHISPER_PY     python w/ faster-whisper (default /opt/data/whisper-venv/bin/python)
   CLIP_ENRICH_WHISPER_MODEL  default 'small'
+  CLIP_ENRICH_TRANSCRIBE     auto|native|local (default auto: Coffee transcribe, whisper fallback)
   CLIP_ENRICH_VISION_BASE_URL / _API_KEY / _MODEL   (OpenAI-compatible; skip if unset)
   CLIP_ENRICH_MAX_FRAMES     default 8
 """
@@ -145,10 +150,63 @@ def fetch(url, timeout=180):
     return resp.status, resp.headers.get("content-type", ""), resp.read()
 
 
+def native_clip(clip_hash):
+    r = j(mcp_call("GetClipsByClipHash", {"workspace": WS, "clip_hash": clip_hash}))
+    d = r.get("data") or {}
+    if isinstance(d, dict):
+        return d.get("clip") or (d if d.get("clip_hash") else None)
+    return None
+
+
 def resolve_clip(clip_hash):
+    """Native integration lane first (Sep 17); public-share lane as fallback."""
+    try:
+        c = native_clip(clip_hash)
+        if c:
+            return c
+    except Exception:
+        pass
     st, ct, body = fetch(f"{HOST}/api/v1/clips/{clip_hash}?subdomain={WS}", timeout=60)
     data = json.loads(body)
     return (data.get("data") or {}).get("clip") or {}
+
+
+def _file_hash_from(full_path):
+    m = re.search(r"file_hash=([A-Za-z0-9_\-]+)", full_path or "")
+    return m.group(1) if m else None
+
+
+def fetch_clip_file(full_path, timeout=600):
+    """Minted-link fetch (native lane); falls back to the direct public path."""
+    fh = _file_hash_from(full_path)
+    if fh:
+        try:
+            dl = j(mcp_call("GetFileDownloadLinkByFileHash", {"workspace": WS, "file_hash": fh}))
+            d = dl.get("data") or {}
+            url = d.get("url") or d.get("download_url") or d.get("link") or ""
+            if url:
+                st, ct, data = fetch((HOST + url) if url.startswith("/") else url, timeout=timeout)
+                return data
+        except Exception:
+            pass
+    st, ct, data = fetch(HOST + full_path, timeout=timeout)
+    return data
+
+
+def native_transcribe(clip_hash):
+    """Coffee-side transcription; polls up to ~3 min for the transcript to appear."""
+    try:
+        t = j(mcp_call("PostClipsTranscribe", {"workspace": WS, "clip_hash": clip_hash, "requestBody": {"force": False}}))
+        if not t.get("success"):
+            return None
+        for _ in range(12):
+            time.sleep(15)
+            c = native_clip(clip_hash) or {}
+            if c.get("transcript_text"):
+                return c["transcript_text"]
+    except Exception:
+        return None
+    return None
 
 
 def ffprobe_duration(path):
@@ -243,8 +301,9 @@ def build_digest(clip, clip_hash, transcript, vnotes, vnote_err, n_frames, durat
         vnotes or f"(vision notes unavailable: {vnote_err})",
         "",
         "HOW THIS WAS FETCHED (reproducible)",
-        f"- Public lane: GET {HOST}/api/v1/clips/{{clip_hash}}?subdomain={WS} \u2192 clip record incl. signed media path.",
-        "- webm \u2192 ffmpeg (audio 16 kHz + keyframes) \u2192 faster-whisper + vision model \u2192 this digest.",
+        "- Clip record: MCP `GetClipsByClipHash` (native; public share lane as fallback).",
+        "- Media: `GetFileDownloadLinkByFileHash` minted link from the clip's file_hash (fallback: direct path).",
+        "- Transcript: Coffee `PostClipsTranscribe` when available (fallback: local faster-whisper); keyframes: ffmpeg \u2192 vision model.",
         "- Automated by `scripts/clip-enrich.py` (factory worker).",
     ]
     return "\n".join(lines)
@@ -287,19 +346,21 @@ def process_card(task_hash, clip_hashes, execute, work_root):
         result.update(status="error", detail="clip record has no video path")
         return result
     webm = work / "clip.webm"
-    st, ct, data = fetch(HOST + vpath, timeout=600)
-    webm.write_bytes(data)
+    webm.write_bytes(fetch_clip_file(vpath, timeout=600))
     duration = ffprobe_duration(webm)
+    transcript = clip.get("transcript_text") or None
+    if not transcript and os.environ.get("CLIP_ENRICH_TRANSCRIBE", "auto") in ("auto", "native"):
+        transcript = native_transcribe(clip_hash)
     wav, frames = extract_media(webm, work)
-    transcript, terr = transcribe(wav)
+    if not transcript:
+        transcript, terr = transcribe(wav)
     vnotes, verr = vision_notes(frames, int(os.environ.get("CLIP_ENRICH_MAX_FRAMES", "8")))
     poster = None
     ppath = ((clip.get("preview_thumbnail") or {}).get("full_path"))
     if ppath:
         try:
-            st, ct, data = fetch(HOST + ppath, timeout=60)
             poster = work / "poster.jpg"
-            poster.write_bytes(data)
+            poster.write_bytes(fetch_clip_file(ppath, timeout=60))
         except Exception:
             poster = None
     digest = build_digest(clip, clip_hash, transcript, vnotes, verr, len(frames), duration)

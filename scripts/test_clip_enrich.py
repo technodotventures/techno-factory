@@ -78,5 +78,14 @@ class TestDocText(unittest.TestCase):
         self.assertEqual(ce.doc_text([]), "")
 
 
+class TestFileHash(unittest.TestCase):
+    def test_underscore_hash(self):
+        p = "/api/v1/file/clip-1789620496668.webm?file_hash=nccUpxetgXXfeCoxlIgZkHEFFS_nVAl&media_token=abc"
+        self.assertEqual(ce._file_hash_from(p), "nccUpxetgXXfeCoxlIgZkHEFFS_nVAl")
+
+    def test_no_hash(self):
+        self.assertIsNone(ce._file_hash_from("/api/v1/file/x.webm?media_token=abc"))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
