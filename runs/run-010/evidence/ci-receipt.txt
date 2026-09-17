@@ -1,0 +1,5 @@
+PR #12 — https://github.com/technodotventures/pod/pull/12 (factory/feat-observe-batch @ de17cfc)
+Actions runs on the branch (Actions API receipt):
+Beta gate: completed/success (2026-09-17T01:32:03Z) — https://github.com/technodotventures/pod/actions/runs/35170925932
+E2E: completed/success (2026-09-17T01:32:03Z) — https://github.com/technodotventures/pod/actions/runs/35170925937
+Operator full-suite re-run (independent): 301/301, 0 fail.

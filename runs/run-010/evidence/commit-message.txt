@@ -1,0 +1,23 @@
+feat(observe): batched operations with per-item operation_id and partial-success results (run 010)
+
+POST /pod/observe now accepts a bounded batch ({ items: [...] }, max 100) alongside the
+unchanged single-operation shape. Each item carries its own operation_id and runs through
+the same path — validation, actor auth, scope resolution, wrapMutation/operations_seen
+idempotency, substrate observe — and each gets its own outcome (accepted · duplicate ·
+rejected with the standard error envelope), so partial success is representable and one
+bad item never aborts or rolls back its siblings.
+
+- schema: anyOf [single-op branch verbatim, items branch]; results are positional with a
+  per-item index and the caller's exact operation_id; overall status 200 all-ok / 207
+  partial / 400 nothing succeeded; empty, non-array or >100 items are rejected at the
+  request level with the invalid_payload envelope.
+- a malformed operation_id item yields its own 400 envelope, never a 500: shared helpers
+  that write to the reply are run against a capturing reply per item, so no item's
+  rejection can terminate the batch.
+- substrate-level source_id dedupe is surfaced honestly as outcome "duplicate" instead of
+  claiming a new artifact was written.
+- docs: README route note + docs/install.md bulk-import example.
+- tests: src/test/observe-batch.test.ts (9 cases; red-first 1 pass/7 fail → 9/9), full
+  suite 301/301, typecheck + design lint exit 0. Evidence: techno-factory runs/run-010.
+
+Co-authored-by: Techno Factory <factory@techno.ventures>

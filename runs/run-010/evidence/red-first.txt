@@ -1,0 +1,151 @@
+✖ batch: malformed operation_id yields a per-item error envelope while siblings succeed (586.955764ms)
+✖ batch: N valid operations return N results tagged with the caller operation_ids (371.692583ms)
+✖ batch: a rejected item does not abort its siblings (353.239039ms)
+✖ batch: malformed operation_id items return 400 envelopes, never a 500 (362.3814ms)
+✔ batch: the existing single-operation request shape is unchanged (405.146015ms)
+✖ batch: empty, missing, and oversized batches are rejected at the request level (345.724315ms)
+✖ batch: repeated operation_ids in one batch stay distinguishable (307.56574ms)
+✖ batch: a 100-item request is accepted in one call with 100 outcomes (312.788045ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 1
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4117.033594
+
+✖ failing tests:
+
+test at dist/test/observe-batch.test.js:54:1
+✖ batch: malformed operation_id yields a per-item error envelope while siblings succeed (586.955764ms)
+  AssertionError [ERR_ASSERTION]: {"statusCode":400,"code":"FST_ERR_VALIDATION","error":"Bad Request","message":"body must have required property 'content'"}
+  
+  400 !== 207
+  
+      at file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:67:16
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withApp (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:41:16)
+      at async TestContext.<anonymous> (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:55:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 207,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/observe-batch.test.js:94:1
+✖ batch: N valid operations return N results tagged with the caller operation_ids (371.692583ms)
+  AssertionError [ERR_ASSERTION]: {"statusCode":400,"code":"FST_ERR_VALIDATION","error":"Bad Request","message":"body must have required property 'content'"}
+  
+  400 !== 200
+  
+      at file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:101:16
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withApp (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:41:16)
+      at async TestContext.<anonymous> (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:95:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/observe-batch.test.js:116:1
+✖ batch: a rejected item does not abort its siblings (353.239039ms)
+  AssertionError [ERR_ASSERTION]: {"statusCode":400,"code":"FST_ERR_VALIDATION","error":"Bad Request","message":"body must have required property 'content'"}
+  
+  400 !== 207
+  
+      at file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:131:16
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withApp (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:41:16)
+      at async TestContext.<anonymous> (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:117:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 207,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/observe-batch.test.js:150:1
+✖ batch: malformed operation_id items return 400 envelopes, never a 500 (362.3814ms)
+  TypeError: Cannot read properties of undefined (reading 'length')
+      at file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:159:42
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withApp (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:41:16)
+      at async TestContext.<anonymous> (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:151:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at dist/test/observe-batch.test.js:206:1
+✖ batch: empty, missing, and oversized batches are rejected at the request level (345.724315ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'invalid_payload'
+  
+      at file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:210:16
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withApp (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:41:16)
+      at async TestContext.<anonymous> (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:207:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'invalid_payload',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/observe-batch.test.js:231:1
+✖ batch: repeated operation_ids in one batch stay distinguishable (307.56574ms)
+  AssertionError [ERR_ASSERTION]: {"statusCode":400,"code":"FST_ERR_VALIDATION","error":"Bad Request","message":"body must have required property 'content'"}
+  
+  400 !== 207
+  
+      at file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:239:16
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withApp (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:41:16)
+      at async TestContext.<anonymous> (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:232:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 207,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/observe-batch.test.js:256:1
+✖ batch: a 100-item request is accepted in one call with 100 outcomes (312.788045ms)
+  AssertionError [ERR_ASSERTION]: {"statusCode":400,"code":"FST_ERR_VALIDATION","error":"Bad Request","message":"body must have required property 'content'"}
+  
+  400 !== 200
+  
+      at file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:266:16
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withApp (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:41:16)
+      at async TestContext.<anonymous> (file:///opt/data/dev-workspaces/worktrees/pod-run007/dist/test/observe-batch.test.js:257:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+EXIT_CODE=1

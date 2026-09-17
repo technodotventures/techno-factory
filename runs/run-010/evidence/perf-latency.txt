@@ -1,0 +1,12 @@
+── LATENCY-SCALING RECEIPT ── 270-artifact workload through a delaying proxy
+   (simulated network latency on loopback substrate; each round trip +D ms)
+
++10 ms per round trip:
+  3 batched requests (100+100+70): 4472 ms
+  270 sequential single calls    : 9842 ms
+  speedup                        : 2.20x   (round trips 270 → 3, gap ≈ 267 × 10 ms)
+
++25 ms per round trip:
+  3 batched requests (100+100+70): 4884 ms
+  270 sequential single calls    : 14316 ms
+  speedup                        : 2.93x   (round trips 270 → 3, gap ≈ 267 × 25 ms)

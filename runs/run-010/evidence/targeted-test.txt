@@ -1,0 +1,18 @@
+✔ batch: malformed operation_id yields a per-item error envelope while siblings succeed (739.21031ms)
+✔ batch: N valid operations return N results tagged with the caller operation_ids (475.701132ms)
+✔ batch: a rejected item does not abort its siblings (463.37916ms)
+✔ batch: malformed operation_id items return 400 envelopes, never a 500 (448.031434ms)
+✔ batch: the existing single-operation request shape is unchanged (566.133769ms)
+✔ batch: empty, missing, and oversized batches are rejected at the request level (452.414657ms)
+✔ batch: repeated operation_ids in one batch stay distinguishable (463.189542ms)
+✔ batch: substrate-level source_id dedupe is reported per item (517.229691ms)
+✔ batch: a 100-item request is accepted in one call with 100 outcomes (1881.232673ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6754.007617
+EXIT_CODE=0

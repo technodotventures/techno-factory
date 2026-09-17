@@ -1,0 +1,80 @@
+── REQUEST ── POST /pod/observe
+{
+  "actor_id": "person-local",
+  "items": [
+    {
+      "operation_id": "op_00000000000000000000070000",
+      "content": "Lane backfill: research entry 192.",
+      "source_id": "lane:research:192"
+    },
+    {
+      "operation_id": "op_00000000000000000000070000",
+      "content": "Lane backfill: research entry 192.",
+      "source_id": "lane:research:192"
+    },
+    {
+      "operation_id": "NOT-A-OPERATION-ID",
+      "content": "Malformed item."
+    }
+  ]
+}
+
+── RESPONSE ── HTTP 207
+{
+  "ok": false,
+  "batch": {
+    "received": 3,
+    "accepted": 1,
+    "duplicate": 1,
+    "rejected": 1,
+    "max_items": 100,
+    "status": "partial"
+  },
+  "results": [
+    {
+      "index": 0,
+      "operation_id": "op_00000000000000000000070000",
+      "status": 201,
+      "outcome": "accepted",
+      "result": {
+        "id": "obs_f0e9b5bad07d5a4fc0cecef6b8cd21aec4725ef1a8cf65eb4a1ecc70232e2407",
+        "status": "accepted",
+        "sequence": 1
+      }
+    },
+    {
+      "index": 1,
+      "operation_id": "op_00000000000000000000070000",
+      "status": 200,
+      "outcome": "duplicate",
+      "result": {
+        "id": "obs_f0e9b5bad07d5a4fc0cecef6b8cd21aec4725ef1a8cf65eb4a1ecc70232e2407",
+        "status": "accepted",
+        "sequence": 1
+      }
+    },
+    {
+      "index": 2,
+      "operation_id": "NOT-A-OPERATION-ID",
+      "status": 400,
+      "outcome": "rejected",
+      "error": {
+        "code": "invalid_payload",
+        "message": "operation_id 'NOT-A-OPERATION-ID' does not match ^op_[0-9A-HJKMNP-TV-Z]{26}$",
+        "details": {
+          "received": "NOT-A-OPERATION-ID"
+        }
+      }
+    }
+  ]
+}
+
+── TIMING ── 100 artifacts (in-process inject)
+one batched request : HTTP 200 · 100 per-item outcomes · 572 ms
+100 sequential calls: 637 ms
+speedup             : 1.11x
+
+── TIMING ── 100 artifacts (loopback HTTP)
+one batched request : HTTP 200 · 100 per-item outcomes · 609 ms
+100 sequential calls: 893 ms
+speedup             : 1.47x

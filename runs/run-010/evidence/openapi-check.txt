@@ -1,0 +1,5 @@
+GET /docs/json → 200
+top-level keys: openapi, info, components, paths
+paths included: 171
+observe summary: Write an observation — or a bounded batch of operations — into Pod memory
+observe body schema has anyOf: true

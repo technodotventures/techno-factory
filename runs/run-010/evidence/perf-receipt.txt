@@ -1,0 +1,10 @@
+── PERF RECEIPT ── 100 artifacts per run, loopback HTTP, 5 repeats
+1 batched request  : median 1127 ms (runs: 777, 998, 1127, 2074, 1228 ms)
+100 sequential calls: median 1372 ms (runs: 1134, 1372, 1728, 1437, 1303 ms)
+median speedup      : 1.22x
+
+── REAL WORKLOAD ── 270 artifacts (the lane-backfill shape)
+3 batched requests (100+100+70): 3651 ms
+270 sequential single calls    : 3633 ms
+speedup                        : 1.00x
+round trips eliminated         : 270 → 3
