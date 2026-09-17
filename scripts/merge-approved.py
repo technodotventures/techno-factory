@@ -12,9 +12,12 @@ Rails:
       API / statusCheckRollup is NOT readable by fine-grained PATs (GitHub
       removed the "Checks" permission from the fine-grained PAT UI — docs still
       list it; community discussion #129512). Same signal, readable permissions.
-  R4  an approval comment from an authorized user, NEWER than the last commit,
-      and posted by a human (no via_app / no posted_by_agent — agent-authored
-      comments must never count as approval)
+  R4  an approval that is NEWER than the last commit, from an authorized founder,
+      posted by a human — either (a) a card comment (no via_app / no posted_by_agent;
+      agent-authored comments must never count) or (b) an APPROVED native decision on
+      the Approvals rail whose decider (or addressee `approver_user_hash`) is an
+      authorized founder. Decision hashes are read from card comments (the
+      decider-scoped list hides others' items; direct-hash reads work).
   R5  no sensitive paths in the diff (.github/workflows, secrets) unless --allow-sensitive
   R6  merge uses --match-head-commit <sha> (GitHub refuses if HEAD moved again)
 
@@ -150,9 +153,43 @@ def main():
             else:
                 ignored_agent.append((created, text[:60]))
     fresh = [x for x in approvals if last_commit and x[0] and x[0] > last_commit]
-    rail("R4 approval newer than HEAD", bool(fresh),
-         f"last_commit={last_commit}; approvals={approvals or 'none'}; "
-         f"agent-authored ignored={ignored_agent or 'none'}; fresh={fresh or 'none'}")
+
+    # Decision-lane approval (native Approvals rail). Read decision hashes from the
+    # card comments (we post `td_<uuid>` with every request); direct-hash reads work
+    # even though the decider-scoped list hides decisions addressed to others.
+    decided = []
+    decision_detail = "none"
+    seen_hashes = set()
+    for cm in comments:
+        text_all = "\n".join("".join(ch.get("text", "") for ch in (b.get("children") or [])) for b in (cm.get("blocks") or []))
+        seen_hashes.update(re.findall(r"\btd_[0-9a-f-]{36}\b", text_all))
+    for dh in sorted(seen_hashes):
+        dd = j(mcp_call("GetTaskDecisionsByDecisionHash", {"workspace": WS, "decision_hash": dh}))
+        data = dd.get("data")
+        data = data if isinstance(data, dict) else {}
+        dec = data.get("result") or data.get("decision") or {}
+        dec = dec if isinstance(dec, dict) else {}
+        if (dec.get("status") or "").lower() != "approved":
+            decision_detail = f"{dh}: status={dec.get('status')}"
+            continue
+        decider = None
+        for path in (("decided_by", "user_hash"), ("decided_by_user_hash",), ("decider", "user_hash"),
+                     ("decision", "user_hash"), ("responder", "user_hash")):
+            node = dec
+            for key in path:
+                node = node.get(key) if isinstance(node, dict) else None
+            if node:
+                decider = node
+                break
+        addressee = dec.get("approver_user_hash")
+        decided_at = dec.get("decided_at") or (dec.get("decision") or {}).get("created_at") or dec.get("updated_at")
+        decision_detail = (f"{dh}: approved decider={decider} addressee={addressee} at={decided_at} "
+                           f"keys={sorted(k for k in dec.keys() if k not in ('details', 'preview'))[:16]}")
+        if (decider in AUTHORIZED or addressee in AUTHORIZED) and decided_at and last_commit and decided_at > last_commit:
+            decided.append((decided_at, dh))
+    rail("R4 approval newer than HEAD", bool(fresh or decided),
+         f"last_commit={last_commit}; comments lane={fresh or 'none'}; decisions lane={decided or 'none'}; "
+         f"agent-authored ignored={ignored_agent or 'none'}; decision scan: {decision_detail}")
 
     diff, _ = gh("pr", "diff", str(pr_n), "--repo", REPO, "--name-only")
     files = [f for f in diff.splitlines() if f.strip()]
