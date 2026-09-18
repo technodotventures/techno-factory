@@ -1,0 +1,9 @@
+CI receipts — repo technodotventures/pod, head 87bce413f148e8c602065903675c50b80ade5f60 (PR #14)
+generated: 2026-09-17T16:41:01Z via gh (Actions API)
+
+--- workflow runs on this branch ---
+completed	success	fix(ai): fall back to DeepSeek for the Smartware substrate when no managed provider is set	Beta gate	factory/fix-smartware-deepseek-fallback	pull_request	35247330331	3m42s	2026-09-17T16:33:35Z
+completed	success	fix(ai): fall back to DeepSeek for the Smartware substrate when no managed provider is set	E2E	factory/fix-smartware-deepseek-fallback	pull_request	35247330348	6m46s	2026-09-17T16:33:35Z
+
+--- E2E job ---
+{"conclusion":"success","jobs":[{"conclusion":"success","name":"e2e","steps":[{"conclusion":"success","name":"Set up job"},{"conclusion":"success","name":"Check out repository"},{"conclusion":"success","name":"Set up Node.js"},{"conclusion":"success","name":"Install locked dependencies"},{"conclusion":"success","name":"Create dev env file"},{"conclusion":"success","name":"Unit + integration tests"},{"conclusion":"success","name":"Install Playwright browser (chromium)"},{"conclusion":"success","name":"E2E suite (journeys, a11y, visual)"},{"conclusion":"success","name":"Upload Playwright report"},{"conclusion":"success","name":"Upload test results (traces, videos, screenshots)"},{"conclusion":"success","name":"Post Set up Node.js"},{"conclusion":"success","name":"Post Check out repository"},{"conclusion":"success","name":"Complete job"}]}],"sha":"87bce413f148e8c602065903675c50b80ade5f60","status":"completed"}
